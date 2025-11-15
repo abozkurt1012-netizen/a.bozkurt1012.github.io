@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hochzeit – Aykut & ♥</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background: #f7f6f0;
+            color: #2e2e2e;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: #d9e2c1;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #4a5d23;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #4a5d23;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 6px;
+        }
+
+        .section {
+            display: none;
+            padding: 25px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #cdd8bb;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hochzeit – 11.04.2026</h1>
+    <p>Willkommen auf unserer offiziellen Hochzeitsseite</p>
+</header>
+
+<nav>
+    <button onclick="switchLang('de')">Deutsch</button>
+    <button onclick="switchLang('tr')">Türkçe</button>
+</nav>
+
+<nav>
+    <button onclick="show('info')">Infos</button>
+    <button onclick="show('location')">Ort</button>
+    <button onclick="show('gbook')">Gästebuch</button>
+</nav>
+
+<!-- Deutsch -->
+<div id="lang-de">
+
+    <div id="info" class="section active card">
+        <h2>Unsere Hochzeit</h2>
+        <p>Wir freuen uns sehr, euch am <strong>11. April 2026</strong> an unserem besonderen Tag begrüßen zu dürfen.</p>
+    </div>
+
+    <div id="location" class="section card">
+        <h2>Ort</h2>
+        <p>Details zum Ort folgen bald.</p>
+    </div>
+
+    <div id="gbook" class="section card">
+        <h2>Gästebuch</h2>
+        <p>Das Gästebuch ist privat. Eure Nachrichten werden nicht öffentlich angezeigt.</p>
+        <a href="https://github.com/abozkurt1012-netizen/a.bozkurt1012.github.io/issues/new" 
+           target="_blank"
+           style="color:#4a5d23; font-weight:bold;">
+           → Nachricht hinterlassen
+        </a>
+    </div>
+
+</div>
+
+<!-- Türkisch -->
+<div id="lang-tr" style="display:none;">
+
+    <div id="info-tr" class="section active card">
+        <h2>Düğünümüz</h2>
+        <p><strong>11 Nisan 2026</strong> tarihinde özel günümüzde sizleri görmekten mutluluk duyarız.</p>
+    </div>
+
+    <div id="location-tr" class="section card">
+        <h2>Konum</h2>
+        <p>Konum detayları yakında paylaşılacak.</p>
+    </div>
+
+    <div id="gbook-tr" class="section card">
+        <h2>Ziyaretçi Defteri</h2>
+        <p>Mesajlarınız gizli tutulur ve sadece biz görebiliriz.</p>
+        <a href="https://github.com/abozkurt1012-netizen/a.bozkurt1012.github.io/issues/new" 
+           target="_blank"
+           style="color:#4a5d23; font-weight:bold;">
+           → Mesaj bırak
+        </a>
+    </div>
+
+</div>
+
+<script>
+function show(section) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('#lang-' + currentLang + ' .section').forEach(s => s.style.display = "none");
+
+    if (currentLang === 'de') {
+        document.getElementById(section).style.display = "block";
+        document.getElementById(section).classList.add('active');
+    } else {
+        document.getElementById(section + '-tr').style.display = "block";
+        document.getElementById(section + '-tr').classList.add('active');
+    }
+}
+
+let currentLang = 'de';
+
+function switchLang(lang) {
+    currentLang = lang;
+    document.getElementById('lang-de').style.display = lang === 'de' ? 'block' : 'none';
+    document.getElementById('lang-tr').style.display = lang === 'tr' ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
