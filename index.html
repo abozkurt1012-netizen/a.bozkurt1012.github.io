@@ -16,17 +16,10 @@ body {
 
 /* ---------------------- BACKGROUND SLIDESHOW ---------------------- */
 .bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    z-index: -1;
-    background-size: cover;
-    background-position: center;
-    background-image: url('img/IMG_0798.jpeg');
-    animation: slideshow 25s infinite ease-in-out;
-    filter: brightness(50%);
+  background-size: cover;
+  background-position: center top; 
+  filter: brightness(50%);
 }
-
 @keyframes slideshow {
     0%   { background-image: url('img/IMG_0798.jpeg'); }
     33%  { background-image: url('img/IMG_1906.jpeg'); }
