@@ -1,154 +1,105 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hochzeit – Aykut & ♥</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Georgia, serif;
-            background: #f7f6f0;
-            color: #2e2e2e;
-        }
+<!-- RSVP – Deutsch -->
+<div id="rsvp-de" class="section card">
+    <h2>Zusagen</h2>
+    <p>Bitte fülle das Formular aus, damit wir planen können.</p>
 
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: #d9e2c1;
-        }
+    <form action="https://api.web3forms.com/submit" method="POST" class="rsvp-form">
+        <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea">
+        <input type="hidden" name="form_name" value="RSVP Deutsch">
 
-        h1 {
-            font-size: 40px;
-            color: #4a5d23;
-        }
+        <label>Vor- und Nachname*</label>
+        <input type="text" name="name" required>
 
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
+        <label>Telefonnummer (optional)</label>
+        <input type="text" name="phone">
 
-        nav button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background: #4a5d23;
-            border: none;
-            color: white;
-            cursor: pointer;
-            margin: 5px;
-            border-radius: 6px;
-        }
+        <label>Kommst du zu unserer Hochzeit?*</label>
+        <select name="attendance" required>
+            <option value="">Bitte wählen…</option>
+            <option value="Ja, ich möchte diesen Moment mit euch teilen.">
+                Ja, ich möchte diesen Moment mit euch teilen.
+            </option>
+            <option value="Leider kann ich nicht, aber ich denke an euch.">
+                Leider kann ich nicht, aber ich denke an euch.
+            </option>
+        </select>
 
-        .section {
-            display: none;
-            padding: 25px;
-            max-width: 800px;
-            margin: auto;
-        }
+        <label>Anzahl Begleitpersonen*</label>
+        <input type="number" name="guests" min="0" value="0" required>
 
-        .active {
-            display: block;
-        }
+        <label>Nachricht (optional)</label>
+        <textarea name="message"></textarea>
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #cdd8bb;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Hochzeit – 11.04.2026</h1>
-    <p>Willkommen auf unserer offiziellen Hochzeitsseite</p>
-</header>
-
-<nav>
-    <button onclick="switchLang('de')">Deutsch</button>
-    <button onclick="switchLang('tr')">Türkçe</button>
-</nav>
-
-<nav>
-    <button onclick="show('info')">Infos</button>
-    <button onclick="show('location')">Ort</button>
-    <button onclick="show('gbook')">Gästebuch</button>
-</nav>
-
-<!-- Deutsch -->
-<div id="lang-de">
-
-    <div id="info" class="section active card">
-        <h2>Unsere Hochzeit</h2>
-        <p>Wir freuen uns sehr, euch am <strong>11. April 2026</strong> an unserem besonderen Tag begrüßen zu dürfen.</p>
-    </div>
-
-    <div id="location" class="section card">
-        <h2>Ort</h2>
-        <p>Details zum Ort folgen bald.</p>
-    </div>
-
-    <div id="gbook" class="section card">
-        <h2>Gästebuch</h2>
-        <p>Das Gästebuch ist privat. Eure Nachrichten werden nicht öffentlich angezeigt.</p>
-        <a href="https://github.com/abozkurt1012-netizen/a.bozkurt1012.github.io/issues/new" 
-           target="_blank"
-           style="color:#4a5d23; font-weight:bold;">
-           → Nachricht hinterlassen
-        </a>
-    </div>
-
+        <button type="submit" class="btn-submit">Absenden</button>
+    </form>
 </div>
 
-<!-- Türkisch -->
-<div id="lang-tr" style="display:none;">
 
-    <div id="info-tr" class="section active card">
-        <h2>Düğünümüz</h2>
-        <p><strong>11 Nisan 2026</strong> tarihinde özel günümüzde sizleri görmekten mutluluk duyarız.</p>
-    </div>
+<!-- RSVP – Türkisch -->
+<div id="rsvp-tr" class="section card" style="display:none;">
+    <h2>Katılım</h2>
+    <p>Lütfen formu doldurun, planlama yapabilelim.</p>
 
-    <div id="location-tr" class="section card">
-        <h2>Konum</h2>
-        <p>Konum detayları yakında paylaşılacak.</p>
-    </div>
+    <form action="https://api.web3forms.com/submit" method="POST" class="rsvp-form">
+        <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea">
+        <input type="hidden" name="form_name" value="RSVP Türkisch">
 
-    <div id="gbook-tr" class="section card">
-        <h2>Ziyaretçi Defteri</h2>
-        <p>Mesajlarınız gizli tutulur ve sadece biz görebiliriz.</p>
-        <a href="https://github.com/abozkurt1012-netizen/a.bozkurt1012.github.io/issues/new" 
-           target="_blank"
-           style="color:#4a5d23; font-weight:bold;">
-           → Mesaj bırak
-        </a>
-    </div>
+        <label>Ad ve Soyad*</label>
+        <input type="text" name="name" required>
 
+        <label>Telefon Numarası (opsiyonel)</label>
+        <input type="text" name="phone">
+
+        <label>Düğüne katılıyor musun?*</label>
+        <select name="attendance" required>
+            <option value="">Lütfen seçin…</option>
+            <option value="Evet, bu anı sizinle paylaşmak istiyorum.">
+                Evet, bu anı sizinle paylaşmak istiyorum.
+            </option>
+            <option value="Maalesef gelemiyorum ama kalbim sizinle.">
+                Maalesef gelemiyorum ama kalbim sizinle.
+            </option>
+        </select>
+
+        <label>Misafir Sayısı*</label>
+        <input type="number" name="guests" min="0" value="0" required>
+
+        <label>Mesaj (opsiyonel)</label>
+        <textarea name="message"></textarea>
+
+        <button type="submit" class="btn-submit">Gönder</button>
+    </form>
 </div>
 
-<script>
-function show(section) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('#lang-' + currentLang + ' .section').forEach(s => s.style.display = "none");
 
-    if (currentLang === 'de') {
-        document.getElementById(section).style.display = "block";
-        document.getElementById(section).classList.add('active');
-    } else {
-        document.getElementById(section + '-tr').style.display = "block";
-        document.getElementById(section + '-tr').classList.add('active');
-    }
+<style>
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-let currentLang = 'de';
-
-function switchLang(lang) {
-    currentLang = lang;
-    document.getElementById('lang-de').style.display = lang === 'de' ? 'block' : 'none';
-    document.getElementById('lang-tr').style.display = lang === 'tr' ? 'block' : 'none';
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
 }
-</script>
 
-</body>
-</html>
+.btn-submit {
+    background-color: #4a5d23;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #3b4a1b;
+}
+</style>
