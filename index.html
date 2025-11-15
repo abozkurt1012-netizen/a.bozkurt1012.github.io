@@ -111,6 +111,19 @@ form button {
 
 </style>
 </head>
+<script>
+function chooseLanguage(lang) {
+    document.getElementById("startscreen").style.display = "none";
+    document.getElementById("content-de").style.display = "none";
+    document.getElementById("content-tr").style.display = "none";
+
+    if (lang === "de") {
+        document.getElementById("content-de").style.display = "block";
+    } else {
+        document.getElementById("content-tr").style.display = "block";
+    }
+}
+</script>
 
 <body>
 
@@ -132,6 +145,33 @@ form button {
 <!-- ========================================================= -->
 <!-- ======================= DEUTSCH ========================= -->
 <!-- ========================================================= -->
+<h2>ZUSAGEN / ABSAGEN</h2>
+
+<p>Bitte fülle das Formular aus, damit wir planen können.</p>
+
+<form action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea">
+
+    <label>Vor- und Nachname*</label>
+    <input type="text" name="name_de" required>
+
+    <label>Telefonnummer (optional)</label>
+    <input type="text" name="phone_de">
+
+    <label>Kommst du zu unserer Hochzeit?*</label>
+    <select name="zusagen_de" required>
+        <option value="Ja">Ja, ich möchte diesen Moment mit euch teilen.</option>
+        <option value="Nein">Nein, ich kann leider nicht kommen.</option>
+    </select>
+
+    <label>Anzahl Begleitpersonen*</label>
+    <input type="number" name="begleitung_de" required min="0">
+
+    <label>Nachricht (optional)</label>
+    <textarea name="message_de"></textarea>
+
+    <button type="submit">Absenden</button>
+</form>
 
 <div id="content-de" style="display:none;">
 
@@ -192,6 +232,37 @@ form button {
 <!-- ========================================================= -->
 <!-- ======================= TÜRKISCH ======================== -->
 <!-- ========================================================= -->
+<div id="content-tr" style="display:none;">
+
+<h2>KATILIM DURUMU</h2>
+
+<p>Lütfen planlama yapabilmemiz için formu doldurun.</p>
+
+<form action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea">
+
+    <label>Ad Soyad*</label>
+    <input type="text" name="name_tr" required>
+
+    <label>Telefon Numarası (opsiyonel)</label>
+    <input type="text" name="phone_tr">
+
+    <label>Düğünümüze geliyor musunuz?*</label>
+    <select name="zusagen_tr" required>
+        <option value="Evet">Evet, bu anı sizinle paylaşmak istiyorum.</option>
+        <option value="Hayır">Hayır, maalesef gelemiyorum.</option>
+    </select>
+
+    <label>Misafir sayısı*</label>
+    <input type="number" name="begleitung_tr" required min="0">
+
+    <label>Mesaj (opsiyonel)</label>
+    <textarea name="message_tr"></textarea>
+
+    <button type="submit">Gönder</button>
+</form>
+
+</div>
 
 <div id="content-tr" style="display:none;">
 
