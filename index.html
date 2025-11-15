@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -78,7 +78,7 @@
       max-width: 900px;
       background: var(--card-bg);
       border-radius: var(--radius-lg);
-      padding: 32px 26px;
+      padding: 40px 30px;
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.04);
@@ -87,30 +87,48 @@
     }
 
     h1 {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      letter-spacing: 0.12em;
+      font-size: clamp(2.6rem, 5vw, 3.4rem);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #f3f4ec;
     }
 
     h2 {
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      letter-spacing: 0.12em;
+      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      letter-spacing: 0.14em;
       margin-bottom: 26px;
       color: var(--olive-light);
       text-transform: uppercase;
     }
 
     h3 {
-      font-size: clamp(1.6rem, 2.3vw, 2rem);
+      font-size: clamp(1.8rem, 2.6vw, 2.2rem);
       margin-bottom: 20px;
     }
 
     p {
       margin-bottom: 12px;
-      line-height: 1.6;
+      line-height: 1.7;
       color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .date-highlight {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f9f5d7;
+    }
+
+    .date-highlight span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(249,245,215,0.4);
+      background: rgba(0,0,0,0.25);
+      display: inline-block;
     }
 
     /* Buttons */
@@ -118,10 +136,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 22px;
+      padding: 14px 24px;
       border-radius: 999px;
       border: 1px solid transparent;
-      font-size: 1rem;
+      font-size: 1.02rem;
       cursor: pointer;
       transition: 0.25s ease;
       text-decoration: none;
@@ -131,12 +149,12 @@
 
     .btn--primary {
       background: linear-gradient(135deg, var(--olive), var(--olive-light));
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
     }
 
     .btn--primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.55);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.65);
     }
 
     .btn--ghost {
@@ -145,11 +163,16 @@
     }
 
     .btn--ghost:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.12);
     }
 
     .btn--lang {
-      min-width: 150px;
+      min-width: 160px;
+    }
+
+    .btn--full {
+      width: 100%;
+      margin-top: 14px;
     }
 
     #content-de, #content-tr {
@@ -158,6 +181,117 @@
 
     .hidden {
       display: none !important;
+    }
+
+    /* Countdown Boxen */
+    .count-box {
+      min-width: 110px;
+      padding: 14px 10px;
+      border-radius: 14px;
+      background: rgba(10, 12, 8, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .count-number {
+      font-size: 2.2rem;
+      font-weight: 650;
+      margin-bottom: 4px;
+      color: #f7f7f3;
+    }
+
+    .count-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .count-note {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Formular */
+    form {
+      margin-top: 18px;
+      text-align: left;
+      font-size: 1rem;
+    }
+
+    label {
+      font-size: 0.98rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      color: var(--text-main);
+      display: block;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.45);
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--olive-light);
+      box-shadow: 0 0 0 1px rgba(109,133,64,0.65);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .guest-names {
+      margin-top: 8px;
+    }
+
+    .guest-names input {
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    small {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .card {
+        padding: 30px 18px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .date-highlight {
+        font-size: 1.1rem;
+      }
+
+      .count-box {
+        min-width: 90px;
+      }
+
+      .count-number {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
@@ -179,9 +313,10 @@
       </div>
     </div>
   </section>
+
   <!-- DEUTSCHER INHALT -->
   <div id="content-de">
-    
+
     <!-- Willkommen DE -->
     <section class="section">
       <div class="card">
@@ -192,7 +327,11 @@
           wir können es kaum erwarten, diesen Tag gemeinsam mit dir zu erleben.
         </p>
 
-        <div style="margin-top: 25px;">
+        <div class="date-highlight">
+          <span>11. APRIL 2026 – 17:00 UHR</span>
+        </div>
+
+        <div style="margin-top: 30px;">
           <a href="#de-ort" class="btn btn--ghost">Ort &amp; Anfahrt</a>
           <a href="#de-countdown" class="btn btn--ghost">Countdown</a>
           <a href="#de-teilnahme" class="btn btn--ghost">Teilnahme &amp; Infos</a>
@@ -206,7 +345,7 @@
         <h3>Ort &amp; Anfahrt</h3>
         <p>Unsere Hochzeit findet an diesem besonderen Ort statt:</p>
 
-        <p style="font-size: 1.1rem; color: #fff; margin-top: 10px;">
+        <p style="font-size: 1.2rem; color: #fff; margin-top: 10px;">
           <strong>
             Vernouilletallee 1<br />
             34587 Felsberg
@@ -260,7 +399,7 @@
             </div>
           </div>
 
-          <p class="count-note" style="margin-top: 14px;">
+          <p class="count-note">
             Die Monatsangabe ist eine angenäherte Berechnung.
           </p>
         </div>
@@ -282,34 +421,53 @@
           <input type="hidden" name="subject" value="Teilnahme Hochzeit Gizem &amp; Aykut (Deutsch)" />
           <input type="hidden" name="from_name" value="Hochzeitsseite Gizem &amp; Aykut" />
 
-          <label>Vor- und Nachname*</label>
-          <input type="text" name="name" required placeholder="Max Mustermann" />
+          <label for="name-de">Vor- und Nachname*</label>
+          <input id="name-de" type="text" name="name" required placeholder="Max Mustermann" />
 
-          <label>Telefonnummer (optional)</label>
-          <input type="tel" name="phone" placeholder="+49 ..." />
+          <label for="phone-de">Telefonnummer (optional)</label>
+          <input id="phone-de" type="tel" name="phone" placeholder="+49 ..." />
 
-          <label>Wirst du an unserem besonderen Tag dabei sein?*</label>
-          <select name="teilnahme" required>
+          <label for="status-de">Wirst du an unserem besonderen Tag dabei sein?*</label>
+          <select id="status-de" name="teilnahme" required>
             <option value="">Bitte auswählen</option>
             <option value="Ja, ich freue mich sehr dabei zu sein.">Ja, ich freue mich sehr dabei zu sein.</option>
             <option value="Ich bin noch unsicher.">Ich bin noch unsicher.</option>
             <option value="Leider kann ich nicht kommen.">Leider kann ich nicht kommen.</option>
           </select>
 
-          <label>Anzahl der Begleitpersonen*</label>
-          <input type="number" min="0" max="10" name="begleitpersonen" required value="0" />
+          <label for="begleitung-de">Anzahl der Begleitpersonen*</label>
+          <input
+            id="begleitung-de"
+            type="number"
+            min="0"
+            max="10"
+            name="begleitpersonen"
+            required
+            value="0"
+          />
 
-          <label>Musikwünsche (optional)</label>
-          <input type="text" name="musikwünsche" placeholder="Songtitel oder Künstler*in" />
+          <div id="begleitung-namen-de" class="guest-names"></div>
 
-          <label>Nachricht (optional)</label>
-          <textarea name="nachricht" placeholder="Allergien, Hinweise oder Grüße an uns ♥"></textarea>
+          <label for="musik-de">Musikwünsche (optional)</label>
+          <input
+            id="musik-de"
+            type="text"
+            name="musikwünsche"
+            placeholder="Songtitel oder Künstler*in"
+          />
+
+          <label for="message-de">Nachricht (optional)</label>
+          <textarea
+            id="message-de"
+            name="nachricht"
+            placeholder="Allergien, Hinweise oder Grüße an uns ♥"
+          ></textarea>
 
           <button class="btn btn--primary btn--full" type="submit">
             Teilnahme senden
           </button>
 
-          <small style="display: block; margin-top: 10px; color: var(--text-muted);">
+          <small>
             Deine Angaben werden ausschließlich zur Planung unserer Hochzeit verwendet.
           </small>
         </form>
@@ -318,7 +476,7 @@
 
   </div>
 
-    <!-- TÜRKISCHER INHALT -->
+  <!-- TÜRKISCHER INHALT -->
   <div id="content-tr">
 
     <!-- Willkommen TR -->
@@ -330,7 +488,11 @@
           Burada olduğun için teşekkür ederiz – bu güzel anı hep birlikte yaşamayı sabırsızlıkla bekliyoruz.
         </p>
 
-        <div style="margin-top: 25px;">
+        <div class="date-highlight">
+          <span>11 NİSAN 2026 – 17:00</span>
+        </div>
+
+        <div style="margin-top: 30px;">
           <a href="#tr-ort" class="btn btn--ghost">Adres &amp; Ulaşım</a>
           <a href="#tr-countdown" class="btn btn--ghost">Geri Sayım</a>
           <a href="#tr-teilnahme" class="btn btn--ghost">Katılım &amp; Bilgi</a>
@@ -344,7 +506,7 @@
         <h3>Adres &amp; Ulaşım</h3>
         <p>Düğünümüz şu adreste gerçekleşecek:</p>
 
-        <p style="font-size: 1.1rem; color: #fff; margin-top: 10px;">
+        <p style="font-size: 1.2rem; color: #fff; margin-top: 10px;">
           <strong>
             Vernouilletallee 1<br />
             34587 Felsberg
@@ -398,7 +560,7 @@
             </div>
           </div>
 
-          <p class="count-note" style="margin-top: 14px;">
+          <p class="count-note">
             Ay bilgisi, kalan gün sayısına göre yaklaşık olarak hesaplanır.
           </p>
         </div>
@@ -420,34 +582,53 @@
           <input type="hidden" name="subject" value="Teilnahme Hochzeit Gizem &amp; Aykut (Türkisch)" />
           <input type="hidden" name="from_name" value="Düğün Sitesi Gizem &amp; Aykut" />
 
-          <label>Ad ve Soyad*</label>
-          <input type="text" name="name" required placeholder="Ad Soyad" />
+          <label for="name-tr">Ad ve Soyad*</label>
+          <input id="name-tr" type="text" name="name" required placeholder="Ad Soyad" />
 
-          <label>Telefon (opsiyonel)</label>
-          <input type="tel" name="phone" placeholder="+49 ..." />
+          <label for="phone-tr">Telefon (opsiyonel)</label>
+          <input id="phone-tr" type="tel" name="phone" placeholder="+49 ..." />
 
-          <label>Bu özel günde bizimle olacak mısın?*</label>
-          <select name="teilnahme" required>
+          <label for="status-tr">Bu özel günde bizimle olacak mısın?*</label>
+          <select id="status-tr" name="teilnahme" required>
             <option value="">Lütfen seç</option>
             <option value="Evet, gelmeyi çok istiyorum.">Evet, gelmeyi çok istiyorum.</option>
             <option value="Henüz tam emin değilim.">Henüz tam emin değilim.</option>
             <option value="Maalesef gelemeyeceğim.">Maalesef gelemeyeceğim.</option>
           </select>
 
-          <label>Eşlik eden kişi sayısı*</label>
-          <input type="number" min="0" max="10" name="begleitpersonen" required value="0" />
+          <label for="begleitung-tr">Eşlik eden kişi sayısı*</label>
+          <input
+            id="begleitung-tr"
+            type="number"
+            min="0"
+            max="10"
+            name="begleitpersonen"
+            required
+            value="0"
+          />
 
-          <label>Müzik istekleri (opsiyonel)</label>
-          <input type="text" name="musikwünsche" placeholder="Şarkı veya sanatçı ismi" />
+          <div id="begleitung-namen-tr" class="guest-names"></div>
 
-          <label>Mesaj (opsiyonel)</label>
-          <textarea name="nachricht" placeholder="Alerjiler, özel notlar veya bize selam ♥"></textarea>
+          <label for="musik-tr">Müzik istekleri (opsiyonel)</label>
+          <input
+            id="musik-tr"
+            type="text"
+            name="musikwünsche"
+            placeholder="Şarkı veya sanatçı ismi"
+          />
+
+          <label for="message-tr">Mesaj (opsiyonel)</label>
+          <textarea
+            id="message-tr"
+            name="nachricht"
+            placeholder="Alerjiler, özel notlar veya bize selam ♥"
+          ></textarea>
 
           <button class="btn btn--primary btn--full" type="submit">
             Gönder
           </button>
 
-          <small style="display: block; margin-top: 10px; color: var(--text-muted);">
+          <small>
             Gönderdiğin bilgiler sadece düğün planlaması için kullanılacaktır.
           </small>
         </form>
@@ -455,6 +636,7 @@
     </section>
 
   </div>
+
   <!-- JAVASCRIPT -->
   <script>
     /* Sprache auswählen */
@@ -472,16 +654,15 @@
         tr.style.display = "block";
       }
 
-      /* Countdown nur einmal starten */
       if (!window.__countdownStarted) {
         startCountdown();
         window.__countdownStarted = true;
       }
 
+      setupGuestFields();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    /* Countdown Funktionen */
     const weddingDate = new Date("2026-04-11T17:00:00");
 
     function pad(n) {
@@ -496,9 +677,8 @@
 
       const totalMinutes = Math.floor(diff / 60000);
       const totalDays = Math.floor(totalMinutes / (60 * 24));
-      const months = Math.floor(totalDays / 30);  // Annäherung
+      const months = Math.floor(totalDays / 30);
       const days = totalDays - months * 30;
-
       const hours = Math.floor((totalMinutes - totalDays * 24 * 60) / 60);
       const minutes = totalMinutes % 60;
 
@@ -518,11 +698,61 @@
     function startCountdown() {
       updateCountdown("de");
       updateCountdown("tr");
-
       setInterval(() => {
         updateCountdown("de");
         updateCountdown("tr");
-      }, 60000); // Jede Minute
+      }, 60000);
+    }
+
+    function setupGuestFields() {
+      const inputDe = document.getElementById("begleitung-de");
+      const containerDe = document.getElementById("begleitung-namen-de");
+      const inputTr = document.getElementById("begleitung-tr");
+      const containerTr = document.getElementById("begleitung-namen-tr");
+
+      function updateGuestFields(input, container, lang) {
+        if (!input || !container) return;
+        let count = parseInt(input.value, 10);
+        if (isNaN(count) || count < 0) count = 0;
+        if (count > 10) count = 10;
+        input.value = count;
+
+        container.innerHTML = "";
+
+        for (let i = 1; i <= count; i++) {
+          const label = document.createElement("label");
+          const field = document.createElement("input");
+
+          if (lang === "de") {
+            label.textContent = "Name Begleitperson " + i;
+            field.placeholder = "Name Begleitperson " + i;
+          } else {
+            label.textContent = "Eşlik eden kişi " + i + " adı";
+            field.placeholder = "Eşlik eden kişi " + i + " adı";
+          }
+
+          field.type = "text";
+          field.name =
+            (lang === "de" ? "begleitperson_name_de_" : "begleitperson_name_tr_") + i;
+
+          container.appendChild(label);
+          container.appendChild(field);
+        }
+      }
+
+      if (inputDe) {
+        inputDe.addEventListener("input", () =>
+          updateGuestFields(inputDe, containerDe, "de")
+        );
+        updateGuestFields(inputDe, containerDe, "de");
+      }
+
+      if (inputTr) {
+        inputTr.addEventListener("input", () =>
+          updateGuestFields(inputTr, containerTr, "tr")
+        );
+        updateGuestFields(inputTr, containerTr, "tr");
+      }
     }
   </script>
 
