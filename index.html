@@ -1,105 +1,210 @@
-<!-- RSVP – Deutsch -->
-<div id="rsvp-de" class="section card">
-    <h2>Zusagen</h2>
-    <p>Bitte fülle das Formular aus, damit wir planen können.</p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WELCOME TO OUR FOREVER - GIZEM & AYKUT</title>
 
-    <form action="https://api.web3forms.com/submit" method="POST" class="rsvp-form">
+<style>
+/* ---------------------- GLOBAL ---------------------- */
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    color: #333;
+    background: #f7f6f0;
+}
+
+/* ---------------------- BACKGROUND SLIDESHOW ---------------------- */
+.bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    animation: slideshow 25s infinite ease-in-out;
+    filter: brightness(65%);
+}
+
+@keyframes slideshow {
+    0%   { background-image: url('img/bg1.jpg'); }
+    33%  { background-image: url('img/bg2.jpg'); }
+    66%  { background-image: url('img/bg3.jpg'); }
+    100% { background-image: url('img/bg1.jpg'); }
+}
+
+/* ---------------------- STARTSCREEN ---------------------- */
+#startscreen {
+    text-align: center;
+    padding: 120px 20px;
+    min-height: 100vh;
+}
+
+#startscreen h1 {
+    font-size: 48px;
+    letter-spacing: 2px;
+    color: #4a5d23;
+}
+
+#startscreen h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #4a5d23;
+}
+
+.lang-btn {
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 18px;
+    background: #4a5d23;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ---------------------- MENU ---------------------- */
+nav {
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------- SECTIONS ---------------------- */
+.section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+/* ---------------------- FORM ---------------------- */
+form input, form textarea, form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background: #4a5d23;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+    font-size: 20px;
+    border-radius: 6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- ---------------------- STARTSCREEN ---------------------- -->
+<div id="startscreen">
+    <h1>WELCOME TO OUR FOREVER</h1>
+    <h2>GIZEM & AYKUT</h2>
+
+    <p style="font-size:20px; margin-bottom:15px;">
+        Bitte wähle eine Sprache / Lütfen bir dil seçiniz:
+    </p>
+
+    <button class="lang-btn" onclick="chooseLanguage('de')">Deutsch 🇩🇪</button>
+    <button class="lang-btn" onclick="chooseLanguage('tr')">Türkçe 🇹🇷</button>
+</div>
+
+<!-- ========================================================= -->
+<!-- ======================= DEUTSCH ========================= -->
+<!-- ========================================================= -->
+
+<div id="content-de" style="display:none;">
+
+<nav>
+    <a href="#home-de">Startseite</a>
+    <a href="#info-de">Informationen</a>
+    <a href="#location-de">Location</a>
+    <a href="#rsvp-de">Zusagen</a>
+</nav>
+
+<div id="home-de" class="section">
+    <h2>Willkommen</h2>
+    <p>Wir freuen uns, diesen besonderen Tag mit euch zu teilen.</p>
+</div>
+
+<div id="info-de" class="section">
+    <h2>Informationen</h2>
+    <p>Hier stehen später alle Infos zum Ablauf, Dresscode etc.</p>
+</div>
+
+<div id="location-de" class="section">
+    <h2>Location</h2>
+    <p>Adresse, Anfahrt usw.</p>
+</div>
+
+<!-- ---------------------- RSVP FORM DE ---------------------- -->
+<div id="rsvp-de" class="section">
+    <h2>Zusagen</h2>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea">
-        <input type="hidden" name="form_name" value="RSVP Deutsch">
+        <input type="hidden" name="language" value="Deutsch">
 
         <label>Vor- und Nachname*</label>
         <input type="text" name="name" required>
 
         <label>Telefonnummer (optional)</label>
-        <input type="text" name="phone">
+        <input type="tel" name="phone">
 
         <label>Kommst du zu unserer Hochzeit?*</label>
         <select name="attendance" required>
-            <option value="">Bitte wählen…</option>
-            <option value="Ja, ich möchte diesen Moment mit euch teilen.">
-                Ja, ich möchte diesen Moment mit euch teilen.
-            </option>
-            <option value="Leider kann ich nicht, aber ich denke an euch.">
-                Leider kann ich nicht, aber ich denke an euch.
-            </option>
+            <option value="Ja, ich komme ❤️">Ja, ich komme ❤️</option>
+            <option value="Leider nein 😢">Leider nein 😢</option>
         </select>
 
         <label>Anzahl Begleitpersonen*</label>
-        <input type="number" name="guests" min="0" value="0" required>
+        <input type="number" name="guests" min="0" required>
 
         <label>Nachricht (optional)</label>
         <textarea name="message"></textarea>
 
-        <button type="submit" class="btn-submit">Absenden</button>
+        <button type="submit">Absenden</button>
     </form>
 </div>
 
-
-<!-- RSVP – Türkisch -->
-<div id="rsvp-tr" class="section card" style="display:none;">
-    <h2>Katılım</h2>
-    <p>Lütfen formu doldurun, planlama yapabilelim.</p>
-
-    <form action="https://api.web3forms.com/submit" method="POST" class="rsvp-form">
-        <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea">
-        <input type="hidden" name="form_name" value="RSVP Türkisch">
-
-        <label>Ad ve Soyad*</label>
-        <input type="text" name="name" required>
-
-        <label>Telefon Numarası (opsiyonel)</label>
-        <input type="text" name="phone">
-
-        <label>Düğüne katılıyor musun?*</label>
-        <select name="attendance" required>
-            <option value="">Lütfen seçin…</option>
-            <option value="Evet, bu anı sizinle paylaşmak istiyorum.">
-                Evet, bu anı sizinle paylaşmak istiyorum.
-            </option>
-            <option value="Maalesef gelemiyorum ama kalbim sizinle.">
-                Maalesef gelemiyorum ama kalbim sizinle.
-            </option>
-        </select>
-
-        <label>Misafir Sayısı*</label>
-        <input type="number" name="guests" min="0" value="0" required>
-
-        <label>Mesaj (opsiyonel)</label>
-        <textarea name="message"></textarea>
-
-        <button type="submit" class="btn-submit">Gönder</button>
-    </form>
 </div>
 
+<!-- ========================================================= -->
+<!-- ======================= TÜRKISCH ======================== -->
+<!-- ========================================================= -->
 
-<style>
-.rsvp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-}
+<div id="content-tr" style="display:none;">
 
-.rsvp-form input,
-.rsvp-form select,
-.rsvp-form textarea {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
+<nav>
+    <a href="#home-tr">Ana Sayfa</a>
+    <a href="#info-tr">Bilgi</a>
+    <a href="#location-tr">Konum</a>
+    <a href="#rsvp-tr">Katılım</a>
+</nav>
 
-.btn-submit {
-    background-color: #4a5d23;
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.btn-submit:hover {
-    background-color: #3b4a1b;
-}
-</style>
+<div id="home-tr" class="section">
+    <h2>Hoş Geldiniz</h2>
+    <p>Bu özel günü sizinle paylaşmak bizim için bir onurdur.</p>
+<
