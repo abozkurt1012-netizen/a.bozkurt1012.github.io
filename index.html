@@ -10,12 +10,15 @@
       --olive: #4a5d23;
       --olive-light: #6d8540;
       --bg-dark: #0b0f0a;
-      --card-bg: rgba(12, 16, 10, 0.85);
+      --card-bg: rgba(12, 16, 10, 0.86);
       --text-main: #f7f7f3;
-      --text-muted: #c7c7c0;
+      --text-muted: rgba(247,247,243,0.75);
+      --text-soft: rgba(247,247,243,0.60);
       --danger: #c0392b;
       --radius-lg: 18px;
+      --radius-md: 14px;
       --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+      --border: 1px solid rgba(255,255,255,0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,12 +32,10 @@
       text-align: center;
     }
 
-    /* Hintergrund Slideshow */
+    /* Background slideshow */
     .bg {
       position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
       z-index: -2;
       background-size: cover;
       background-position: center;
@@ -44,9 +45,9 @@
     }
 
     @keyframes slideshow {
-      0% { background-image: url("img/IMG_0798.jpeg"); }
-      33% { background-image: url("img/IMG_1906.jpeg"); }
-      66% { background-image: url("img/IMG_2306.jpeg"); }
+      0%   { background-image: url("img/IMG_0798.jpeg"); }
+      33%  { background-image: url("img/IMG_1906.jpeg"); }
+      66%  { background-image: url("img/IMG_2306.jpeg"); }
       100% { background-image: url("img/IMG_0798.jpeg"); }
     }
 
@@ -54,7 +55,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+      background: radial-gradient(circle at top, rgba(0,0,0,0.65), rgba(0,0,0,0.92));
     }
 
     .section { padding: 80px 18px 60px; }
@@ -62,19 +63,19 @@
 
     .card {
       width: 100%;
-      max-width: 900px;
+      max-width: 920px;
       background: var(--card-bg);
       border-radius: var(--radius-lg);
-      padding: 40px 30px;
+      padding: 42px 32px;
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.04);
+      border: var(--border);
       margin: auto;
       text-align: center;
     }
 
     h1 {
-      font-size: clamp(2.6rem, 5vw, 3.4rem);
+      font-size: clamp(2.2rem, 5vw, 3.3rem);
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 12px;
@@ -82,14 +83,14 @@
     }
 
     h2 {
-      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
       letter-spacing: 0.14em;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
       color: var(--olive-light);
       text-transform: uppercase;
     }
 
-    h3 { font-size: clamp(1.8rem, 2.6vw, 2.2rem); margin-bottom: 20px; }
+    h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 18px; }
 
     p {
       margin-bottom: 12px;
@@ -100,18 +101,18 @@
 
     .date-highlight {
       margin-top: 20px;
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-size: 1.25rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #f9f5d7;
     }
 
     .date-highlight span {
-      padding: 6px 10px;
+      padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(249,245,215,0.4);
-      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(249,245,215,0.35);
+      background: rgba(0,0,0,0.22);
       display: inline-block;
     }
 
@@ -125,60 +126,56 @@
       border: 1px solid transparent;
       font-size: 1.02rem;
       cursor: pointer;
-      transition: 0.25s ease;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
       text-decoration: none;
       color: white;
       margin: 8px;
       user-select: none;
+      line-height: 1;
+      gap: 8px;
     }
 
     .btn--primary {
       background: linear-gradient(135deg, var(--olive), var(--olive-light));
-      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.55);
     }
-
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.65);
-    }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.70); }
 
     .btn--ghost {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.18);
     }
-
     .btn--ghost:hover { background: rgba(255,255,255,0.12); }
 
-    .btn--lang { min-width: 160px; }
+    .btn--lang { min-width: 170px; }
     .btn--full { width: 100%; margin-top: 14px; }
 
     #content-de, #content-tr { display: none; }
     .hidden { display: none !important; }
 
-    /* Countdown Boxen */
+    /* Countdown */
+    .count-row { margin-top: 25px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
     .count-box {
       min-width: 110px;
       padding: 14px 10px;
-      border-radius: 14px;
+      border-radius: var(--radius-md);
       background: rgba(10, 12, 8, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: var(--border);
       text-align: center;
     }
+    .count-number { font-size: 2.2rem; font-weight: 700; margin-bottom: 4px; color: #f7f7f3; }
+    .count-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); }
+    .count-note { margin-top: 14px; font-size: 0.88rem; color: var(--text-soft); }
 
-    .count-number { font-size: 2.2rem; font-weight: 650; margin-bottom: 4px; color: #f7f7f3; }
-    .count-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
-    .count-note { margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); }
-
-    /* Formular */
+    /* Form */
     form { margin-top: 18px; text-align: left; font-size: 1rem; }
-
     label { font-size: 0.98rem; margin-top: 10px; margin-bottom: 4px; color: var(--text-main); display: block; }
 
     input, select, textarea {
       width: 100%;
       padding: 11px 12px;
       border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
       background: rgba(0,0,0,0.45);
       color: var(--text-main);
       font-size: 0.98rem;
@@ -186,32 +183,46 @@
 
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--olive-light);
-      box-shadow: 0 0 0 1px rgba(109,133,64,0.65);
+      border-color: rgba(109,133,64,0.9);
+      box-shadow: 0 0 0 2px rgba(109,133,64,0.30);
     }
 
     textarea { min-height: 100px; resize: vertical; }
     .guest-names { margin-top: 8px; }
     .guest-names input { margin-top: 4px; margin-bottom: 4px; }
-    small { font-size: 0.85rem; color: var(--text-muted); }
+    small { font-size: 0.88rem; color: var(--text-soft); display: block; margin-top: 10px; }
 
-    /* FOTO-GALERIE */
+    /* Gallery */
+    .photo-toolbar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
     .photo-grid {
       display: grid;
       gap: 10px;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      margin-top: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      margin-top: 16px;
     }
+
     .photo-card {
-      position: relative;
-      border-radius: 12px;
+      appearance: none;
+      -webkit-appearance: none;
+      border: var(--border);
+      border-radius: 14px;
       overflow: hidden;
       background: rgba(255,255,255,0.06);
       aspect-ratio: 1 / 1;
       cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.08);
       padding: 0;
+      position: relative;
+      transition: transform .15s ease;
     }
+    .photo-card:hover { transform: translateY(-1px); }
+
     .photo-card img {
       width: 100%;
       height: 100%;
@@ -221,49 +232,63 @@
     }
     .photo-card:hover img { transform: scale(1.03); }
 
-    .photo-meta { margin-top: 10px; font-size: 0.9rem; color: var(--text-muted); }
+    .photo-meta {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+    }
 
+    .photo-hint {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    /* Lightbox */
     .lightbox { border: none; padding: 0; background: transparent; }
-    .lightbox::backdrop { background: rgba(0,0,0,0.70); }
+    .lightbox::backdrop { background: rgba(0,0,0,0.72); }
     .lightbox-inner { position: relative; padding: 18px; }
+
     .lightbox img {
       max-width: min(92vw, 1100px);
       max-height: 86vh;
-      border-radius: 12px;
+      border-radius: 14px;
       display: block;
       margin: 0 auto;
       background: #111;
       border: 1px solid rgba(255,255,255,0.10);
     }
+
     .lb-close {
       position: fixed;
       top: 16px;
       right: 16px;
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.35);
       background: rgba(0,0,0,0.35);
       color: #fff;
       font-size: 28px;
-      line-height: 40px;
+      line-height: 44px;
       cursor: pointer;
     }
+
     .lb-actions {
-      margin-top: 10px;
+      margin-top: 12px;
       display: flex;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
     }
 
+    /* Responsive */
     @media (max-width: 640px) {
-      .card { padding: 30px 18px; }
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.6rem; }
-      .date-highlight { font-size: 1.1rem; }
-      .count-box { min-width: 90px; }
-      .count-number { font-size: 1.8rem; }
+      .card { padding: 32px 18px; }
+      .count-box { min-width: 92px; }
+      .count-number { font-size: 1.9rem; }
     }
   </style>
 </head>
@@ -271,12 +296,11 @@
 <body>
   <div class="bg"></div>
 
-  <!-- STARTSCREEN -->
+  <!-- START -->
   <section id="startscreen" class="section centered">
     <div class="card">
       <h1>WELCOME TO OUR FOREVER</h1>
       <h2>GIZEM &amp; AYKUT</h2>
-
       <p>Bitte wähle eine Sprache / Lütfen bir dil seçiniz:</p>
 
       <div style="margin-top: 20px;">
@@ -286,21 +310,16 @@
     </div>
   </section>
 
-  <!-- DEUTSCH -->
+  <!-- DE -->
   <div id="content-de">
     <section class="section">
       <div class="card">
         <h2>Willkommen</h2>
-        <p>
-          Wir freuen uns sehr, diesen Tag mit euch zu teilen. Hier findet ihr alle Infos – und später auch eure Fotos. ♥
-        </p>
-
-        <div class="date-highlight">
-          <span>11. APRIL 2026 – 17:00 UHR</span>
-        </div>
+        <p>Wir freuen uns sehr, diesen Tag mit euch zu teilen. Hier findet ihr alle Infos – und später auch eure Fotos. ♥</p>
+        <div class="date-highlight"><span>11. APRIL 2026 – 17:00 UHR</span></div>
 
         <div style="margin-top: 30px;">
-          <a href="#de-ort" class="btn btn--ghost">Ort &amp; Anfahrt</a>
+          <a href="#de-ort" class="btn btn--ghost">Ort</a>
           <a href="#de-countdown" class="btn btn--ghost">Countdown</a>
           <a href="#de-teilnahme" class="btn btn--ghost">Teilnahme</a>
           <a href="#de-fotos" class="btn btn--ghost">Fotos</a>
@@ -318,7 +337,7 @@
         <p style="margin-top: 12px;">Über den Button gelangst du direkt zu Google Maps.</p>
 
         <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
-           href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
+          href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
           Google Maps öffnen
         </a>
       </div>
@@ -329,42 +348,39 @@
         <h3>Countdown</h3>
         <p>Wir starten am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.</p>
 
-        <div style="margin-top: 25px;">
-          <div id="countdown-de" style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
-            <div class="count-box"><div id="de-months" class="count-number">--</div><div class="count-label">Monate</div></div>
-            <div class="count-box"><div id="de-days" class="count-number">--</div><div class="count-label">Tage</div></div>
-            <div class="count-box"><div id="de-hours" class="count-number">--</div><div class="count-label">Stunden</div></div>
-            <div class="count-box"><div id="de-minutes" class="count-number">--</div><div class="count-label">Minuten</div></div>
-          </div>
-          <p class="count-note">Monate sind näherungsweise berechnet.</p>
+        <div class="count-row" id="countdown-de">
+          <div class="count-box"><div id="de-months" class="count-number">--</div><div class="count-label">Monate</div></div>
+          <div class="count-box"><div id="de-days" class="count-number">--</div><div class="count-label">Tage</div></div>
+          <div class="count-box"><div id="de-hours" class="count-number">--</div><div class="count-label">Stunden</div></div>
+          <div class="count-box"><div id="de-minutes" class="count-number">--</div><div class="count-label">Minuten</div></div>
         </div>
+
+        <p class="count-note">Monate sind näherungsweise berechnet.</p>
       </div>
     </section>
 
     <section id="de-teilnahme" class="section">
       <div class="card">
         <h3>Teilnahme &amp; Infos</h3>
-        <p>
-          Bitte gib uns kurz Bescheid, ob du dabei bist – und wenn du magst, auch direkt einen Musikwunsch. ♥
-        </p>
+        <p>Bitte gib uns kurz Bescheid, ob du dabei bist – und wenn du magst, auch direkt einen Musikwunsch. ♥</p>
 
         <form action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
-          <input type="hidden" name="subject" value="Teilnahme Hochzeit Gizem &amp; Aykut (Deutsch)" />
-          <input type="hidden" name="from_name" value="Hochzeitsseite Gizem &amp; Aykut" />
+          <input type="hidden" name="subject" value="Teilnahme Hochzeit (DE)" />
+          <input type="hidden" name="from_name" value="Hochzeitsseite" />
 
           <label for="name-de">Vor- und Nachname*</label>
-          <input id="name-de" type="text" name="name" required placeholder="Max Mustermann" />
+          <input id="name-de" type="text" name="name" required placeholder="Vorname Nachname" />
 
           <label for="phone-de">Telefonnummer (optional)</label>
-          <input id="phone-de" type="tel" name="phone" placeholder="+49 ..." />
+          <input id="phone-de" type="tel" name="phone" placeholder="+49 …" />
 
           <label for="status-de">Bist du dabei?*</label>
           <select id="status-de" name="teilnahme" required>
             <option value="">Bitte auswählen</option>
-            <option value="Ja, ich bin dabei.">Ja, ich bin dabei.</option>
-            <option value="Ich bin noch unsicher.">Ich bin noch unsicher.</option>
-            <option value="Leider kann ich nicht kommen.">Leider kann ich nicht kommen.</option>
+            <option value="Ja">Ja</option>
+            <option value="Unsicher">Unsicher</option>
+            <option value="Nein">Nein</option>
           </select>
 
           <label for="begleitung-de">Anzahl Begleitpersonen*</label>
@@ -388,32 +404,28 @@
         <h3>Fotos</h3>
         <p>Hier siehst du alle Fotos. (Tippen/Klicken zum Öffnen)</p>
 
-        <div style="margin-top:10px;">
+        <div class="photo-toolbar">
           <button class="btn btn--ghost" type="button" onclick="reloadGallery('de')">Fotos aktualisieren</button>
         </div>
 
         <div id="gallery-de" class="photo-grid" aria-label="Fotogalerie Deutsch"></div>
         <div id="gallery-de-meta" class="photo-meta"></div>
+        <div id="gallery-de-loader" class="photo-meta"></div>
 
-        <p class="photo-meta" style="margin-top:14px;">
+        <div class="photo-hint">
           Upload ist über den QR-Code (Passwort erforderlich).
-        </p>
+        </div>
       </div>
     </section>
   </div>
 
-  <!-- TÜRKISCH -->
+  <!-- TR -->
   <div id="content-tr">
     <section class="section">
       <div class="card">
         <h2>Hoş Geldiniz</h2>
-        <p>
-          Bu özel günü sizinle paylaşmak bizi çok mutlu ediyor. Burada tüm bilgileri ve fotoğrafları bulabilirsiniz. ♥
-        </p>
-
-        <div class="date-highlight">
-          <span>11 NİSAN 2026 – 17:00</span>
-        </div>
+        <p>Bu özel günü sizinle paylaşmak bizi çok mutlu ediyor. Burada bilgileri ve fotoğrafları bulabilirsiniz. ♥</p>
+        <div class="date-highlight"><span>11 NİSAN 2026 – 17:00</span></div>
 
         <div style="margin-top: 30px;">
           <a href="#tr-ort" class="btn btn--ghost">Adres</a>
@@ -433,7 +445,7 @@
         </p>
 
         <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
-           href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
+          href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
           Google Haritalar
         </a>
       </div>
@@ -444,15 +456,14 @@
         <h3>Geri Sayım</h3>
         <p><strong>11 Nisan 2026</strong> saat <strong>17:00</strong>.</p>
 
-        <div style="margin-top: 25px;">
-          <div id="countdown-tr" style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
-            <div class="count-box"><div id="tr-months" class="count-number">--</div><div class="count-label">Ay</div></div>
-            <div class="count-box"><div id="tr-days" class="count-number">--</div><div class="count-label">Gün</div></div>
-            <div class="count-box"><div id="tr-hours" class="count-number">--</div><div class="count-label">Saat</div></div>
-            <div class="count-box"><div id="tr-minutes" class="count-number">--</div><div class="count-label">Dakika</div></div>
-          </div>
-          <p class="count-note">Ay bilgisi yaklaşık hesaplanır.</p>
+        <div class="count-row" id="countdown-tr">
+          <div class="count-box"><div id="tr-months" class="count-number">--</div><div class="count-label">Ay</div></div>
+          <div class="count-box"><div id="tr-days" class="count-number">--</div><div class="count-label">Gün</div></div>
+          <div class="count-box"><div id="tr-hours" class="count-number">--</div><div class="count-label">Saat</div></div>
+          <div class="count-box"><div id="tr-minutes" class="count-number">--</div><div class="count-label">Dakika</div></div>
         </div>
+
+        <p class="count-note">Ay bilgisi yaklaşık hesaplanır.</p>
       </div>
     </section>
 
@@ -463,21 +474,21 @@
 
         <form action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
-          <input type="hidden" name="subject" value="Teilnahme Hochzeit Gizem &amp; Aykut (Türkisch)" />
-          <input type="hidden" name="from_name" value="Düğün Sitesi Gizem &amp; Aykut" />
+          <input type="hidden" name="subject" value="Teilnahme Hochzeit (TR)" />
+          <input type="hidden" name="from_name" value="Düğün Sitesi" />
 
           <label for="name-tr">Ad Soyad*</label>
           <input id="name-tr" type="text" name="name" required placeholder="Ad Soyad" />
 
           <label for="phone-tr">Telefon (opsiyonel)</label>
-          <input id="phone-tr" type="tel" name="phone" placeholder="+49 ..." />
+          <input id="phone-tr" type="tel" name="phone" placeholder="+49 …" />
 
           <label for="status-tr">Gelecek misin?*</label>
           <select id="status-tr" name="teilnahme" required>
             <option value="">Seç</option>
-            <option value="Evet, geliyorum.">Evet, geliyorum.</option>
-            <option value="Henüz emin değilim.">Henüz emin değilim.</option>
-            <option value="Maalesef gelemiyorum.">Maalesef gelemiyorum.</option>
+            <option value="Evet">Evet</option>
+            <option value="Emin değilim">Emin değilim</option>
+            <option value="Hayır">Hayır</option>
           </select>
 
           <label for="begleitung-tr">Eşlik eden kişi sayısı*</label>
@@ -488,7 +499,7 @@
           <input id="musik-tr" type="text" name="musikwünsche" placeholder="Şarkı / Sanatçı" />
 
           <label for="message-tr">Mesaj (opsiyonel)</label>
-          <textarea id="message-tr" name="nachricht" placeholder="Alerjiler, notlar, selam ♥"></textarea>
+          <textarea id="message-tr" name="nachricht" placeholder="Notlar, selam ♥"></textarea>
 
           <button class="btn btn--primary btn--full" type="submit">Gönder</button>
           <small>Bilgiler sadece düğün planlaması için kullanılır.</small>
@@ -501,12 +512,13 @@
         <h3>Fotoğraflar</h3>
         <p>Tüm fotoğraflar burada. (Açmak için tıkla)</p>
 
-        <div style="margin-top:10px;">
+        <div class="photo-toolbar">
           <button class="btn btn--ghost" type="button" onclick="reloadGallery('tr')">Yenile</button>
         </div>
 
         <div id="gallery-tr" class="photo-grid" aria-label="Fotogalerie Türkçe"></div>
         <div id="gallery-tr-meta" class="photo-meta"></div>
+        <div id="gallery-tr-loader" class="photo-meta"></div>
       </div>
     </section>
   </div>
@@ -524,10 +536,12 @@
   </dialog>
 
   <script>
-    // Supabase Edge Function
+    // === API Basis (Supabase Edge Function) ===
     const PHOTO_API_BASE = "https://vyspdptamoxxbwrcvjqa.supabase.co/functions/v1/wedding";
+
     const weddingDate = new Date("2026-04-11T17:00:00");
 
+    // === Sprache wählen ===
     function chooseLanguage(lang) {
       document.getElementById("startscreen").classList.add("hidden");
 
@@ -548,10 +562,11 @@
       }
 
       setupGuestFields();
-      loadGallery(lang).catch(() => {});
+      reloadGallery(lang);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    // === Countdown ===
     function pad(n) { return n.toString().padStart(2, "0"); }
 
     function updateCountdown(prefix) {
@@ -588,6 +603,7 @@
       }, 60000);
     }
 
+    // === Begleitpersonen Felder ===
     function setupGuestFields() {
       const inputDe = document.getElementById("begleitung-de");
       const containerDe = document.getElementById("begleitung-namen-de");
@@ -596,6 +612,7 @@
 
       function updateGuestFields(input, container, lang) {
         if (!input || !container) return;
+
         let count = parseInt(input.value, 10);
         if (isNaN(count) || count < 0) count = 0;
         if (count > 10) count = 10;
@@ -617,6 +634,7 @@
 
           field.type = "text";
           field.name = (lang === "de" ? "begleitperson_name_de_" : "begleitperson_name_tr_") + i;
+
           container.appendChild(label);
           container.appendChild(field);
         }
@@ -633,7 +651,7 @@
       }
     }
 
-    // Lightbox
+    // === Lightbox ===
     const lightbox = document.getElementById("lightbox");
     const lbImg = document.getElementById("lbImg");
     const lbOpenOriginal = document.getElementById("lbOpenOriginal");
@@ -642,53 +660,131 @@
 
     lbClose.addEventListener("click", () => lightbox.close());
     lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && lightbox.open) lightbox.close(); });
 
-    async function loadGallery(lang) {
+    // === Galerie: robust (Array ODER Paging-Objekt) + Infinite Scroll ===
+    const galleryState = {
+      de: { loading: false, nextCursor: null, done: false, observer: null, lastUpdated: null },
+      tr: { loading: false, nextCursor: null, done: false, observer: null, lastUpdated: null }
+    };
+
+    async function loadGallery(lang, { reset = false } = {}) {
+      const state = galleryState[lang];
       const gridId = (lang === "de") ? "gallery-de" : "gallery-tr";
       const metaId = (lang === "de") ? "gallery-de-meta" : "gallery-tr-meta";
+      const loaderId = (lang === "de") ? "gallery-de-loader" : "gallery-tr-loader";
+
       const grid = document.getElementById(gridId);
       const meta = document.getElementById(metaId);
+      const loader = document.getElementById(loaderId);
+      if (!grid || !meta || !loader) return;
 
-      if (!grid || !meta) return;
-
-      meta.textContent = (lang === "de") ? "Lade Fotos …" : "Fotoğraflar yükleniyor …";
-
-      const res = await fetch(`${PHOTO_API_BASE}/photos`, { cache: "no-store" });
-      if (!res.ok) {
-        meta.textContent = (lang === "de") ? "Fotos konnten nicht geladen werden." : "Fotoğraflar yüklenemedi.";
-        return;
+      if (reset) {
+        grid.innerHTML = "";
+        meta.textContent = "";
+        loader.textContent = "";
+        state.nextCursor = null;
+        state.done = false;
+        state.lastUpdated = new Date();
+        if (state.observer) state.observer.disconnect();
+        state.observer = null;
+        delete grid.dataset.clickBound;
       }
 
-      const photos = await res.json();
-      meta.textContent = (lang === "de")
-        ? `${photos.length} Foto(s)`
-        : `${photos.length} Fotoğraf`;
+      if (state.loading || state.done) return;
+      state.loading = true;
 
-      grid.innerHTML = (photos || []).map((p) => `
-        <button class="photo-card" type="button"
-          data-full="${p.fullUrl || p.originalUrl}"
-          data-original="${p.originalUrl || p.fullUrl}">
-          <img loading="lazy" src="${p.thumbUrl || p.fullUrl || p.originalUrl}" alt="Foto">
-        </button>
-      `).join("");
+      const limit = 60;
+      const url = new URL(`${PHOTO_API_BASE}/photos`);
+      url.searchParams.set("limit", String(limit));
+      if (state.nextCursor) url.searchParams.set("cursor", state.nextCursor);
 
-      // Click-Handler (neu binden)
-      grid.onclick = (e) => {
-        const btn = e.target.closest(".photo-card");
-        if (!btn) return;
+      loader.textContent = (lang === "de") ? "Lade Fotos …" : "Fotoğraflar yükleniyor …";
 
-        const fullUrl = btn.getAttribute("data-full");
-        const originalUrl = btn.getAttribute("data-original");
+      try {
+        const res = await fetch(url.toString(), { cache: "no-store" });
+        if (!res.ok) {
+          loader.textContent = (lang === "de") ? "Fehler beim Laden." : "Yükleme hatası.";
+          return;
+        }
 
-        lbImg.src = fullUrl || originalUrl;
-        lbOpenOriginal.href = originalUrl || fullUrl;
-        lbDownload.href = originalUrl || fullUrl;
-        lightbox.showModal();
-      };
+        const data = await res.json();
+
+        // ✅ Unterstützt:
+        // 1) Array: [ {thumbUrl, fullUrl, originalUrl, ...}, ... ]
+        // 2) Paging: { items:[...], nextCursor:"..." }
+        const items = Array.isArray(data) ? data : (data.items || []);
+        const next = Array.isArray(data) ? null : (data.nextCursor || null);
+
+        state.nextCursor = next;
+        if (Array.isArray(data)) state.done = true;
+        if (!state.nextCursor && !Array.isArray(data)) state.done = true;
+
+        if (!items.length && grid.querySelectorAll(".photo-card").length === 0) {
+          loader.textContent = (lang === "de") ? "Noch keine Fotos." : "Henüz fotoğraf yok.";
+          meta.textContent = state.lastUpdated
+            ? ((lang === "de") ? `Zuletzt aktualisiert: ${state.lastUpdated.toLocaleTimeString()}` : `Son güncelleme: ${state.lastUpdated.toLocaleTimeString()}`)
+            : "";
+          return;
+        }
+
+        const html = items.map((p) => `
+          <button class="photo-card" type="button"
+            data-full="${p.fullUrl || p.originalUrl || ""}"
+            data-original="${p.originalUrl || p.fullUrl || ""}">
+            <img loading="lazy" src="${p.thumbUrl || p.fullUrl || p.originalUrl || ""}" alt="Foto">
+          </button>
+        `).join("");
+
+        grid.insertAdjacentHTML("beforeend", html);
+
+        const count = grid.querySelectorAll(".photo-card").length;
+        const ts = state.lastUpdated ? state.lastUpdated : new Date();
+        state.lastUpdated = ts;
+
+        meta.textContent = (lang === "de")
+          ? `${count} Foto(s) • zuletzt aktualisiert: ${ts.toLocaleTimeString()}`
+          : `${count} Fotoğraf • son güncelleme: ${ts.toLocaleTimeString()}`;
+
+        loader.textContent = state.done
+          ? ((lang === "de") ? "Ende der Galerie." : "Galeri sonu.")
+          : ((lang === "de") ? "Scroll nach unten lädt mehr …" : "Aşağı kaydırınca daha fazla yüklenir …");
+
+        // Infinite Scroll (nur wenn Paging aktiv ist)
+        if (!state.done && !state.observer) {
+          state.observer = new IntersectionObserver((entries) => {
+            const e = entries[0];
+            if (e && e.isIntersecting) {
+              loadGallery(lang).catch(() => {});
+            }
+          }, { root: null, rootMargin: "400px 0px", threshold: 0 });
+
+          state.observer.observe(loader);
+        }
+      } finally {
+        state.loading = false;
+      }
+
+      // Click handler einmalig
+      if (!grid.dataset.clickBound) {
+        grid.addEventListener("click", (e) => {
+          const btn = e.target.closest(".photo-card");
+          if (!btn) return;
+
+          const fullUrl = btn.getAttribute("data-full");
+          const originalUrl = btn.getAttribute("data-original");
+
+          lbImg.src = fullUrl || originalUrl;
+          lbOpenOriginal.href = originalUrl || fullUrl;
+          lbDownload.href = originalUrl || fullUrl;
+          lightbox.showModal();
+        });
+        grid.dataset.clickBound = "1";
+      }
     }
 
     function reloadGallery(lang) {
-      loadGallery(lang).catch(() => {});
+      loadGallery(lang, { reset: true }).catch(() => {});
     }
   </script>
 </body>
