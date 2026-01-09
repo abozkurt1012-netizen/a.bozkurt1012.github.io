@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -18,15 +18,10 @@
       --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg-dark);
       color: var(--text-main);
       min-height: 100vh;
@@ -34,7 +29,6 @@
       text-align: center;
     }
 
-    /* Hintergrund Slideshow */
     .bg {
       position: fixed;
       inset: 0;
@@ -62,16 +56,8 @@
       background: radial-gradient(circle at top, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
     }
 
-    .section {
-      padding: 80px 18px 60px;
-    }
-
-    .centered {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+    .section { padding: 80px 18px 60px; }
+    .centered { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
 
     .card {
       width: 100%;
@@ -102,10 +88,7 @@
       text-transform: uppercase;
     }
 
-    h3 {
-      font-size: clamp(1.8rem, 2.6vw, 2.2rem);
-      margin-bottom: 20px;
-    }
+    h3 { font-size: clamp(1.8rem, 2.6vw, 2.2rem); margin-bottom: 20px; }
 
     p {
       margin-bottom: 12px;
@@ -131,7 +114,6 @@
       display: inline-block;
     }
 
-    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -152,38 +134,17 @@
       box-shadow: 0 10px 28px rgba(0,0,0,0.5);
     }
 
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.65);
-    }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.65); }
 
-    .btn--ghost {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.18);
-    }
+    .btn--ghost { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.18); }
+    .btn--ghost:hover { background: rgba(255,255,255,0.12); }
 
-    .btn--ghost:hover {
-      background: rgba(255,255,255,0.12);
-    }
+    .btn--lang { min-width: 160px; }
+    .btn--full { width: 100%; margin-top: 14px; }
 
-    .btn--lang {
-      min-width: 160px;
-    }
+    #content-de, #content-tr { display: none; }
+    .hidden { display: none !important; }
 
-    .btn--full {
-      width: 100%;
-      margin-top: 14px;
-    }
-
-    #content-de, #content-tr {
-      display: none;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    /* Countdown Boxen */
     .count-box {
       min-width: 110px;
       padding: 14px 10px;
@@ -193,44 +154,15 @@
       text-align: center;
     }
 
-    .count-number {
-      font-size: 2.2rem;
-      font-weight: 650;
-      margin-bottom: 4px;
-      color: #f7f7f3;
-    }
+    .count-number { font-size: 2.2rem; font-weight: 650; margin-bottom: 4px; color: #f7f7f3; }
+    .count-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+    .count-note { margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); }
 
-    .count-label {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
+    form { margin-top: 18px; text-align: left; font-size: 1rem; }
 
-    .count-note {
-      margin-top: 14px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+    label { font-size: 0.98rem; margin-top: 10px; margin-bottom: 4px; color: var(--text-main); display: block; }
 
-    /* Formular */
-    form {
-      margin-top: 18px;
-      text-align: left;
-      font-size: 1rem;
-    }
-
-    label {
-      font-size: 0.98rem;
-      margin-top: 10px;
-      margin-bottom: 4px;
-      color: var(--text-main);
-      display: block;
-    }
-
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 11px 12px;
       border-radius: 10px;
@@ -240,58 +172,98 @@
       font-size: 0.98rem;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--olive-light);
       box-shadow: 0 0 0 1px rgba(109,133,64,0.65);
     }
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+    textarea { min-height: 100px; resize: vertical; }
+    .guest-names { margin-top: 8px; }
+    .guest-names input { margin-top: 4px; margin-bottom: 4px; }
+    small { font-size: 0.85rem; color: var(--text-muted); }
 
-    .guest-names {
-      margin-top: 8px;
+    /* =========================
+       NEU: FOTO-GALERIE STYLES
+       ========================= */
+    .photo-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      margin-top: 14px;
     }
-
-    .guest-names input {
-      margin-top: 4px;
-      margin-bottom: 4px;
+    .photo-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.08);
     }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .18s ease;
+    }
+    .photo-card:hover img { transform: scale(1.03); }
 
-    small {
-      font-size: 0.85rem;
+    .photo-meta {
+      margin-top: 10px;
+      font-size: 0.9rem;
       color: var(--text-muted);
     }
 
-    /* Responsive */
+    .lightbox {
+      border: none;
+      padding: 0;
+      background: transparent;
+    }
+    .lightbox::backdrop { background: rgba(0,0,0,0.70); }
+    .lightbox-inner {
+      position: relative;
+      padding: 18px;
+    }
+    .lightbox img {
+      max-width: min(92vw, 1100px);
+      max-height: 86vh;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .lb-close {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 28px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    .lb-actions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     @media (max-width: 640px) {
-      .card {
-        padding: 30px 18px;
-      }
-
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-
-      .date-highlight {
-        font-size: 1.1rem;
-      }
-
-      .count-box {
-        min-width: 90px;
-      }
-
-      .count-number {
-        font-size: 1.8rem;
-      }
+      .card { padding: 30px 18px; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      .date-highlight { font-size: 1.1rem; }
+      .count-box { min-width: 90px; }
+      .count-number { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -304,7 +276,6 @@
     <div class="card">
       <h1>WELCOME TO OUR FOREVER</h1>
       <h2>GIZEM &amp; AYKUT</h2>
-
       <p>Bitte wähle eine Sprache / Lütfen bir dil seçiniz:</p>
 
       <div style="margin-top: 20px;">
@@ -317,7 +288,6 @@
   <!-- DEUTSCHER INHALT -->
   <div id="content-de">
 
-    <!-- Willkommen DE -->
     <section class="section">
       <div class="card">
         <h2>Willkommen zu unserem besonderen Tag</h2>
@@ -335,6 +305,9 @@
           <a href="#de-ort" class="btn btn--ghost">Ort &amp; Anfahrt</a>
           <a href="#de-countdown" class="btn btn--ghost">Countdown</a>
           <a href="#de-teilnahme" class="btn btn--ghost">Teilnahme &amp; Infos</a>
+
+          <!-- NEU -->
+          <a href="#de-fotos" class="btn btn--ghost">Fotos</a>
         </div>
       </div>
     </section>
@@ -352,16 +325,10 @@
           </strong>
         </p>
 
-        <p style="margin-top: 12px;">
-          Über den folgenden Button gelangst du direkt zu Google Maps.
-        </p>
+        <p style="margin-top: 12px;">Über den folgenden Button gelangst du direkt zu Google Maps.</p>
 
-        <a
-          class="btn btn--primary"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu"
-        >
+        <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
+           href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
           Google Maps öffnen
         </a>
       </div>
@@ -371,37 +338,17 @@
     <section id="de-countdown" class="section">
       <div class="card">
         <h3>Countdown bis zu unserem Hochzeitstag</h3>
-        <p>
-          Wir starten gemeinsam am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.
-        </p>
+        <p>Wir starten gemeinsam am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.</p>
 
         <div style="margin-top: 25px;">
           <div id="countdown-de" style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
-
-            <div class="count-box">
-              <div id="de-months" class="count-number">--</div>
-              <div class="count-label">Monate</div>
-            </div>
-
-            <div class="count-box">
-              <div id="de-days" class="count-number">--</div>
-              <div class="count-label">Tage</div>
-            </div>
-
-            <div class="count-box">
-              <div id="de-hours" class="count-number">--</div>
-              <div class="count-label">Stunden</div>
-            </div>
-
-            <div class="count-box">
-              <div id="de-minutes" class="count-number">--</div>
-              <div class="count-label">Minuten</div>
-            </div>
+            <div class="count-box"><div id="de-months" class="count-number">--</div><div class="count-label">Monate</div></div>
+            <div class="count-box"><div id="de-days" class="count-number">--</div><div class="count-label">Tage</div></div>
+            <div class="count-box"><div id="de-hours" class="count-number">--</div><div class="count-label">Stunden</div></div>
+            <div class="count-box"><div id="de-minutes" class="count-number">--</div><div class="count-label">Minuten</div></div>
           </div>
 
-          <p class="count-note">
-            Die Monatsangabe ist eine angenäherte Berechnung.
-          </p>
+          <p class="count-note">Die Monatsangabe ist eine angenäherte Berechnung.</p>
         </div>
       </div>
     </section>
@@ -436,41 +383,37 @@
           </select>
 
           <label for="begleitung-de">Anzahl der Begleitpersonen*</label>
-          <input
-            id="begleitung-de"
-            type="number"
-            min="0"
-            max="10"
-            name="begleitpersonen"
-            required
-            value="0"
-          />
+          <input id="begleitung-de" type="number" min="0" max="10" name="begleitpersonen" required value="0" />
 
           <div id="begleitung-namen-de" class="guest-names"></div>
 
           <label for="musik-de">Musikwünsche (optional)</label>
-          <input
-            id="musik-de"
-            type="text"
-            name="musikwünsche"
-            placeholder="Songtitel oder Künstler*in"
-          />
+          <input id="musik-de" type="text" name="musikwünsche" placeholder="Songtitel oder Künstler*in" />
 
           <label for="message-de">Nachricht (optional)</label>
-          <textarea
-            id="message-de"
-            name="nachricht"
-            placeholder="Allergien, Hinweise oder Grüße an uns ♥"
-          ></textarea>
+          <textarea id="message-de" name="nachricht" placeholder="Allergien, Hinweise oder Grüße an uns ♥"></textarea>
 
-          <button class="btn btn--primary btn--full" type="submit">
-            Teilnahme senden
-          </button>
+          <button class="btn btn--primary btn--full" type="submit">Teilnahme senden</button>
 
-          <small>
-            Deine Angaben werden ausschließlich zur Planung unserer Hochzeit verwendet.
-          </small>
+          <small>Deine Angaben werden ausschließlich zur Planung unserer Hochzeit verwendet.</small>
         </form>
+      </div>
+    </section>
+
+    <!-- =========================
+         NEU: FOTOS / GALERIE (DE)
+         ========================= -->
+    <section id="de-fotos" class="section">
+      <div class="card">
+        <h3>Fotos</h3>
+        <p>Hier siehst du alle freigegebenen Fotos. (Tippen/Klicken zum Öffnen)</p>
+
+        <div id="gallery-de" class="photo-grid" aria-label="Fotogalerie Deutsch"></div>
+        <div id="gallery-de-meta" class="photo-meta"></div>
+
+        <p class="photo-meta" style="margin-top:14px;">
+          Fotos hochladen geht über den QR-Code auf deiner Karte.
+        </p>
       </div>
     </section>
 
@@ -479,7 +422,6 @@
   <!-- TÜRKISCHER INHALT -->
   <div id="content-tr">
 
-    <!-- Willkommen TR -->
     <section class="section">
       <div class="card">
         <h2>Özel Günümüze Hoş Geldiniz</h2>
@@ -496,6 +438,9 @@
           <a href="#tr-ort" class="btn btn--ghost">Adres &amp; Ulaşım</a>
           <a href="#tr-countdown" class="btn btn--ghost">Geri Sayım</a>
           <a href="#tr-teilnahme" class="btn btn--ghost">Katılım &amp; Bilgi</a>
+
+          <!-- NEU -->
+          <a href="#tr-fotos" class="btn btn--ghost">Fotoğraflar</a>
         </div>
       </div>
     </section>
@@ -517,12 +462,8 @@
           Aşağıdaki butona tıklayarak doğrudan Google Haritalar'a gidebilirsin.
         </p>
 
-        <a
-          class="btn btn--primary"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu"
-        >
+        <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
+           href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
           Google Haritalar
         </a>
       </div>
@@ -532,37 +473,17 @@
     <section id="tr-countdown" class="section">
       <div class="card">
         <h3>Düğüne Geri Sayım</h3>
-        <p>
-          Hep birlikte <strong>11 Nisan 2026</strong> saat <strong>17:00</strong>'de buluşuyoruz.
-        </p>
+        <p>Hep birlikte <strong>11 Nisan 2026</strong> saat <strong>17:00</strong>'de buluşuyoruz.</p>
 
         <div style="margin-top: 25px;">
           <div id="countdown-tr" style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
-
-            <div class="count-box">
-              <div id="tr-months" class="count-number">--</div>
-              <div class="count-label">Ay</div>
-            </div>
-
-            <div class="count-box">
-              <div id="tr-days" class="count-number">--</div>
-              <div class="count-label">Gün</div>
-            </div>
-
-            <div class="count-box">
-              <div id="tr-hours" class="count-number">--</div>
-              <div class="count-label">Saat</div>
-            </div>
-
-            <div class="count-box">
-              <div id="tr-minutes" class="count-number">--</div>
-              <div class="count-label">Dakika</div>
-            </div>
+            <div class="count-box"><div id="tr-months" class="count-number">--</div><div class="count-label">Ay</div></div>
+            <div class="count-box"><div id="tr-days" class="count-number">--</div><div class="count-label">Gün</div></div>
+            <div class="count-box"><div id="tr-hours" class="count-number">--</div><div class="count-label">Saat</div></div>
+            <div class="count-box"><div id="tr-minutes" class="count-number">--</div><div class="count-label">Dakika</div></div>
           </div>
 
-          <p class="count-note">
-            Ay bilgisi, kalan gün sayısına göre yaklaşık olarak hesaplanır.
-          </p>
+          <p class="count-note">Ay bilgisi, kalan gün sayısına göre yaklaşık olarak hesaplanır.</p>
         </div>
       </div>
     </section>
@@ -597,48 +518,60 @@
           </select>
 
           <label for="begleitung-tr">Eşlik eden kişi sayısı*</label>
-          <input
-            id="begleitung-tr"
-            type="number"
-            min="0"
-            max="10"
-            name="begleitpersonen"
-            required
-            value="0"
-          />
+          <input id="begleitung-tr" type="number" min="0" max="10" name="begleitpersonen" required value="0" />
 
           <div id="begleitung-namen-tr" class="guest-names"></div>
 
           <label for="musik-tr">Müzik istekleri (opsiyonel)</label>
-          <input
-            id="musik-tr"
-            type="text"
-            name="musikwünsche"
-            placeholder="Şarkı veya sanatçı ismi"
-          />
+          <input id="musik-tr" type="text" name="musikwünsche" placeholder="Şarkı veya sanatçı ismi" />
 
           <label for="message-tr">Mesaj (opsiyonel)</label>
-          <textarea
-            id="message-tr"
-            name="nachricht"
-            placeholder="Alerjiler, özel notlar veya bize selam ♥"
-          ></textarea>
+          <textarea id="message-tr" name="nachricht" placeholder="Alerjiler, özel notlar veya bize selam ♥"></textarea>
 
-          <button class="btn btn--primary btn--full" type="submit">
-            Gönder
-          </button>
+          <button class="btn btn--primary btn--full" type="submit">Gönder</button>
 
-          <small>
-            Gönderdiğin bilgiler sadece düğün planlaması için kullanılacaktır.
-          </small>
+          <small>Gönderdiğin bilgiler sadece düğün planlaması için kullanılacaktır.</small>
         </form>
+      </div>
+    </section>
+
+    <!-- =========================
+         NEU: FOTOS / GALERIE (TR)
+         ========================= -->
+    <section id="tr-fotos" class="section">
+      <div class="card">
+        <h3>Fotoğraflar</h3>
+        <p>Onaylanmış tüm fotoğrafları burada görebilirsin. (Açmak için tıkla)</p>
+
+        <div id="gallery-tr" class="photo-grid" aria-label="Fotogalerie Türkçe"></div>
+        <div id="gallery-tr-meta" class="photo-meta"></div>
+
+        <p class="photo-meta" style="margin-top:14px;">
+          Fotoğraf yükleme, kartındaki QR kod ile yapılır.
+        </p>
       </div>
     </section>
 
   </div>
 
-  <!-- JAVASCRIPT -->
+  <!-- NEU: Lightbox (einmal für beide Sprachen) -->
+  <dialog id="lightbox" class="lightbox" aria-label="Fotoanzeige">
+    <button class="lb-close" type="button" aria-label="Schließen">×</button>
+    <div class="lightbox-inner">
+      <img id="lbImg" alt="Foto in groß" />
+      <div class="lb-actions">
+        <a id="lbOpenOriginal" class="btn btn--ghost" target="_blank" rel="noopener">Original öffnen</a>
+        <a id="lbDownload" class="btn btn--primary" download>Download</a>
+      </div>
+    </div>
+  </dialog>
+
   <script>
+    /* =========================
+       NEU: API Basis (anpassen!)
+       ========================= */
+    const PHOTO_API_BASE = "https://DEINE-API.example"; // <-- HIER ersetzen
+
     /* Sprache auswählen */
     function chooseLanguage(lang) {
       document.getElementById("startscreen").classList.add("hidden");
@@ -660,19 +593,20 @@
       }
 
       setupGuestFields();
+
+      // NEU: Galerie laden
+      loadGallery(lang).catch(() => {});
+
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     const weddingDate = new Date("2026-04-11T17:00:00");
 
-    function pad(n) {
-      return n.toString().padStart(2, "0");
-    }
+    function pad(n) { return n.toString().padStart(2, "0"); }
 
     function updateCountdown(prefix) {
       const now = new Date();
       let diff = weddingDate - now;
-
       if (diff < 0) diff = 0;
 
       const totalMinutes = Math.floor(diff / 60000);
@@ -732,8 +666,7 @@
           }
 
           field.type = "text";
-          field.name =
-            (lang === "de" ? "begleitperson_name_de_" : "begleitperson_name_tr_") + i;
+          field.name = (lang === "de" ? "begleitperson_name_de_" : "begleitperson_name_tr_") + i;
 
           container.appendChild(label);
           container.appendChild(field);
@@ -741,20 +674,74 @@
       }
 
       if (inputDe) {
-        inputDe.addEventListener("input", () =>
-          updateGuestFields(inputDe, containerDe, "de")
-        );
+        inputDe.addEventListener("input", () => updateGuestFields(inputDe, containerDe, "de"));
         updateGuestFields(inputDe, containerDe, "de");
       }
 
       if (inputTr) {
-        inputTr.addEventListener("input", () =>
-          updateGuestFields(inputTr, containerTr, "tr")
-        );
+        inputTr.addEventListener("input", () => updateGuestFields(inputTr, containerTr, "tr"));
         updateGuestFields(inputTr, containerTr, "tr");
       }
     }
-  </script>
 
+    /* =========================
+       NEU: Galerie / Lightbox
+       Erwartete API Antwort:
+       [
+         { thumbUrl: "...", fullUrl: "...", originalUrl: "...", createdAt: "..."}
+       ]
+       ========================= */
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbOpenOriginal = document.getElementById("lbOpenOriginal");
+    const lbDownload = document.getElementById("lbDownload");
+    const lbClose = lightbox.querySelector(".lb-close");
+
+    lbClose.addEventListener("click", () => lightbox.close());
+    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
+
+    async function loadGallery(lang) {
+      const gridId = (lang === "de") ? "gallery-de" : "gallery-tr";
+      const metaId = (lang === "de") ? "gallery-de-meta" : "gallery-tr-meta";
+      const grid = document.getElementById(gridId);
+      const meta = document.getElementById(metaId);
+
+      if (!grid || !meta) return;
+
+      meta.textContent = "Lade Fotos …";
+
+      const res = await fetch(`${PHOTO_API_BASE}/photos?lang=${encodeURIComponent(lang)}`, { cache: "no-store" });
+      if (!res.ok) {
+        meta.textContent = "Fotos konnten nicht geladen werden.";
+        return;
+      }
+
+      const photos = await res.json();
+      meta.textContent = `${photos.length} Foto(s)`;
+
+      grid.innerHTML = photos.map((p, i) => `
+        <button class="photo-card" type="button"
+          data-thumb="${p.thumbUrl}"
+          data-full="${p.fullUrl}"
+          data-original="${p.originalUrl}">
+          <img loading="lazy" src="${p.thumbUrl}" alt="Foto">
+        </button>
+      `).join("");
+
+      grid.addEventListener("click", (e) => {
+        const btn = e.target.closest(".photo-card");
+        if (!btn) return;
+
+        const fullUrl = btn.getAttribute("data-full");
+        const originalUrl = btn.getAttribute("data-original");
+
+        lbImg.src = fullUrl || originalUrl;
+        lbOpenOriginal.href = originalUrl || fullUrl;
+        lbDownload.href = originalUrl || fullUrl;
+
+        lightbox.showModal();
+      }, { once: true });
+    }
+  </script>
 </body>
 </html>
