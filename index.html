@@ -29,6 +29,7 @@
       text-align: center;
     }
 
+    /* Hintergrund Slideshow */
     .bg {
       position: fixed;
       inset: 0;
@@ -114,6 +115,7 @@
       display: inline-block;
     }
 
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -127,6 +129,7 @@
       text-decoration: none;
       color: white;
       margin: 8px;
+      user-select: none;
     }
 
     .btn--primary {
@@ -134,9 +137,16 @@
       box-shadow: 0 10px 28px rgba(0,0,0,0.5);
     }
 
-    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.65); }
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.65);
+    }
 
-    .btn--ghost { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.18); }
+    .btn--ghost {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
     .btn--ghost:hover { background: rgba(255,255,255,0.12); }
 
     .btn--lang { min-width: 160px; }
@@ -145,6 +155,7 @@
     #content-de, #content-tr { display: none; }
     .hidden { display: none !important; }
 
+    /* Countdown Boxen */
     .count-box {
       min-width: 110px;
       padding: 14px 10px;
@@ -158,6 +169,7 @@
     .count-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
     .count-note { margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); }
 
+    /* Formular */
     form { margin-top: 18px; text-align: left; font-size: 1rem; }
 
     label { font-size: 0.98rem; margin-top: 10px; margin-bottom: 4px; color: var(--text-main); display: block; }
@@ -183,9 +195,7 @@
     .guest-names input { margin-top: 4px; margin-bottom: 4px; }
     small { font-size: 0.85rem; color: var(--text-muted); }
 
-    /* =========================
-       NEU: FOTO-GALERIE STYLES
-       ========================= */
+    /* FOTO-GALERIE */
     .photo-grid {
       display: grid;
       gap: 10px;
@@ -200,6 +210,7 @@
       aspect-ratio: 1 / 1;
       cursor: pointer;
       border: 1px solid rgba(255,255,255,0.08);
+      padding: 0;
     }
     .photo-card img {
       width: 100%;
@@ -210,22 +221,11 @@
     }
     .photo-card:hover img { transform: scale(1.03); }
 
-    .photo-meta {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+    .photo-meta { margin-top: 10px; font-size: 0.9rem; color: var(--text-muted); }
 
-    .lightbox {
-      border: none;
-      padding: 0;
-      background: transparent;
-    }
+    .lightbox { border: none; padding: 0; background: transparent; }
     .lightbox::backdrop { background: rgba(0,0,0,0.70); }
-    .lightbox-inner {
-      position: relative;
-      padding: 18px;
-    }
+    .lightbox-inner { position: relative; padding: 18px; }
     .lightbox img {
       max-width: min(92vw, 1100px);
       max-height: 86vh;
@@ -276,25 +276,23 @@
     <div class="card">
       <h1>WELCOME TO OUR FOREVER</h1>
       <h2>GIZEM &amp; AYKUT</h2>
+
       <p>Bitte wähle eine Sprache / Lütfen bir dil seçiniz:</p>
 
       <div style="margin-top: 20px;">
-        <button class="btn btn--primary btn--lang" onclick="chooseLanguage('de')">Deutsch 🇩🇪</button>
-        <button class="btn btn--ghost btn--lang" onclick="chooseLanguage('tr')">Türkçe 🇹🇷</button>
+        <button class="btn btn--primary btn--lang" type="button" onclick="chooseLanguage('de')">Deutsch 🇩🇪</button>
+        <button class="btn btn--ghost btn--lang" type="button" onclick="chooseLanguage('tr')">Türkçe 🇹🇷</button>
       </div>
     </div>
   </section>
 
-  <!-- DEUTSCHER INHALT -->
+  <!-- DEUTSCH -->
   <div id="content-de">
-
     <section class="section">
       <div class="card">
-        <h2>Willkommen zu unserem besonderen Tag</h2>
+        <h2>Willkommen</h2>
         <p>
-          Wir freuen uns von Herzen, diesen einmaligen Moment mit den Menschen zu teilen,
-          die uns am wichtigsten sind. Schön, dass du dir Zeit nimmst, dich hier zu informieren –
-          wir können es kaum erwarten, diesen Tag gemeinsam mit dir zu erleben.
+          Wir freuen uns sehr, diesen Tag mit euch zu teilen. Hier findet ihr alle Infos – und später auch eure Fotos. ♥
         </p>
 
         <div class="date-highlight">
@@ -304,28 +302,20 @@
         <div style="margin-top: 30px;">
           <a href="#de-ort" class="btn btn--ghost">Ort &amp; Anfahrt</a>
           <a href="#de-countdown" class="btn btn--ghost">Countdown</a>
-          <a href="#de-teilnahme" class="btn btn--ghost">Teilnahme &amp; Infos</a>
-
-          <!-- NEU -->
+          <a href="#de-teilnahme" class="btn btn--ghost">Teilnahme</a>
           <a href="#de-fotos" class="btn btn--ghost">Fotos</a>
         </div>
       </div>
     </section>
 
-    <!-- ORT & ANFAHRT DE -->
     <section id="de-ort" class="section">
       <div class="card">
         <h3>Ort &amp; Anfahrt</h3>
-        <p>Unsere Hochzeit findet an diesem besonderen Ort statt:</p>
-
+        <p>Unsere Hochzeit findet hier statt:</p>
         <p style="font-size: 1.2rem; color: #fff; margin-top: 10px;">
-          <strong>
-            Vernouilletallee 1<br />
-            34587 Felsberg
-          </strong>
+          <strong>Vernouilletallee 1<br />34587 Felsberg</strong>
         </p>
-
-        <p style="margin-top: 12px;">Über den folgenden Button gelangst du direkt zu Google Maps.</p>
+        <p style="margin-top: 12px;">Über den Button gelangst du direkt zu Google Maps.</p>
 
         <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
            href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
@@ -334,11 +324,10 @@
       </div>
     </section>
 
-    <!-- COUNTDOWN DE -->
     <section id="de-countdown" class="section">
       <div class="card">
-        <h3>Countdown bis zu unserem Hochzeitstag</h3>
-        <p>Wir starten gemeinsam am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.</p>
+        <h3>Countdown</h3>
+        <p>Wir starten am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.</p>
 
         <div style="margin-top: 25px;">
           <div id="countdown-de" style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
@@ -347,20 +336,16 @@
             <div class="count-box"><div id="de-hours" class="count-number">--</div><div class="count-label">Stunden</div></div>
             <div class="count-box"><div id="de-minutes" class="count-number">--</div><div class="count-label">Minuten</div></div>
           </div>
-
-          <p class="count-note">Die Monatsangabe ist eine angenäherte Berechnung.</p>
+          <p class="count-note">Monate sind näherungsweise berechnet.</p>
         </div>
       </div>
     </section>
 
-    <!-- TEILNAHME & INFOS DE -->
     <section id="de-teilnahme" class="section">
       <div class="card">
         <h3>Teilnahme &amp; Infos</h3>
         <p>
-          Es bedeutet uns viel zu wissen, ob du dabei sein kannst.
-          Bitte gib uns kurz Bescheid – und wenn du möchtest,
-          kannst du uns auch deinen Musikwunsch dalassen. ♥
+          Bitte gib uns kurz Bescheid, ob du dabei bist – und wenn du magst, auch direkt einen Musikwunsch. ♥
         </p>
 
         <form action="https://api.web3forms.com/submit" method="POST">
@@ -374,60 +359,56 @@
           <label for="phone-de">Telefonnummer (optional)</label>
           <input id="phone-de" type="tel" name="phone" placeholder="+49 ..." />
 
-          <label for="status-de">Wirst du an unserem besonderen Tag dabei sein?*</label>
+          <label for="status-de">Bist du dabei?*</label>
           <select id="status-de" name="teilnahme" required>
             <option value="">Bitte auswählen</option>
-            <option value="Ja, ich freue mich sehr dabei zu sein.">Ja, ich freue mich sehr dabei zu sein.</option>
+            <option value="Ja, ich bin dabei.">Ja, ich bin dabei.</option>
             <option value="Ich bin noch unsicher.">Ich bin noch unsicher.</option>
             <option value="Leider kann ich nicht kommen.">Leider kann ich nicht kommen.</option>
           </select>
 
-          <label for="begleitung-de">Anzahl der Begleitpersonen*</label>
+          <label for="begleitung-de">Anzahl Begleitpersonen*</label>
           <input id="begleitung-de" type="number" min="0" max="10" name="begleitpersonen" required value="0" />
-
           <div id="begleitung-namen-de" class="guest-names"></div>
 
-          <label for="musik-de">Musikwünsche (optional)</label>
-          <input id="musik-de" type="text" name="musikwünsche" placeholder="Songtitel oder Künstler*in" />
+          <label for="musik-de">Musikwunsch (optional)</label>
+          <input id="musik-de" type="text" name="musikwünsche" placeholder="Song / Künstler" />
 
           <label for="message-de">Nachricht (optional)</label>
-          <textarea id="message-de" name="nachricht" placeholder="Allergien, Hinweise oder Grüße an uns ♥"></textarea>
+          <textarea id="message-de" name="nachricht" placeholder="Allergien, Hinweise oder Grüße ♥"></textarea>
 
-          <button class="btn btn--primary btn--full" type="submit">Teilnahme senden</button>
-
-          <small>Deine Angaben werden ausschließlich zur Planung unserer Hochzeit verwendet.</small>
+          <button class="btn btn--primary btn--full" type="submit">Senden</button>
+          <small>Deine Angaben werden nur zur Planung der Hochzeit genutzt.</small>
         </form>
       </div>
     </section>
 
-    <!-- =========================
-         NEU: FOTOS / GALERIE (DE)
-         ========================= -->
     <section id="de-fotos" class="section">
       <div class="card">
         <h3>Fotos</h3>
-        <p>Hier siehst du alle freigegebenen Fotos. (Tippen/Klicken zum Öffnen)</p>
+        <p>Hier siehst du alle Fotos. (Tippen/Klicken zum Öffnen)</p>
+
+        <div style="margin-top:10px;">
+          <button class="btn btn--ghost" type="button" onclick="reloadGallery('de')">Fotos aktualisieren</button>
+        </div>
 
         <div id="gallery-de" class="photo-grid" aria-label="Fotogalerie Deutsch"></div>
         <div id="gallery-de-meta" class="photo-meta"></div>
 
         <p class="photo-meta" style="margin-top:14px;">
-          Fotos hochladen geht über den QR-Code auf deiner Karte.
+          Upload ist über den QR-Code (Passwort erforderlich).
         </p>
       </div>
     </section>
-
   </div>
 
-  <!-- TÜRKISCHER INHALT -->
+  <!-- TÜRKISCH -->
   <div id="content-tr">
-
     <section class="section">
       <div class="card">
-        <h2>Özel Günümüze Hoş Geldiniz</h2>
+        <h2>Hoş Geldiniz</h2>
         <p>
-          Bu anlamlı günü, bizim için değerli olan insanlarla paylaşmak kalbimizi gerçekten mutlu ediyor.
-          Burada olduğun için teşekkür ederiz – bu güzel anı hep birlikte yaşamayı sabırsızlıkla bekliyoruz.
+          Bu özel günü sizinle paylaşmak bizi çok mutlu ediyor. Burada tüm bilgileri ve fotoğrafları bulabilirsiniz. ♥
         </p>
 
         <div class="date-highlight">
@@ -435,31 +416,20 @@
         </div>
 
         <div style="margin-top: 30px;">
-          <a href="#tr-ort" class="btn btn--ghost">Adres &amp; Ulaşım</a>
+          <a href="#tr-ort" class="btn btn--ghost">Adres</a>
           <a href="#tr-countdown" class="btn btn--ghost">Geri Sayım</a>
-          <a href="#tr-teilnahme" class="btn btn--ghost">Katılım &amp; Bilgi</a>
-
-          <!-- NEU -->
+          <a href="#tr-teilnahme" class="btn btn--ghost">Katılım</a>
           <a href="#tr-fotos" class="btn btn--ghost">Fotoğraflar</a>
         </div>
       </div>
     </section>
 
-    <!-- ORT TR -->
     <section id="tr-ort" class="section">
       <div class="card">
         <h3>Adres &amp; Ulaşım</h3>
-        <p>Düğünümüz şu adreste gerçekleşecek:</p>
-
+        <p>Düğün adresi:</p>
         <p style="font-size: 1.2rem; color: #fff; margin-top: 10px;">
-          <strong>
-            Vernouilletallee 1<br />
-            34587 Felsberg
-          </strong>
-        </p>
-
-        <p style="margin-top: 12px;">
-          Aşağıdaki butona tıklayarak doğrudan Google Haritalar'a gidebilirsin.
+          <strong>Vernouilletallee 1<br />34587 Felsberg</strong>
         </p>
 
         <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
@@ -469,11 +439,10 @@
       </div>
     </section>
 
-    <!-- COUNTDOWN TR -->
     <section id="tr-countdown" class="section">
       <div class="card">
-        <h3>Düğüne Geri Sayım</h3>
-        <p>Hep birlikte <strong>11 Nisan 2026</strong> saat <strong>17:00</strong>'de buluşuyoruz.</p>
+        <h3>Geri Sayım</h3>
+        <p><strong>11 Nisan 2026</strong> saat <strong>17:00</strong>.</p>
 
         <div style="margin-top: 25px;">
           <div id="countdown-tr" style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
@@ -482,83 +451,71 @@
             <div class="count-box"><div id="tr-hours" class="count-number">--</div><div class="count-label">Saat</div></div>
             <div class="count-box"><div id="tr-minutes" class="count-number">--</div><div class="count-label">Dakika</div></div>
           </div>
-
-          <p class="count-note">Ay bilgisi, kalan gün sayısına göre yaklaşık olarak hesaplanır.</p>
+          <p class="count-note">Ay bilgisi yaklaşık hesaplanır.</p>
         </div>
       </div>
     </section>
 
-    <!-- TEILNAHME & INFOS TR -->
     <section id="tr-teilnahme" class="section">
       <div class="card">
-        <h3>Katılım &amp; Bilgi</h3>
-        <p>
-          Bu özel günde bizimle olup olamayacağını bilmek bizim için çok önemli.
-          Gelip gelemeyeceğini ve yanında biri olacaksa kişi sayısını yazabilirsen çok seviniriz.
-          Ayrıca istersen müzik isteğini de ekleyebilirsin – onu geceye dahil etmeye çalışacağız. ♥
-        </p>
+        <h3>Katılım</h3>
+        <p>Katılım durumunu ve istersen müzik isteğini yazabilirsin. ♥</p>
 
         <form action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
           <input type="hidden" name="subject" value="Teilnahme Hochzeit Gizem &amp; Aykut (Türkisch)" />
           <input type="hidden" name="from_name" value="Düğün Sitesi Gizem &amp; Aykut" />
 
-          <label for="name-tr">Ad ve Soyad*</label>
+          <label for="name-tr">Ad Soyad*</label>
           <input id="name-tr" type="text" name="name" required placeholder="Ad Soyad" />
 
           <label for="phone-tr">Telefon (opsiyonel)</label>
           <input id="phone-tr" type="tel" name="phone" placeholder="+49 ..." />
 
-          <label for="status-tr">Bu özel günde bizimle olacak mısın?*</label>
+          <label for="status-tr">Gelecek misin?*</label>
           <select id="status-tr" name="teilnahme" required>
-            <option value="">Lütfen seç</option>
-            <option value="Evet, gelmeyi çok istiyorum.">Evet, gelmeyi çok istiyorum.</option>
-            <option value="Henüz tam emin değilim.">Henüz tam emin değilim.</option>
-            <option value="Maalesef gelemeyeceğim.">Maalesef gelemeyeceğim.</option>
+            <option value="">Seç</option>
+            <option value="Evet, geliyorum.">Evet, geliyorum.</option>
+            <option value="Henüz emin değilim.">Henüz emin değilim.</option>
+            <option value="Maalesef gelemiyorum.">Maalesef gelemiyorum.</option>
           </select>
 
           <label for="begleitung-tr">Eşlik eden kişi sayısı*</label>
           <input id="begleitung-tr" type="number" min="0" max="10" name="begleitpersonen" required value="0" />
-
           <div id="begleitung-namen-tr" class="guest-names"></div>
 
-          <label for="musik-tr">Müzik istekleri (opsiyonel)</label>
-          <input id="musik-tr" type="text" name="musikwünsche" placeholder="Şarkı veya sanatçı ismi" />
+          <label for="musik-tr">Müzik isteği (opsiyonel)</label>
+          <input id="musik-tr" type="text" name="musikwünsche" placeholder="Şarkı / Sanatçı" />
 
           <label for="message-tr">Mesaj (opsiyonel)</label>
-          <textarea id="message-tr" name="nachricht" placeholder="Alerjiler, özel notlar veya bize selam ♥"></textarea>
+          <textarea id="message-tr" name="nachricht" placeholder="Alerjiler, notlar, selam ♥"></textarea>
 
           <button class="btn btn--primary btn--full" type="submit">Gönder</button>
-
-          <small>Gönderdiğin bilgiler sadece düğün planlaması için kullanılacaktır.</small>
+          <small>Bilgiler sadece düğün planlaması için kullanılır.</small>
         </form>
       </div>
     </section>
 
-    <!-- =========================
-         NEU: FOTOS / GALERIE (TR)
-         ========================= -->
     <section id="tr-fotos" class="section">
       <div class="card">
         <h3>Fotoğraflar</h3>
-        <p>Onaylanmış tüm fotoğrafları burada görebilirsin. (Açmak için tıkla)</p>
+        <p>Tüm fotoğraflar burada. (Açmak için tıkla)</p>
+
+        <div style="margin-top:10px;">
+          <button class="btn btn--ghost" type="button" onclick="reloadGallery('tr')">Yenile</button>
+        </div>
 
         <div id="gallery-tr" class="photo-grid" aria-label="Fotogalerie Türkçe"></div>
         <div id="gallery-tr-meta" class="photo-meta"></div>
-
-        <p class="photo-meta" style="margin-top:14px;">
-          Fotoğraf yükleme, kartındaki QR kod ile yapılır.
-        </p>
       </div>
     </section>
-
   </div>
 
-  <!-- NEU: Lightbox (einmal für beide Sprachen) -->
+  <!-- Lightbox -->
   <dialog id="lightbox" class="lightbox" aria-label="Fotoanzeige">
     <button class="lb-close" type="button" aria-label="Schließen">×</button>
     <div class="lightbox-inner">
-      <img id="lbImg" alt="Foto in groß" />
+      <img id="lbImg" alt="Foto" />
       <div class="lb-actions">
         <a id="lbOpenOriginal" class="btn btn--ghost" target="_blank" rel="noopener">Original öffnen</a>
         <a id="lbDownload" class="btn btn--primary" download>Download</a>
@@ -567,12 +524,10 @@
   </dialog>
 
   <script>
-    /* =========================
-       NEU: API Basis (anpassen!)
-       ========================= */
-    const PHOTO_API_BASE = "https://DEINE-API.example"; // <-- HIER ersetzen
+    // Supabase Edge Function
+    const PHOTO_API_BASE = "https://vyspdptamoxxbwrcvjqa.supabase.co/functions/v1/wedding";
+    const weddingDate = new Date("2026-04-11T17:00:00");
 
-    /* Sprache auswählen */
     function chooseLanguage(lang) {
       document.getElementById("startscreen").classList.add("hidden");
 
@@ -593,14 +548,9 @@
       }
 
       setupGuestFields();
-
-      // NEU: Galerie laden
       loadGallery(lang).catch(() => {});
-
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-
-    const weddingDate = new Date("2026-04-11T17:00:00");
 
     function pad(n) { return n.toString().padStart(2, "0"); }
 
@@ -667,7 +617,6 @@
 
           field.type = "text";
           field.name = (lang === "de" ? "begleitperson_name_de_" : "begleitperson_name_tr_") + i;
-
           container.appendChild(label);
           container.appendChild(field);
         }
@@ -684,13 +633,7 @@
       }
     }
 
-    /* =========================
-       NEU: Galerie / Lightbox
-       Erwartete API Antwort:
-       [
-         { thumbUrl: "...", fullUrl: "...", originalUrl: "...", createdAt: "..."}
-       ]
-       ========================= */
+    // Lightbox
     const lightbox = document.getElementById("lightbox");
     const lbImg = document.getElementById("lbImg");
     const lbOpenOriginal = document.getElementById("lbOpenOriginal");
@@ -708,27 +651,29 @@
 
       if (!grid || !meta) return;
 
-      meta.textContent = "Lade Fotos …";
+      meta.textContent = (lang === "de") ? "Lade Fotos …" : "Fotoğraflar yükleniyor …";
 
-      const res = await fetch(`${PHOTO_API_BASE}/photos?lang=${encodeURIComponent(lang)}`, { cache: "no-store" });
+      const res = await fetch(`${PHOTO_API_BASE}/photos`, { cache: "no-store" });
       if (!res.ok) {
-        meta.textContent = "Fotos konnten nicht geladen werden.";
+        meta.textContent = (lang === "de") ? "Fotos konnten nicht geladen werden." : "Fotoğraflar yüklenemedi.";
         return;
       }
 
       const photos = await res.json();
-      meta.textContent = `${photos.length} Foto(s)`;
+      meta.textContent = (lang === "de")
+        ? `${photos.length} Foto(s)`
+        : `${photos.length} Fotoğraf`;
 
-      grid.innerHTML = photos.map((p, i) => `
+      grid.innerHTML = (photos || []).map((p) => `
         <button class="photo-card" type="button"
-          data-thumb="${p.thumbUrl}"
-          data-full="${p.fullUrl}"
-          data-original="${p.originalUrl}">
-          <img loading="lazy" src="${p.thumbUrl}" alt="Foto">
+          data-full="${p.fullUrl || p.originalUrl}"
+          data-original="${p.originalUrl || p.fullUrl}">
+          <img loading="lazy" src="${p.thumbUrl || p.fullUrl || p.originalUrl}" alt="Foto">
         </button>
       `).join("");
 
-      grid.addEventListener("click", (e) => {
+      // Click-Handler (neu binden)
+      grid.onclick = (e) => {
         const btn = e.target.closest(".photo-card");
         if (!btn) return;
 
@@ -738,9 +683,12 @@
         lbImg.src = fullUrl || originalUrl;
         lbOpenOriginal.href = originalUrl || fullUrl;
         lbDownload.href = originalUrl || fullUrl;
-
         lightbox.showModal();
-      }, { once: true });
+      };
+    }
+
+    function reloadGallery(lang) {
+      loadGallery(lang).catch(() => {});
     }
   </script>
 </body>
