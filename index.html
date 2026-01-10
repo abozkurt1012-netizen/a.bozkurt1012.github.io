@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark light" />
   <title>Hochzeit Gizem &amp; Aykut</title>
 
-  <!-- Optional: schöne Fonts (Google Fonts). Falls du offline bleiben willst: einfach entfernen. -->
+  <!-- Optional: Fonts (wenn du sie nicht willst: die 3 Zeilen entfernen) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,9 +14,6 @@
   <style>
     :root{
       --bg0:#070A07;
-      --bg1:#0B100B;
-      --card: rgba(14,18,14,.72);
-      --card2: rgba(14,18,14,.55);
       --text:#F4F6F0;
       --muted: rgba(244,246,240,.78);
       --soft: rgba(244,246,240,.62);
@@ -81,7 +78,7 @@
     .centered{ min-height:100vh; display:flex; align-items:center; justify-content:center; }
 
     .card{
-      background: var(--card);
+      background: rgba(14,18,14,.72);
       border: var(--border);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
@@ -93,20 +90,6 @@
     .card-inner{ padding: 34px 22px; }
     @media (min-width: 720px){
       .card-inner{ padding: 44px 42px; }
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      color: var(--soft);
-      font-size:.92rem;
-      letter-spacing:.02em;
-      user-select:none;
     }
 
     /* ===== Typography ===== */
@@ -249,7 +232,7 @@
     }
 
     .info-card{
-      background: var(--card2);
+      background: rgba(14,18,14,.55);
       border: var(--border);
       border-radius: var(--radius-lg);
       padding: 16px 16px;
@@ -274,13 +257,18 @@
       justify-content:center;
     }
     .date-chip .pill{
-      border-color: rgba(246,231,178,.28);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 9px 14px;
+      border-radius: 999px;
       background: rgba(0,0,0,.20);
+      border: 1px solid rgba(246,231,178,.28);
       color: rgba(246,231,178,.92);
       letter-spacing: .14em;
       text-transform: uppercase;
       font-size: .88rem;
-      padding: 9px 14px;
+      user-select:none;
     }
 
     /* ===== Countdown ===== */
@@ -449,51 +437,215 @@
       flex-wrap:wrap;
     }
 
-    /* ===== Animations (reduced motion safe) ===== */
-    .reveal{ opacity: 0; transform: translateY(10px); transition: opacity .55s ease, transform .55s ease; }
-    .reveal.in{ opacity: 1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      .bg{ animation:none; }
-      .reveal{ opacity:1; transform:none; transition:none; }
-      .btn, .navlinks a, .photo-card, .photo-card img{ transition:none; }
-    }
-
     /* ===== Helpers ===== */
     .hidden{ display:none !important; }
-    .center{ text-align:center; }
+
+    /* =========================================================
+       INTRO: großer "Schnatz" fliegt 1x um den Screen, dann Start
+       ========================================================= */
+    .intro{
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,.52);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .intro__stage{
+      width: min(1000px, 94vw);
+      height: min(560px, 62vh);
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(12,16,12,.58);
+      box-shadow: 0 22px 60px rgba(0,0,0,.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro__spot{
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(246,231,178,.14), transparent 55%),
+        radial-gradient(circle at 80% 30%, rgba(109,133,64,.16), transparent 60%),
+        radial-gradient(circle at 55% 75%, rgba(255,255,255,.07), transparent 60%);
+    }
+
+    /* Neutrale Sucher-Silhouette (kein Originalcharakter) */
+    .intro__seeker{
+      position:absolute;
+      bottom: 10%;
+      left: 8%;
+      width: 170px;
+      height: 260px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 55% 20%, rgba(255,255,255,.18), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.10);
+      opacity: .86;
+      transform: rotate(-2deg);
+      animation: introSeek 2.4s infinite ease-in-out;
+    }
+    @keyframes introSeek{
+      0%,100%{ transform: translateX(0) rotate(-2deg); opacity:.82; }
+      50%{ transform: translateX(24px) rotate(2deg); opacity:.92; }
+    }
+
+    /* Großer Schnatz */
+    .intro__snitch{
+      position:absolute;
+      left: 8%;
+      top: 18%;
+      width: 140px;   /* groß */
+      height: 92px;   /* groß */
+      transform: translate3d(0,0,0);
+      animation: snitchLap 5.8s linear 1 forwards;
+      will-change: transform;
+      cursor: default;
+      user-select: none;
+    }
+
+    .intro__ball{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width: 72px;
+      height: 72px;
+      transform: translate(-50%,-50%);
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: .06em;
+      color: rgba(0,0,0,.78);
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.68), rgba(255,255,255,0) 42%),
+        linear-gradient(135deg, rgba(246,231,178,1), rgba(186,155,66,1));
+      box-shadow: 0 20px 54px rgba(0,0,0,.50);
+      border: 1px solid rgba(255,255,255,.24);
+    }
+
+    .intro__wing{
+      position:absolute;
+      top:50%;
+      width: 46px;
+      height: 28px;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.28);
+      box-shadow: 0 14px 30px rgba(0,0,0,.24);
+    }
+    .intro__wing--l{
+      left: 0px;
+      border-radius: 24px 8px 24px 8px;
+      transform-origin: 100% 50%;
+      animation: wingL .18s infinite ease-in-out;
+    }
+    .intro__wing--r{
+      right: 0px;
+      border-radius: 8px 24px 8px 24px;
+      transform-origin: 0% 50%;
+      animation: wingR .18s infinite ease-in-out;
+    }
+    @keyframes wingL { 0%,100%{ transform: translateY(-50%) rotate(18deg);} 50%{ transform: translateY(-50%) rotate(-22deg);} }
+    @keyframes wingR { 0%,100%{ transform: translateY(-50%) rotate(-18deg);} 50%{ transform: translateY(-50%) rotate(22deg);} }
+
+    /* 1 Runde um den Screen (innerhalb der Stage) */
+    @keyframes snitchLap{
+      0%   { transform: translate(0%, 0%) rotate(0deg); }
+      18%  { transform: translate(560px, 0px) rotate(10deg); }
+      40%  { transform: translate(560px, 320px) rotate(-12deg); }
+      62%  { transform: translate(0px, 320px) rotate(12deg); }
+      82%  { transform: translate(0px, 40px) rotate(-10deg); }
+      100% { transform: translate(0%, 0%) rotate(0deg); }
+    }
+
+    .intro__text{
+      margin-top: 14px;
+      text-align:center;
+      color: var(--text);
+    }
+    .intro__line{
+      font-family: Fraunces, ui-serif, Georgia, serif;
+      font-weight: 650;
+      font-size: 1.35rem;
+      letter-spacing: .02em;
+    }
+    .intro__sub{
+      margin-top: 6px;
+      color: var(--soft);
+      font-size: .98rem;
+    }
+
+    .intro.out{
+      animation: introFadeOut .55s ease forwards;
+    }
+    @keyframes introFadeOut{
+      to{ opacity:0; transform: translateY(6px); pointer-events:none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .intro__snitch{ animation: none; }
+      .intro__seeker{ animation: none; }
+      .intro.out{ animation:none; opacity:0; pointer-events:none; }
+    }
   </style>
 </head>
 
 <body>
   <div class="bg" aria-hidden="true"></div>
 
-  <!-- START / LANGUAGE -->
-  <section id="startscreen" class="centered">
+  <!-- INTRO: erst Schnatz-Loop, dann Welcome -->
+  <section id="introScreen" class="intro">
+    <div>
+      <div class="intro__stage" aria-hidden="true">
+        <div class="intro__spot"></div>
+
+        <div class="intro__snitch" id="introSnitch">
+          <span class="intro__ball">G+A</span>
+          <span class="intro__wing intro__wing--l"></span>
+          <span class="intro__wing intro__wing--r"></span>
+        </div>
+
+        <div class="intro__seeker" id="introSeeker"></div>
+      </div>
+
+      <div class="intro__text">
+        <div class="intro__line">Der Schnatz ist unterwegs …</div>
+        <div class="intro__sub">gleich erscheint die Seite</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- START / LANGUAGE (erscheint nach Intro) -->
+  <section id="startscreen" class="centered hidden">
     <div class="wrap">
-      <div class="card reveal">
+      <div class="card">
         <div class="card-inner hero">
-          <div class="center">
-            <div class="pill">✨ Hochzeit • Wedding • Düğün</div>
-            <div class="subtitle">WELCOME TO OUR FOREVER</div>
-            <div class="title">Gizem &amp; Aykut</div>
-            <p class="center">Bitte wähle eine Sprache / Lütfen bir dil seçiniz</p>
+          <div class="subtitle">WELCOME TO OUR FOREVER</div>
+          <div class="title">Gizem &amp; Aykut</div>
+          <p>Bitte wähle eine Sprache / Lütfen bir dil seçiniz</p>
 
-            <div class="hero-actions">
-              <button class="btn btn--primary" type="button" onclick="chooseLanguage('de')">Deutsch 🇩🇪</button>
-              <button class="btn btn--ghost" type="button" onclick="chooseLanguage('tr')">Türkçe 🇹🇷</button>
-            </div>
+          <div class="hero-actions">
+            <button class="btn btn--primary" type="button" onclick="chooseLanguage('de')">Deutsch 🇩🇪</button>
+            <button class="btn btn--ghost" type="button" onclick="chooseLanguage('tr')">Türkçe 🇹🇷</button>
+          </div>
 
-            <div class="date-chip">
-              <div class="pill">11. April 2026 • 17:00</div>
-            </div>
+          <div class="date-chip">
+            <div class="pill">11. April 2026 • 17:00</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TOPBAR (only after language selection) -->
+  <!-- TOPBAR (nur nach Sprache) -->
   <header id="topbar" class="topbar hidden" role="navigation" aria-label="Navigation">
     <div class="wrap">
       <a class="brand" href="#top" onclick="scrollToTop(event)">
@@ -516,10 +668,10 @@
 
     <section class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h2>Willkommen</h2>
-            <p class="center">Wir freuen uns sehr, diesen Tag mit euch zu teilen. Hier findet ihr alle Infos – und später auch eure Fotos. ♥</p>
+            <p>Wir freuen uns sehr, diesen Tag mit euch zu teilen. Hier findet ihr alle Infos – und später auch eure Fotos. ♥</p>
 
             <div class="date-chip">
               <div class="pill">11. April 2026 • 17:00 Uhr</div>
@@ -550,11 +702,12 @@
 
     <section id="de-ort" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Ort &amp; Anfahrt</h3>
             <p>Unsere Hochzeit findet hier statt:</p>
             <p><strong>Vernouilletallee 1</strong><br><strong>34587 Felsberg</strong></p>
+
             <div class="hero-actions" style="justify-content:flex-start;">
               <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
                  href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
@@ -570,10 +723,10 @@
 
     <section id="de-countdown" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Countdown</h3>
-            <p class="center">Wir starten am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.</p>
+            <p>Wir starten am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.</p>
 
             <div class="count-row" id="countdown-de">
               <div class="count-box"><div id="de-months" class="count-number">--</div><div class="count-label">Monate</div></div>
@@ -590,7 +743,7 @@
 
     <section id="de-teilnahme" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Teilnahme</h3>
             <p>Bitte gib uns kurz Bescheid, ob du dabei bist – und wenn du magst, auch direkt einen Musikwunsch. ♥</p>
@@ -647,14 +800,14 @@
 
     <section id="de-fotos" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Fotos</h3>
             <p>Hier siehst du alle Fotos. (Tippen/Klicken zum Öffnen)</p>
 
             <div class="photo-toolbar">
               <button class="btn btn--ghost btn--small" type="button" onclick="reloadGallery('de')">Aktualisieren</button>
-              <span class="pill" id="gallery-de-pill">Galerie</span>
+              <span class="btn btn--ghost btn--small" style="cursor:default;">Galerie</span>
             </div>
 
             <div id="gallery-de" class="photo-grid" aria-label="Fotogalerie Deutsch"></div>
@@ -666,17 +819,16 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- CONTENT TR -->
   <main id="content-tr" class="hidden" aria-label="Türkçe">
     <section class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h2>Hoş Geldiniz</h2>
-            <p class="center">Bu özel günü sizinle paylaşmak bizi çok mutlu ediyor. Burada bilgileri ve fotoğrafları bulabilirsiniz. ♥</p>
+            <p>Bu özel günü sizinle paylaşmak bizi çok mutlu ediyor. Burada bilgileri ve fotoğrafları bulabilirsiniz. ♥</p>
 
             <div class="date-chip">
               <div class="pill">11 Nisan 2026 • 17:00</div>
@@ -707,7 +859,7 @@
 
     <section id="tr-ort" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Adres &amp; Ulaşım</h3>
             <p>Düğün adresi:</p>
@@ -728,10 +880,10 @@
 
     <section id="tr-countdown" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Geri Sayım</h3>
-            <p class="center"><strong>11 Nisan 2026</strong> saat <strong>17:00</strong>.</p>
+            <p><strong>11 Nisan 2026</strong> saat <strong>17:00</strong>.</p>
 
             <div class="count-row" id="countdown-tr">
               <div class="count-box"><div id="tr-months" class="count-number">--</div><div class="count-label">Ay</div></div>
@@ -748,7 +900,7 @@
 
     <section id="tr-teilnahme" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Katılım</h3>
             <p>Katılım durumunu ve istersen müzik isteğini yazabilirsin. ♥</p>
@@ -805,14 +957,14 @@
 
     <section id="tr-fotos" class="section">
       <div class="wrap">
-        <div class="card reveal">
+        <div class="card">
           <div class="card-inner">
             <h3>Fotoğraflar</h3>
             <p>Tüm fotoğraflar burada. (Açmak için tıkla)</p>
 
             <div class="photo-toolbar">
               <button class="btn btn--ghost btn--small" type="button" onclick="reloadGallery('tr')">Yenile</button>
-              <span class="pill" id="gallery-tr-pill">Galeri</span>
+              <span class="btn btn--ghost btn--small" style="cursor:default;">Galeri</span>
             </div>
 
             <div id="gallery-tr" class="photo-grid" aria-label="Fotogalerie Türkçe"></div>
@@ -822,7 +974,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- Lightbox -->
@@ -839,7 +990,6 @@
 
   <script>
     // ===== CONFIG =====
-    // Supabase Edge Function Basis (wie vorher)
     const PHOTO_API_BASE = "https://vyspdptamoxxbwrcvjqa.supabase.co/functions/v1/wedding";
     const weddingDate = new Date("2026-04-11T17:00:00");
 
@@ -853,35 +1003,53 @@
       }
     };
 
-    // ===== DOM =====
     const $ = (id) => document.getElementById(id);
 
-    // Reveal on scroll
-    const ioReveal = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) e.target.classList.add("in");
-    }, { threshold: 0.08 });
+    // ===== Intro: nach 1 Runde anzeigen =====
+    function showWelcomeAfterIntro(){
+      const intro = $("introScreen");
+      const start = $("startscreen");
+      const topbar = $("topbar");
 
-    document.querySelectorAll(".reveal").forEach(el => ioReveal.observe(el));
+      if (topbar) topbar.classList.add("hidden");
 
-    // ===== Language / Navigation =====
+      if (intro){
+        intro.classList.add("out");
+        setTimeout(() => {
+          intro.classList.add("hidden");
+          if (start) start.classList.remove("hidden");
+        }, 560);
+      } else {
+        if (start) start.classList.remove("hidden");
+      }
+    }
+
+    // Intro endet exakt nach der Animation (Fallback Timer)
+    (function initIntro(){
+      const snitch = $("introSnitch");
+      const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (prefersReduce){
+        setTimeout(showWelcomeAfterIntro, 350);
+        return;
+      }
+
+      if (snitch){
+        snitch.addEventListener("animationend", showWelcomeAfterIntro, { once: true });
+        setTimeout(showWelcomeAfterIntro, 6500);
+      } else {
+        setTimeout(showWelcomeAfterIntro, 600);
+      }
+    })();
+
+    // ===== Navigation =====
     function buildNav(lang){
       const nav = $("navlinks");
       if (!nav) return;
 
       const links = (lang === "de")
-        ? [
-            ["#top", "Start"],
-            ["#de-ort", "Ort"],
-            ["#de-countdown", "Countdown"],
-            ["#de-teilnahme", "Zusagen"],
-            ["#de-fotos", "Fotos"],
-          ]
-        : [
-            ["#tr-ort", "Adres"],
-            ["#tr-countdown", "Geri Sayım"],
-            ["#tr-teilnahme", "Katılım"],
-            ["#tr-fotos", "Fotoğraflar"],
-          ];
+        ? [["#top","Start"],["#de-ort","Ort"],["#de-countdown","Countdown"],["#de-teilnahme","Zusagen"],["#de-fotos","Fotos"]]
+        : [["#tr-ort","Adres"],["#tr-countdown","Geri Sayım"],["#tr-teilnahme","Katılım"],["#tr-fotos","Fotoğraflar"]];
 
       nav.innerHTML = links.map(([href,label]) => `<a href="${href}">${label}</a>`).join("");
     }
@@ -904,10 +1072,6 @@
       setupGuestFields();
       reloadGallery(lang);
       window.scrollTo({ top: 0, behavior: "smooth" });
-
-      // reveal newly visible content
-      document.querySelectorAll((lang === "de" ? "#content-de" : "#content-tr") + " .reveal")
-        .forEach(el => ioReveal.observe(el));
     }
 
     function switchLanguage(lang){
@@ -1035,13 +1199,12 @@
     lightbox?.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && lightbox?.open) lightbox.close(); });
 
-    // ===== Gallery (robust + infinite scroll) =====
+    // ===== Gallery =====
     async function loadGallery(lang, { reset=false } = {}){
       const g = state.gallery[lang];
       const grid = $(lang === "de" ? "gallery-de" : "gallery-tr");
       const meta = $(lang === "de" ? "gallery-de-meta" : "gallery-tr-meta");
       const loader = $(lang === "de" ? "gallery-de-loader" : "gallery-tr-loader");
-      const pill = $(lang === "de" ? "gallery-de-pill" : "gallery-tr-pill");
       if (!grid || !meta || !loader) return;
 
       if (reset){
@@ -1065,13 +1228,11 @@
       if (g.nextCursor) url.searchParams.set("cursor", g.nextCursor);
 
       loader.textContent = (lang === "de") ? "Lade Fotos …" : "Fotoğraflar yükleniyor …";
-      if (pill) pill.textContent = (lang === "de") ? "Galerie lädt…" : "Yükleniyor…";
 
       try{
         const res = await fetch(url.toString(), { cache: "no-store" });
         if (!res.ok){
           loader.textContent = (lang === "de") ? "Fehler beim Laden." : "Yükleme hatası.";
-          if (pill) pill.textContent = (lang === "de") ? "Fehler" : "Hata";
           return;
         }
 
@@ -1085,7 +1246,6 @@
 
         if (!items.length && grid.querySelectorAll(".photo-card").length === 0){
           loader.textContent = (lang === "de") ? "Noch keine Fotos." : "Henüz fotoğraf yok.";
-          if (pill) pill.textContent = (lang === "de") ? "0 Fotos" : "0 Foto";
           return;
         }
 
@@ -1112,8 +1272,6 @@
         meta.textContent = (lang === "de")
           ? `${count} Foto(s) • zuletzt aktualisiert: ${ts.toLocaleTimeString()}`
           : `${count} Fotoğraf • son güncelleme: ${ts.toLocaleTimeString()}`;
-
-        if (pill) pill.textContent = (lang === "de") ? `${count} Fotos` : `${count} Foto`;
 
         loader.textContent = g.done
           ? ((lang === "de") ? "Ende der Galerie." : "Galeri sonu.")
@@ -1152,7 +1310,6 @@
       loadGallery(lang, { reset:true }).catch(()=>{});
     }
 
-    // Minimaler Attr-Escape (sicherer bei Sonderzeichen)
     function escapeAttr(s){
       return String(s)
         .replaceAll("&", "&amp;")
