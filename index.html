@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark" />
-  <title>Gizem &amp; Aykut – Hochzeit</title>
+  <title>Gizem &amp; Aykut</title>
 
-  <!-- Optional: Fonts (wenn du sie nicht willst: diese 3 Zeilen entfernen) -->
+  <!-- Optional: Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg0:#070A07;
-      --bg1:#0B100B;
-      --card: rgba(14,18,14,.70);
-      --card2: rgba(14,18,14,.55);
+      --bg0:#050705;
+      --bg1:#0A100A;
+      --card: rgba(14,18,14,.72);
+      --border: 1px solid rgba(255,255,255,.10);
 
       --text:#F4F6F0;
       --muted: rgba(244,246,240,.78);
@@ -26,13 +26,10 @@
       --olive2:#6D8540;
       --gold:#F6E7B2;
 
-      --border: 1px solid rgba(255,255,255,.10);
-      --radius-xl: 26px;
+      --radius-xl: 28px;
       --radius-lg: 20px;
-      --radius-md: 14px;
-
-      --shadow: 0 26px 70px rgba(0,0,0,.62);
-      --shadow2: 0 16px 40px rgba(0,0,0,.48);
+      --shadow: 0 26px 80px rgba(0,0,0,.65);
+      --shadow2: 0 18px 50px rgba(0,0,0,.55);
 
       --max: 1100px;
     }
@@ -48,47 +45,70 @@
       text-align:center;
     }
 
-    /* =========================================================
-       Background: elegant, ohne eure Fotos + florale Seiten
-       ========================================================= */
+    /* =========================
+       Hintergrund (ohne eure Fotos)
+       ========================= */
     .bg{
-      position: fixed;
-      inset: 0;
-      z-index: -3;
+      position:fixed; inset:0; z-index:-5;
       background:
-        radial-gradient(900px 700px at 15% 10%, rgba(109,133,64,.22), transparent 60%),
-        radial-gradient(900px 700px at 85% 15%, rgba(246,231,178,.12), transparent 58%),
-        radial-gradient(900px 900px at 50% 85%, rgba(255,255,255,.06), transparent 60%),
-        linear-gradient(180deg, #070A07, #0B100B);
+        radial-gradient(1200px 900px at 20% 10%, rgba(109,133,64,.24), transparent 60%),
+        radial-gradient(1100px 900px at 80% 15%, rgba(246,231,178,.13), transparent 58%),
+        radial-gradient(1200px 1000px at 55% 85%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
     .bg::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.80));
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.82));
       pointer-events:none;
     }
 
-    /* Florale Seiten (SVG als Data-URI, kein externes Bild nötig) */
-    .flowers{
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
+    /* =========================
+       Realistischere Blumen (organisch über den ganzen Screen)
+       - 3 Ebenen: weit hinten, mittel, vorn
+       - leichtes Driften, weiche Maskenränder, kein „abgetrenntes“ Links/Rechts
+       ========================= */
+    .flora{
+      position:fixed; inset:-8vh -8vw; z-index:-4;
+      pointer-events:none;
       opacity: .92;
-      filter: saturate(1.08);
-      background-repeat: no-repeat;
-      background-size: 320px 100vh, 320px 100vh;
-      background-position: left center, right center;
+      filter: saturate(1.12) contrast(1.03);
+      mix-blend-mode: screen;
+      background-repeat:no-repeat;
+      background-size: cover;
+      background-position: center;
       background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='1200' viewBox='0 0 320 1200'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='20%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.35'/%3E%3Cstop offset='60%25' stop-color='%234a5d23' stop-opacity='0.16'/%3E%3Cstop offset='100%25' stop-color='%23070a07' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='p' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.22'/%3E%3Cstop offset='100%25' stop-color='%23f6e7b2' stop-opacity='0.02'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='1200' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23f6e7b2' stroke-opacity='0.22' stroke-width='2'%3E%3Cpath d='M210 80 C120 220, 240 310, 120 420 C20 520, 200 640, 110 760 C40 860, 140 970, 80 1120'/%3E%3Cpath d='M260 190 C170 280, 290 360, 180 470 C90 560, 260 680, 150 800 C90 900, 200 1010, 130 1180'/%3E%3C/g%3E%3Cg%3E%3Cg fill='%236d8540' fill-opacity='0.22'%3E%3Cellipse cx='180' cy='220' rx='32' ry='16'/%3E%3Cellipse cx='140' cy='360' rx='28' ry='14'/%3E%3Cellipse cx='200' cy='520' rx='36' ry='18'/%3E%3Cellipse cx='150' cy='740' rx='32' ry='16'/%3E%3Cellipse cx='210' cy='920' rx='34' ry='17'/%3E%3C/g%3E%3Cg fill='%23f6e7b2' fill-opacity='0.12'%3E%3Ccircle cx='190' cy='250' r='18'/%3E%3Ccircle cx='160' cy='390' r='14'/%3E%3Ccircle cx='210' cy='550' r='16'/%3E%3Ccircle cx='160' cy='770' r='15'/%3E%3Ccircle cx='220' cy='950' r='16'/%3E%3C/g%3E%3C/g%3E%3Crect x='0' y='0' width='320' height='1200' fill='url(%23p)'/%3E%3C/svg%3E"),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='1200' viewBox='0 0 320 1200'%3E%3Cdefs%3E%3CradialGradient id='g' cx='60%25' cy='20%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.35'/%3E%3Cstop offset='60%25' stop-color='%234a5d23' stop-opacity='0.16'/%3E%3Cstop offset='100%25' stop-color='%23070a07' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='p' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.22'/%3E%3Cstop offset='100%25' stop-color='%23f6e7b2' stop-opacity='0.02'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='1200' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23f6e7b2' stroke-opacity='0.22' stroke-width='2'%3E%3Cpath d='M110 80 C200 220, 80 310, 200 420 C300 520, 120 640, 210 760 C280 860, 180 970, 240 1120'/%3E%3Cpath d='M60 190 C150 280, 30 360, 140 470 C230 560, 60 680, 170 800 C230 900, 120 1010, 190 1180'/%3E%3C/g%3E%3Cg%3E%3Cg fill='%236d8540' fill-opacity='0.22'%3E%3Cellipse cx='140' cy='220' rx='32' ry='16'/%3E%3Cellipse cx='180' cy='360' rx='28' ry='14'/%3E%3Cellipse cx='120' cy='520' rx='36' ry='18'/%3E%3Cellipse cx='170' cy='740' rx='32' ry='16'/%3E%3Cellipse cx='110' cy='920' rx='34' ry='17'/%3E%3C/g%3E%3Cg fill='%23f6e7b2' fill-opacity='0.12'%3E%3Ccircle cx='130' cy='250' r='18'/%3E%3Ccircle cx='170' cy='390' r='14'/%3E%3Ccircle cx='120' cy='550' r='16'/%3E%3Ccircle cx='170' cy='770' r='15'/%3E%3Ccircle cx='110' cy='950' r='16'/%3E%3C/g%3E%3C/g%3E%3Crect x='0' y='0' width='320' height='1200' fill='url(%23p)'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1800' height='1200' viewBox='0 0 1800 1200'%3E%3Cdefs%3E%3CradialGradient id='g1' cx='30%25' cy='20%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.28'/%3E%3Cstop offset='55%25' stop-color='%234a5d23' stop-opacity='0.14'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='g2' cx='70%25' cy='18%25' r='75%25'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.16'/%3E%3Cstop offset='55%25' stop-color='%23f6e7b2' stop-opacity='0.06'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='blur' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='6'/%3E%3C/filter%3E%3ClinearGradient id='leaf' x1='0' x2='1'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.28'/%3E%3Cstop offset='100%25' stop-color='%234a5d23' stop-opacity='0.10'/%3E%3C/linearGradient%3E%3ClinearGradient id='petal' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.18'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0.03'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1800' height='1200' fill='url(%23g1)'/%3E%3Crect width='1800' height='1200' fill='url(%23g2)'/%3E%3Cg filter='url(%23blur)'%3E%3Cpath d='M120 1030 C260 760, 210 520, 410 300 C560 140, 720 120, 860 210 C980 290, 980 420, 900 560 C820 700, 640 760, 520 900 C420 1020, 320 1120, 120 1030 Z' fill='url(%23leaf)'/%3E%3Cpath d='M1680 1040 C1540 780, 1560 540, 1360 320 C1200 140, 1040 140, 930 250 C820 360, 840 490, 930 630 C1020 780, 1210 810, 1330 940 C1440 1050, 1500 1140, 1680 1040 Z' fill='url(%23leaf)'/%3E%3Cpath d='M300 260 C380 220, 460 240, 520 300 C580 360, 560 430, 480 460 C410 490, 340 460, 300 400 C260 340, 260 290, 300 260 Z' fill='url(%23petal)'/%3E%3Cpath d='M1500 260 C1420 220, 1340 240, 1280 300 C1220 360, 1240 430, 1320 460 C1390 490, 1460 460, 1500 400 C1540 340, 1540 290, 1500 260 Z' fill='url(%23petal)'/%3E%3C/g%3E%3C/svg%3E");
+      animation: floraDrift 18s ease-in-out infinite;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,.95) 50%, rgba(0,0,0,.55) 78%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,.95) 50%, rgba(0,0,0,.55) 78%, rgba(0,0,0,0) 100%);
+    }
+    @keyframes floraDrift{
+      0%,100%{ transform: translate3d(-1.5%, -1%, 0) scale(1.03) rotate(-.2deg); opacity:.86; }
+      50%{ transform: translate3d(1.5%, 1.2%, 0) scale(1.06) rotate(.2deg); opacity:.94; }
+    }
+    .flora2{
+      position:fixed; inset:-10vh -10vw; z-index:-3;
+      pointer-events:none;
+      opacity:.55;
+      mix-blend-mode: overlay;
+      filter: blur(0.2px) saturate(1.1);
+      background-repeat:no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1800' height='1200' viewBox='0 0 1800 1200'%3E%3Cdefs%3E%3Cfilter id='b' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='2.5'/%3E%3C/filter%3E%3ClinearGradient id='v' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23f6e7b2' stop-opacity='0.10'/%3E%3Cstop offset='1' stop-color='%236d8540' stop-opacity='0.08'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg filter='url(%23b)'%3E%3Cpath d='M120 980 C260 760, 260 600, 420 420 C560 260, 760 220, 920 330 C1090 450, 1020 620, 840 720 C680 810, 560 860, 460 980 C360 1100, 240 1140, 120 980 Z' fill='url(%23v)'/%3E%3Cpath d='M1680 990 C1540 770, 1540 610, 1380 430 C1240 270, 1040 230, 880 340 C710 460, 780 630, 960 730 C1120 820, 1240 870, 1340 990 C1440 1110, 1560 1150, 1680 990 Z' fill='url(%23v)'/%3E%3C/g%3E%3C/svg%3E");
+      animation: floraDrift2 22s ease-in-out infinite;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,.85) 52%, rgba(0,0,0,.45) 80%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,.85) 52%, rgba(0,0,0,.45) 80%, rgba(0,0,0,0) 100%);
+    }
+    @keyframes floraDrift2{
+      0%,100%{ transform: translate3d(1.2%, -1.1%, 0) scale(1.04); }
+      50%{ transform: translate3d(-1.2%, 1.1%, 0) scale(1.08); }
     }
 
-    /* =========================================================
-       Layout / Cards / Typo
-       ========================================================= */
+    /* =========================
+       Layout / Cards
+       ========================= */
     .wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:0 18px; }
     .section{ padding: 64px 0; }
     .centered{ min-height:100vh; display:flex; align-items:center; justify-content:center; }
@@ -103,9 +123,9 @@
       overflow:hidden;
       text-align:left;
     }
-    .card-inner{ padding: 36px 22px; }
+    .card-inner{ padding: 38px 22px; }
     @media (min-width: 720px){
-      .card-inner{ padding: 50px 56px; }
+      .card-inner{ padding: 54px 58px; }
     }
 
     .subtitle{
@@ -119,7 +139,7 @@
     .title{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight: 650;
-      font-size: clamp(2.25rem, 5.4vw, 3.6rem);
+      font-size: clamp(2.2rem, 5.2vw, 3.6rem);
       letter-spacing: .02em;
       line-height: 1.06;
       color: var(--text);
@@ -129,8 +149,8 @@
     h2{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight: 650;
-      font-size: clamp(1.75rem, 3.2vw, 2.35rem);
-      margin-bottom: 14px;
+      font-size: clamp(1.75rem, 3.1vw, 2.35rem);
+      margin-bottom: 12px;
       text-align:center;
     }
     h3{
@@ -138,6 +158,7 @@
       font-weight: 650;
       font-size: clamp(1.35rem, 2.4vw, 1.85rem);
       margin-bottom: 12px;
+      text-align:center;
     }
     p{
       color: var(--muted);
@@ -147,6 +168,29 @@
       text-align:center;
     }
     .muted{ color: var(--soft); }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top: 18px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(246,231,178,.28);
+      color: rgba(246,231,178,.92);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .86rem;
+      user-select:none;
+    }
+    .date-chip{ margin-top: 14px; display:flex; justify-content:center; }
 
     /* Buttons */
     .btn{
@@ -171,7 +215,7 @@
       background: linear-gradient(135deg, var(--olive), var(--olive2));
       box-shadow: var(--shadow2);
     }
-    .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 20px 52px rgba(0,0,0,.60); }
+    .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 22px 60px rgba(0,0,0,.62); }
     .btn--ghost{
       background: rgba(255,255,255,.07);
       border: 1px solid rgba(255,255,255,.14);
@@ -180,76 +224,34 @@
     .btn--ghost:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
     .btn--small{ padding: 10px 14px; font-size:.92rem; font-weight:600; }
 
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top: 18px;
-    }
-
-    .date-chip{
-      margin-top: 14px;
-      display:flex;
-      justify-content:center;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(246,231,178,.28);
-      color: rgba(246,231,178,.92);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      font-size: .86rem;
-      user-select:none;
-    }
-
     .hidden{ display:none !important; }
 
-    /* =========================================================
+    /* =========================
        TOPBAR
-       ========================================================= */
+       ========================= */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 60;
+      position: sticky; top: 0; z-index: 60;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       background: rgba(7,10,7,.55);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .topbar .wrap{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 10px 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding: 10px 18px;
       max-width: var(--max);
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color: var(--text);
-      text-decoration:none;
-      user-select:none;
+      display:flex; align-items:center; gap:10px;
+      color: var(--text); text-decoration:none; user-select:none;
     }
     .brand-dot{
       width:10px; height:10px; border-radius:999px;
       background: linear-gradient(135deg, var(--olive), var(--olive2));
-      box-shadow: 0 10px 20px rgba(109,133,64,.22);
+      box-shadow: 0 10px 22px rgba(109,133,64,.22);
     }
     .brand span{ font-weight:600; letter-spacing:.04em; font-size:.95rem; }
-    .navlinks{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+    .navlinks{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
     .navlinks a{
       color: var(--soft);
       text-decoration:none;
@@ -264,136 +266,149 @@
     .lang-mini{ display:flex; gap:8px; align-items:center; justify-content:flex-end; }
 
     /* =========================================================
-       INTRO (Original-Design): Zauber-Sucher + wunderschöner Schnatz
-       - Wichtig: keine echten HP-Grafiken/Marken, nur eigene Silhouette.
-       - Öffnet erst, wenn Schnatz "gefunden" UND geklickt wurde.
+       CINEMATIC INTRO (Canvas particles + chase + sound)
        ========================================================= */
     .intro{
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      display: grid;
-      place-items: center;
-      background: rgba(0,0,0,.56);
+      position: fixed; inset: 0; z-index: 200;
+      display:grid; place-items:center;
+      background: rgba(0,0,0,.58);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
     .intro__frame{
-      width: min(980px, 94vw);
-      border-radius: 30px;
+      width: min(1000px, 94vw);
+      border-radius: 32px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(12,16,12,.56);
       box-shadow: var(--shadow);
       overflow: hidden;
       position: relative;
       padding: 26px 22px 22px;
+      transform: translate3d(0,0,0);
     }
-    @media (min-width: 720px){
-      .intro__frame{ padding: 34px 30px 26px; }
-    }
+    @media (min-width: 720px){ .intro__frame{ padding: 34px 32px 26px; } }
 
     .intro__stage{
       position: relative;
       width: 100%;
-      height: min(520px, 56vh);
-      border-radius: 24px;
+      height: min(560px, 58vh);
+      border-radius: 26px;
       border: 1px solid rgba(255,255,255,.10);
       background:
-        radial-gradient(900px 600px at 40% 20%, rgba(246,231,178,.10), transparent 55%),
-        radial-gradient(900px 600px at 70% 40%, rgba(109,133,64,.14), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.16));
+        radial-gradient(1000px 700px at 45% 25%, rgba(246,231,178,.10), transparent 55%),
+        radial-gradient(1000px 700px at 70% 45%, rgba(109,133,64,.14), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.18));
       overflow: hidden;
     }
 
-    /* "Sucher" (neutrale Figur, keine Marke) */
-    .seeker{
-      position:absolute;
-      left: 12%;
-      bottom: 14%;
-      width: 220px;
-      height: 280px;
-      opacity: .92;
-      transform: translateX(0);
-      animation: seekerScan 3.2s infinite ease-in-out;
-      filter: drop-shadow(0 14px 30px rgba(0,0,0,.45));
-    }
-    @keyframes seekerScan{
-      0%,100%{ transform: translateX(0) rotate(-1deg); }
-      50%{ transform: translateX(22px) rotate(1deg); }
+    .sparkCanvas{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      pointer-events:none;
+      opacity: .98;
     }
 
-    /* Spotlight, der "sucht" */
+    .cineFog{
+      position:absolute; inset:-30%;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(246,231,178,.10), transparent 55%),
+        radial-gradient(circle at 70% 35%, rgba(109,133,64,.12), transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 60%);
+      filter: blur(7px);
+      opacity: .82;
+      animation: fogDrift 16s ease-in-out infinite;
+    }
+    @keyframes fogDrift{
+      0%,100%{ transform: translate3d(-2%, -1%, 0) scale(1.02); }
+      50%{ transform: translate3d(2%, 1.6%, 0) scale(1.06); }
+    }
+    .cineVignette{
+      position:absolute; inset:0;
+      background: radial-gradient(circle at center, transparent 55%, rgba(0,0,0,.55) 100%);
+      pointer-events:none;
+    }
+    .cineGrain{
+      position:absolute; inset:0;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 1px, transparent 1px, transparent 3px);
+      opacity:.09;
+      mix-blend-mode: overlay;
+      pointer-events:none;
+      animation: grainJitter .9s steps(2) infinite;
+    }
+    @keyframes grainJitter{
+      0%{ transform: translate3d(0,0,0); }
+      50%{ transform: translate3d(-1px,1px,0); }
+      100%{ transform: translate3d(1px,-1px,0); }
+    }
+
+    /* Spotlight */
     .spot{
       position:absolute;
-      width: 520px;
-      height: 520px;
+      width: 560px; height: 560px;
       border-radius: 999px;
       background: radial-gradient(circle, rgba(246,231,178,.16), rgba(246,231,178,0) 62%);
+      opacity: .0;
+      left: 6%; top: 10%;
+      pointer-events:none;
       filter: blur(0px);
-      opacity: .85;
-      left: 6%;
-      top: 10%;
-      animation: spotMove 8.5s linear 1 forwards;
-    }
-    @keyframes spotMove{
-      0%{ transform: translate(0,0); opacity:.70; }
-      25%{ transform: translate(34vw, 2vh); opacity:.88; }
-      55%{ transform: translate(48vw, 18vh); opacity:.92; }
-      80%{ transform: translate(16vw, 26vh); opacity:.90; }
-      100%{ transform: translate(28vw, 10vh); opacity:.94; }
     }
 
-    /* Schnatz (SVG) – erst versteckt, dann "found" + klickbar */
+    /* Wizard on broom (neutral silhouette) */
+    .wizard{
+      position:absolute;
+      width: 280px;
+      height: auto;
+      left: 0; top: 0;
+      opacity: .92;
+      transform: translate3d(0,0,0) rotate(0deg);
+      filter: drop-shadow(0 18px 45px rgba(0,0,0,.60));
+      will-change: transform;
+      pointer-events:none;
+    }
+
+    /* Snitch + glow */
     .snitch{
       position:absolute;
-      width: 140px;
-      height: 140px;
-      left: 50%;
-      top: 42%;
-      transform: translate(-50%,-50%) scale(.86);
+      width: 190px; height: 190px;
+      left: 0; top: 0;
       opacity: 0;
-      pointer-events: none;
+      transform: translate3d(0,0,0) scale(.94);
       filter:
-        drop-shadow(0 16px 40px rgba(0,0,0,.55))
-        drop-shadow(0 0 28px rgba(246,231,178,.16));
+        drop-shadow(0 18px 48px rgba(0,0,0,.65))
+        drop-shadow(0 0 42px rgba(246,231,178,.18));
+      will-change: transform, opacity;
     }
-
     .snitch.found{
       opacity: 1;
-      pointer-events: auto;
-      animation: snitchHover 2.2s infinite ease-in-out;
       cursor: pointer;
+      pointer-events:auto;
+      animation: snitchHover 2.4s ease-in-out infinite;
     }
     @keyframes snitchHover{
-      0%,100%{ transform: translate(-50%,-50%) scale(1) rotate(-2deg); }
-      50%{ transform: translate(-50%,-55%) scale(1.04) rotate(2deg); }
+      0%,100%{ transform: translate3d(var(--sx,0), var(--sy,0), 0) scale(1) rotate(-2deg); }
+      50%{ transform: translate3d(var(--sx,0), calc(var(--sy,0) - 8px), 0) scale(1.03) rotate(2deg); }
     }
-
-    .snitch .wing{
-      transform-origin: center;
-      animation: wingFlap .16s infinite ease-in-out;
-    }
-    @keyframes wingFlap{
-      0%,100%{ transform: rotate(12deg); }
-      50%{ transform: rotate(-14deg); }
-    }
+    .snitch .wing{ transform-origin: center; animation: wingFlap .145s infinite ease-in-out; }
+    @keyframes wingFlap{ 0%,100%{ transform: rotate(12deg);} 50%{ transform: rotate(-14deg);} }
 
     .snitchGlow{
       position:absolute;
-      left: 50%;
-      top: 42%;
-      width: 280px;
-      height: 280px;
-      transform: translate(-50%,-50%);
+      width: 420px; height: 420px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(246,231,178,.14), transparent 60%);
+      background: radial-gradient(circle, rgba(246,231,178,.16), transparent 64%);
       opacity: 0;
-      transition: opacity .5s ease;
+      transition: opacity .7s ease;
       pointer-events:none;
+      will-change: transform;
     }
     .snitchGlow.on{ opacity: 1; }
 
-    /* Text unter der Stage */
+    /* Cinematic camera moves (applied to stage via JS) */
+    .camera{
+      will-change: transform, filter;
+    }
+
     .intro__text{
       margin-top: 18px;
       text-align:center;
@@ -404,13 +419,13 @@
     .intro__headline{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight: 650;
-      font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+      font-size: clamp(1.35rem, 2.6vw, 1.8rem);
       letter-spacing: .02em;
     }
     .intro__hint{
       color: var(--soft);
       font-size: 1rem;
-      max-width: 52ch;
+      max-width: 56ch;
       line-height: 1.6;
     }
     .intro__cta{
@@ -421,95 +436,115 @@
       margin-top: 2px;
     }
 
-    .intro.out{
-      animation: introFadeOut .7s ease forwards;
-    }
-    @keyframes introFadeOut{
-      to{ opacity:0; transform: translateY(8px); pointer-events:none; }
+    .intro.out{ animation: introFadeOut .8s ease forwards; }
+    @keyframes introFadeOut{ to{ opacity:0; transform: translateY(10px); pointer-events:none; } }
+
+    @media (prefers-reduced-motion: reduce){
+      .flora, .flora2{ animation:none; }
+      .cineFog, .cineGrain{ animation:none; }
+      .snitch .wing{ animation:none; }
+      .intro.out{ animation:none; opacity:0; pointer-events:none; }
     }
 
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      .seeker, .spot, .snitch.found, .snitch .wing{ animation: none; }
-      .intro.out{ animation:none; opacity:0; pointer-events:none; }
+    /* Simple form styling */
+    form{ margin-top:18px; text-align:left; }
+    label{ display:block; margin-top:12px; margin-bottom:6px; color: rgba(244,246,240,.92); font-size:.95rem; }
+    input, select, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.36);
+      color: var(--text);
+      font-size: .98rem;
+    }
+    input:focus, select:focus, textarea:focus{
+      outline:none;
+      border-color: rgba(109,133,64,.95);
+      box-shadow: 0 0 0 2px rgba(109,133,64,.30);
     }
   </style>
 </head>
 
 <body>
   <div class="bg" aria-hidden="true"></div>
-  <div class="flowers" aria-hidden="true"></div>
+  <div class="flora" aria-hidden="true"></div>
+  <div class="flora2" aria-hidden="true"></div>
 
-  <!-- =========================================================
-       INTRO: läuft länger, zentral, Schnatz erscheint, Seite öffnet erst nach Klick
-       ========================================================= -->
+  <!-- =========================
+       CINEMATIC INTRO
+       Öffnet Seite erst nach „Found“ + Klick auf Schnatz
+       Sound: startet erst nach User-Interaktion (Browserregel)
+       ========================= -->
   <section id="introScreen" class="intro" aria-label="Intro">
     <div class="intro__frame">
-      <div class="intro__stage" aria-hidden="true">
+      <div id="stage" class="intro__stage camera" aria-hidden="true">
+        <canvas id="sparkCanvas" class="sparkCanvas"></canvas>
+        <div class="cineFog"></div>
+        <div class="cineVignette"></div>
+        <div class="cineGrain"></div>
+
         <div class="spot" id="spot"></div>
 
-        <!-- Neutrale Sucher-Figur (keine echte Marke/Charakter) -->
-        <svg class="seeker" viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sucher">
+        <!-- Wizard on broom (eigene Silhouette, kein Originalcharakter) -->
+        <svg id="wizard" class="wizard" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
-            <linearGradient id="coat" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stop-color="rgba(255,255,255,.18)"/>
-              <stop offset="1" stop-color="rgba(255,255,255,.04)"/>
+            <linearGradient id="wGlow" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(246,231,178,.22)"/>
+              <stop offset="1" stop-color="rgba(109,133,64,.10)"/>
             </linearGradient>
           </defs>
-          <g opacity=".95">
-            <path d="M80 70 C78 44, 98 26, 110 26 C124 26, 144 44, 142 70 C160 80, 170 105, 165 130 C155 185, 150 240, 140 260 C120 276, 100 276, 80 260 C70 240, 65 185, 55 130 C50 105, 60 80, 80 70 Z"
-                  fill="url(#coat)" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
-            <circle cx="110" cy="55" r="18" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.10)"/>
-            <!-- "Brille" (neutral) -->
-            <g stroke="rgba(246,231,178,.55)" stroke-width="3" fill="none" opacity=".9">
-              <circle cx="100" cy="54" r="10"/>
-              <circle cx="120" cy="54" r="10"/>
-              <path d="M110 54 L110 54" />
-            </g>
-            <!-- "Zauberstab" -->
-            <path d="M150 120 L200 90" stroke="rgba(246,231,178,.55)" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="200" cy="90" r="3" fill="rgba(246,231,178,.9)"/>
+          <path d="M30 92 C90 70, 170 68, 230 92" fill="none" stroke="url(#wGlow)" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+          <path d="M36 92 C96 74, 168 74, 230 92" fill="none" stroke="rgba(246,231,178,.55)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M226 92 L248 82" stroke="rgba(246,231,178,.45)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M226 92 L248 102" stroke="rgba(246,231,178,.45)" stroke-width="4" stroke-linecap="round"/>
+
+          <g opacity=".92">
+            <circle cx="120" cy="48" r="10" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.10)"/>
+            <path d="M112 60 C108 86, 114 100, 128 112 C144 124, 160 118, 170 104 C160 98, 152 88, 150 76 C146 60, 132 56, 112 60 Z"
+                  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.10)" stroke-width="2"/>
+            <path d="M120 64 C94 78, 86 100, 96 126 C110 122, 124 112, 132 100 C140 88, 140 76, 120 64 Z"
+                  fill="rgba(109,133,64,.12)" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+            <path d="M158 78 L190 64" stroke="rgba(246,231,178,.55)" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="190" cy="64" r="2.6" fill="rgba(246,231,178,.95)"/>
           </g>
         </svg>
 
         <div class="snitchGlow" id="snitchGlow"></div>
 
-        <!-- Schnatz (eigene SVG-Optik, „professioneller“) -->
+        <!-- Snitch -->
         <svg id="snitch" class="snitch" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="button" aria-label="Schnatz öffnen" tabindex="0">
           <defs>
             <radialGradient id="goldCore" cx="35%" cy="25%" r="70%">
-              <stop offset="0" stop-color="#fff6d6" stop-opacity="0.95"/>
-              <stop offset="45%" stop-color="#f6e7b2" stop-opacity="0.95"/>
+              <stop offset="0" stop-color="#fff6d6" stop-opacity="0.96"/>
+              <stop offset="45%" stop-color="#f6e7b2" stop-opacity="0.96"/>
               <stop offset="100%" stop-color="#b99a3e" stop-opacity="0.95"/>
             </radialGradient>
             <linearGradient id="goldEdge" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="#ffe9a8" stop-opacity="0.9"/>
-              <stop offset="60%" stop-color="#d7b55a" stop-opacity="0.9"/>
-              <stop offset="100%" stop-color="#8c6a22" stop-opacity="0.85"/>
+              <stop offset="0" stop-color="#ffe9a8" stop-opacity="0.95"/>
+              <stop offset="60%" stop-color="#d7b55a" stop-opacity="0.90"/>
+              <stop offset="100%" stop-color="#8c6a22" stop-opacity="0.88"/>
             </linearGradient>
             <linearGradient id="wingGrad" x1="0" x2="1">
-              <stop offset="0" stop-color="#fff4cf" stop-opacity="0.75"/>
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.15"/>
+              <stop offset="0" stop-color="#fff4cf" stop-opacity="0.78"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.14"/>
             </linearGradient>
           </defs>
 
-          <!-- Wings -->
           <g class="wing" transform="translate(38,110)">
             <path d="M0 0 C-28 -20,-34 -60, -10 -80 C20 -104, 44 -86, 54 -60 C40 -58, 22 -48, 10 -34 C0 -22, -4 -10, 0 0 Z"
-                  fill="url(#wingGrad)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+                  fill="url(#wingGrad)" stroke="rgba(255,255,255,.24)" stroke-width="2"/>
             <path d="M8 -10 C-8 -28,-4 -52, 20 -64" fill="none" stroke="rgba(246,231,178,.35)" stroke-width="2"/>
           </g>
           <g class="wing" transform="translate(182,110) scale(-1,1)">
             <path d="M0 0 C-28 -20,-34 -60, -10 -80 C20 -104, 44 -86, 54 -60 C40 -58, 22 -48, 10 -34 C0 -22, -4 -10, 0 0 Z"
-                  fill="url(#wingGrad)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+                  fill="url(#wingGrad)" stroke="rgba(255,255,255,.24)" stroke-width="2"/>
             <path d="M8 -10 C-8 -28,-4 -52, 20 -64" fill="none" stroke="rgba(246,231,178,.35)" stroke-width="2"/>
           </g>
 
-          <!-- Core ball -->
-          <circle cx="110" cy="110" r="44" fill="url(#goldCore)" stroke="url(#goldEdge)" stroke-width="4"/>
-          <path d="M92 90 C105 82, 122 82, 130 96 C120 94, 108 98, 100 106 C94 112, 92 120, 94 128 C86 118, 84 100, 92 90 Z"
-                fill="rgba(255,255,255,.22)"/>
+          <circle cx="110" cy="110" r="46" fill="url(#goldCore)" stroke="url(#goldEdge)" stroke-width="4"/>
+          <path d="M90 92 C106 80, 128 84, 134 98 C120 96, 108 102, 100 110 C94 116, 92 124, 94 132 C84 122, 82 102, 90 92 Z"
+                fill="rgba(255,255,255,.20)"/>
           <text x="110" y="118" text-anchor="middle" font-family="Inter, system-ui" font-size="18" font-weight="900" fill="rgba(0,0,0,.78)" letter-spacing="2">
             G+A
           </text>
@@ -517,19 +552,20 @@
       </div>
 
       <div class="intro__text">
-        <div class="intro__headline" id="introHeadline">Er sucht den Schnatz …</div>
+        <div class="intro__headline" id="introHeadline">Er jagt den Schnatz …</div>
         <div class="intro__hint" id="introHint">
-          Sobald er ihn gefunden hat, erscheint der Schnatz in der Mitte. <br>
-          <span class="muted">Klicke dann auf den Schnatz, um die Seite zu öffnen.</span>
+          Wenn der Schnatz auftaucht, klicke ihn an – erst dann öffnet sich die Seite.
+          <br><span class="muted">Sound wird beim ersten Klick aktiviert.</span>
         </div>
         <div class="intro__cta">
-          <button id="skipBtn" class="btn btn--ghost btn--small" type="button" aria-label="Intro überspringen (Schnatz sofort zeigen)">Intro überspringen</button>
+          <button id="soundBtn" class="btn btn--ghost btn--small" type="button">Sound: AUS</button>
+          <button id="skipBtn" class="btn btn--ghost btn--small" type="button">Intro abkürzen</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- START / LANGUAGE -->
+  <!-- START -->
   <section id="startscreen" class="centered hidden" aria-label="Willkommen">
     <div class="wrap">
       <div class="card">
@@ -558,9 +594,7 @@
         <span class="brand-dot" aria-hidden="true"></span>
         <span>G &amp; A</span>
       </a>
-
       <nav class="navlinks" id="navlinks"></nav>
-
       <div class="lang-mini">
         <button class="btn btn--ghost btn--small" type="button" onclick="switchLanguage('de')">DE</button>
         <button class="btn btn--ghost btn--small" type="button" onclick="switchLanguage('tr')">TR</button>
@@ -595,7 +629,7 @@
         <div class="card">
           <div class="card-inner">
             <h3>Ort &amp; Anfahrt</h3>
-            <p style="text-align:center;">Vernouilletallee 1<br>34587 Felsberg</p>
+            <p>Vernouilletallee 1<br>34587 Felsberg</p>
 
             <div class="hero-actions">
               <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
@@ -638,7 +672,7 @@
             <h3>Teilnahme</h3>
             <p>Bitte gib uns kurz Bescheid, ob du dabei bist – und wenn du magst, auch direkt einen Musikwunsch. ♥</p>
 
-            <form action="https://api.web3forms.com/submit" method="POST" style="margin-top:18px; text-align:left;">
+            <form action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
               <input type="hidden" name="subject" value="Teilnahme Hochzeit (DE) — neue Version" />
               <input type="hidden" name="from_name" value="Hochzeitsseite — neue Version" />
@@ -667,7 +701,7 @@
               <label for="message-de">Nachricht (optional)</label>
               <textarea id="message-de" name="nachricht" placeholder="Allergien, Hinweise oder Grüße" style="min-height:110px; resize:vertical;"></textarea>
 
-              <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+              <div class="hero-actions" style="justify-content:space-between; margin-top:14px;">
                 <button class="btn btn--primary" type="submit">Senden</button>
                 <span class="muted" style="font-size:.95rem;">Nur für die Hochzeitsplanung.</span>
               </div>
@@ -677,6 +711,7 @@
       </div>
     </section>
 
+    <!-- Galerie bleibt (Supabase Edge Function) -->
     <section id="de-fotos" class="section">
       <div class="wrap">
         <div class="card">
@@ -726,7 +761,7 @@
         <div class="card">
           <div class="card-inner">
             <h3>Adres &amp; Ulaşım</h3>
-            <p style="text-align:center;">Vernouilletallee 1<br>34587 Felsberg</p>
+            <p>Vernouilletallee 1<br>34587 Felsberg</p>
 
             <div class="hero-actions">
               <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
@@ -769,7 +804,7 @@
             <h3>Katılım</h3>
             <p>Katılım durumunu ve istersen müzik isteğini yazabilirsin. ♥</p>
 
-            <form action="https://api.web3forms.com/submit" method="POST" style="margin-top:18px; text-align:left;">
+            <form action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
               <input type="hidden" name="subject" value="Katılım Düğün (TR) — yeni sürüm" />
               <input type="hidden" name="from_name" value="Düğün Sitesi — yeni sürüm" />
@@ -798,7 +833,7 @@
               <label for="message-tr">Mesaj (opsiyonel)</label>
               <textarea id="message-tr" name="mesaj" placeholder="Notlar, selam" style="min-height:110px; resize:vertical;"></textarea>
 
-              <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+              <div class="hero-actions" style="justify-content:space-between; margin-top:14px;">
                 <button class="btn btn--primary" type="submit">Gönder</button>
                 <span class="muted" style="font-size:.95rem;">Sadece planlama için.</span>
               </div>
@@ -870,71 +905,480 @@
     const PHOTO_API_BASE = "https://vyspdptamoxxbwrcvjqa.supabase.co/functions/v1/wedding";
     const weddingDate = new Date("2026-04-11T17:00:00");
 
-    // ===== Helpers =====
     const $ = (id) => document.getElementById(id);
     const pad = (n) => String(n).padStart(2, "0");
 
-    // ===== Intro Flow =====
-    // Ablauf:
-    // 1) Spotlight + Sucher laufen (länger)
-    // 2) Nach X Sekunden erscheint Schnatz mittig (found)
-    // 3) Seite öffnet erst bei Klick (oder Enter/Space) auf Schnatz
+    // =========================================================
+    // SOUND (WebAudio, keine externen Dateien nötig)
+    // - Browser erlaubt Audio erst nach User-Interaktion
+    // =========================================================
+    const Sound = (() => {
+      let ctx = null;
+      let master = null;
+      let enabled = false;
+      let ambientNodes = null;
+
+      function ensure(){
+        if (ctx) return;
+        const AC = window.AudioContext || window.webkitAudioContext;
+        ctx = new AC();
+        master = ctx.createGain();
+        master.gain.value = 0.55;
+        master.connect(ctx.destination);
+      }
+
+      function setEnabled(on){
+        ensure();
+        enabled = on;
+        if (enabled){
+          ctx.resume?.();
+          startAmbient();
+        } else {
+          stopAmbient();
+        }
+      }
+
+      function sparkle(time=0){
+        if (!enabled) return;
+        ensure();
+        const t0 = ctx.currentTime + time;
+
+        const out = ctx.createGain();
+        out.gain.setValueAtTime(0.0001, t0);
+        out.gain.exponentialRampToValueAtTime(0.35, t0 + 0.02);
+        out.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.65);
+        out.connect(master);
+
+        const freqs = [988, 1319, 1760, 1976];
+        freqs.forEach((f, i) => {
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.type = "sine";
+          o.frequency.setValueAtTime(f, t0);
+          g.gain.setValueAtTime(0.0001, t0);
+          g.gain.exponentialRampToValueAtTime(0.18/(i+1), t0 + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.55);
+          o.connect(g); g.connect(out);
+          o.start(t0);
+          o.stop(t0 + 0.7);
+        });
+      }
+
+      function whoosh(time=0, strength=1){
+        if (!enabled) return;
+        ensure();
+        const t0 = ctx.currentTime + time;
+
+        const noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 0.35, ctx.sampleRate);
+        const data = noiseBuf.getChannelData(0);
+        for (let i=0;i<data.length;i++) data[i] = (Math.random()*2-1) * (1 - i/data.length);
+
+        const src = ctx.createBufferSource();
+        src.buffer = noiseBuf;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(500, t0);
+        filter.frequency.exponentialRampToValueAtTime(1400, t0 + 0.18);
+        filter.Q.value = 0.8;
+
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(0.35*strength, t0 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.32);
+
+        src.connect(filter);
+        filter.connect(g);
+        g.connect(master);
+
+        src.start(t0);
+        src.stop(t0 + 0.35);
+      }
+
+      function startAmbient(){
+        if (!enabled || ambientNodes) return;
+        ensure();
+
+        const t = ctx.currentTime;
+        const gain = ctx.createGain();
+        gain.gain.value = 0.12;
+        gain.connect(master);
+
+        const lfo = ctx.createOscillator();
+        const lfoG = ctx.createGain();
+        lfo.frequency.value = 0.07;
+        lfoG.gain.value = 0.055;
+        lfo.connect(lfoG);
+
+        const pad = ctx.createOscillator();
+        pad.type = "sine";
+        pad.frequency.value = 110;
+        const pad2 = ctx.createOscillator();
+        pad2.type = "sine";
+        pad2.frequency.value = 220;
+
+        const filt = ctx.createBiquadFilter();
+        filt.type = "lowpass";
+        filt.frequency.value = 520;
+        lfoG.connect(filt.frequency);
+
+        pad.connect(filt);
+        pad2.connect(filt);
+        filt.connect(gain);
+
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.exponentialRampToValueAtTime(0.12, t + 0.6);
+
+        lfo.start();
+        pad.start();
+        pad2.start();
+
+        ambientNodes = { gain, lfo, lfoG, pad, pad2, filt };
+      }
+
+      function stopAmbient(){
+        if (!ambientNodes) return;
+        const t = ctx.currentTime;
+        ambientNodes.gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
+        setTimeout(() => {
+          try{
+            ambientNodes.lfo.stop();
+            ambientNodes.pad.stop();
+            ambientNodes.pad2.stop();
+          }catch{}
+          ambientNodes = null;
+        }, 320);
+      }
+
+      return { setEnabled, sparkle, whoosh, get enabled(){ return enabled; } };
+    })();
+
+    // =========================================================
+    // CINEMATIC INTRO ANIMATION (chase + particles + camera)
+    // =========================================================
     (function initIntro(){
       const intro = $("introScreen");
+      const stage = $("stage");
+      const canvas = $("sparkCanvas");
+      const ctx = canvas.getContext("2d");
       const snitch = $("snitch");
+      const wizard = $("wizard");
       const glow = $("snitchGlow");
+      const spot = $("spot");
+
       const headline = $("introHeadline");
       const hint = $("introHint");
       const skipBtn = $("skipBtn");
-
-      if (!intro || !snitch) return;
+      const soundBtn = $("soundBtn");
 
       const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const foundDelayMs = prefersReduce ? 400 : 9500;      // länger
-      const minRuntimeMs = prefersReduce ? 400 : 12000;     // insgesamt länger, wirkt „cinematic“
+
+      if (!intro || !stage || !canvas || !snitch || !wizard) return;
+
+      let W=0, H=0, DPR=1;
+      function resize(){
+        const r = stage.getBoundingClientRect();
+        DPR = Math.min(2, window.devicePixelRatio || 1);
+        W = Math.floor(r.width * DPR);
+        H = Math.floor(r.height * DPR);
+        canvas.width = W;
+        canvas.height = H;
+      }
+      resize();
+      window.addEventListener("resize", resize);
+
+      // Particles
+      const sparks = [];
+      const rand = (a,b) => a + Math.random()*(b-a);
+
+      function spawnSpark(x,y, n=5, power=1){
+        for (let i=0;i<n;i++){
+          const a = rand(0, Math.PI*2);
+          const sp = rand(40, 210) * power;
+          sparks.push({
+            x, y,
+            vx: Math.cos(a)*sp,
+            vy: Math.sin(a)*sp,
+            life: rand(0.35, 1.05),
+            t: 0,
+            size: rand(1.2, 3.4) * DPR,
+            glow: rand(0.35, 0.95),
+          });
+        }
+      }
+      function burst(x,y){
+        spawnSpark(x,y, 120, 1.25);
+        for (let k=0;k<6;k++) spawnSpark(x + rand(-14,14)*DPR, y + rand(-14,14)*DPR, 50, 1.0);
+      }
+
+      function draw(dt){
+        // Cinematic trail
+        ctx.fillStyle = "rgba(0,0,0,0.16)";
+        ctx.fillRect(0,0,W,H);
+
+        for (let i=sparks.length-1;i>=0;i--){
+          const p = sparks[i];
+          p.t += dt;
+          const k = p.t / p.life;
+          if (k >= 1){ sparks.splice(i,1); continue; }
+
+          p.vx *= (1 - 0.62*dt);
+          p.vy = p.vy*(1 - 0.62*dt) + 170*dt;
+          p.x += p.vx*dt;
+          p.y += p.vy*dt;
+
+          const alpha = (1-k) * p.glow;
+          const r = p.size * (1 + 0.65*(1-k));
+
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(246,231,178,${alpha})`;
+          ctx.arc(p.x, p.y, r, 0, Math.PI*2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(255,255,255,${alpha*0.55})`;
+          ctx.arc(p.x - 0.7*DPR, p.y - 0.9*DPR, r*0.55, 0, Math.PI*2);
+          ctx.fill();
+        }
+      }
+
+      // Timeline
+      const totalMs = prefersReduce ? 1200 : 21000; // länger & cinematic
+      const revealAt = prefersReduce ? 0.12 : 0.34; // Spannung
+      let t0 = performance.now();
+      let last = t0;
 
       let found = false;
       let allowClick = false;
+      let running = true;
 
-      function setFound(){
+      // Wizard follow physics
+      let wizX=0, wizY=0, wizVX=0, wizVY=0;
+      function follow(targetX, targetY, dt){
+        const spring = 13.5;
+        const damp = 7.2;
+        const dx = targetX - wizX;
+        const dy = targetY - wizY;
+        wizVX += dx*spring*dt;
+        wizVY += dy*spring*dt;
+        wizVX *= Math.exp(-damp*dt);
+        wizVY *= Math.exp(-damp*dt);
+        wizX += wizVX;
+        wizY += wizVY;
+      }
+
+      function easeInOut(t){
+        return t<0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+      }
+      function easeOut(t){ return 1 - Math.pow(1-t, 3); }
+
+      function snitchPath(t, w, h){
+        // Großer cinematischer Loop + Spiral zur Mitte
+        const cx = w*0.50, cy = h*0.46;
+
+        if (t <= 0.76){
+          const u = t/0.76;
+          const a = u * Math.PI*2.2;      // etwas mehr als 1 Runde
+          const rx = w*0.38;
+          const ry = h*0.29;
+          const x = cx + Math.cos(a)*rx;
+          const y = cy + Math.sin(a)*ry;
+          return { x, y, rot: Math.sin(a)*14 };
+        }else{
+          const u = (t-0.76)/0.24;
+          const e = easeOut(u);
+          const a = (1-u) * Math.PI*3.5;
+          const r0x = w*0.26, r0y = h*0.20;
+          const rx = r0x*(1-e);
+          const ry = r0y*(1-e);
+          const x = cx + Math.cos(a)*rx;
+          const y = cy + Math.sin(a)*ry;
+          return { x, y, rot: (1-u)*10 };
+        }
+      }
+
+      function setFound(sx, sy){
         if (found) return;
         found = true;
         snitch.classList.add("found");
-        glow && glow.classList.add("on");
+        glow?.classList.add("on");
         headline && (headline.textContent = "Gefunden!");
-        hint && (hint.innerHTML = "Klicke auf den Schnatz, um die Seite zu öffnen.");
-        // Noch 1–2 Sekunden „dramatischer Moment“, dann Klick freigeben
-        setTimeout(() => { allowClick = true; }, prefersReduce ? 0 : 900);
+        hint && (hint.textContent = "Klicke auf den Schnatz, um die Seite zu öffnen.");
+
+        // Cinematic moment
+        if (!prefersReduce){
+          stage.style.filter = "brightness(1.05) contrast(1.05)";
+          stage.animate(
+            [{ transform:"scale(1) translateY(0px)"},{ transform:"scale(1.015) translateY(-3px)"},{ transform:"scale(1) translateY(0px)"}],
+            { duration: 1100, easing:"cubic-bezier(.2,.8,.2,1)" }
+          );
+        }
+
+        if (Sound.enabled){
+          Sound.sparkle(0);
+          Sound.whoosh(0.05, 0.7);
+        }
+
+        burst(sx*DPR, sy*DPR);
+
+        setTimeout(() => { allowClick = true; }, prefersReduce ? 0 : 1100);
       }
 
       function openSite(){
         if (!allowClick) return;
+        running = false;
+
+        // click sparkle
+        if (Sound.enabled){
+          Sound.sparkle(0);
+          Sound.whoosh(0.02, 1.0);
+        }
+
         intro.classList.add("out");
         setTimeout(() => {
           intro.classList.add("hidden");
           $("startscreen")?.classList.remove("hidden");
-          $("topbar")?.classList.add("hidden"); // erst nach Sprache
-        }, 720);
+          $("topbar")?.classList.add("hidden");
+        }, 820);
       }
 
-      // Found nach Delay
-      setTimeout(setFound, foundDelayMs);
+      // Sound button
+      function updateSoundBtn(){
+        soundBtn.textContent = Sound.enabled ? "Sound: AN" : "Sound: AUS";
+      }
+      soundBtn.addEventListener("click", () => {
+        Sound.setEnabled(!Sound.enabled);
+        updateSoundBtn();
+        if (Sound.enabled) Sound.whoosh(0, 0.35);
+      });
+      updateSoundBtn();
 
-      // Hard-Limit, falls Browser zickt: spätestens nach minRuntime wird found + click enabled
-      setTimeout(() => { setFound(); allowClick = true; }, minRuntimeMs);
-
-      // Schnatz Click + Keyboard
-      snitch.addEventListener("click", openSite);
+      // Snitch click (will be enabled after found)
+      snitch.addEventListener("click", () => {
+        // first interaction: unlock audio context if enabled
+        if (Sound.enabled) Sound.setEnabled(true);
+        openSite();
+      });
       snitch.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSite(); }
+        if (e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          if (Sound.enabled) Sound.setEnabled(true);
+          openSite();
+        }
       });
 
-      // Skip: zeigt Schnatz sofort, Klick schnell möglich
-      skipBtn?.addEventListener("click", () => {
-        setFound();
-        allowClick = true;
+      // Skip: shorten (still requires clicking snitch to open)
+      skipBtn.addEventListener("click", () => {
+        t0 = performance.now() - totalMs*0.92;
+        headline && (headline.textContent = "Fast da …");
+        hint && (hint.textContent = "Der Schnatz erscheint gleich. Klicke ihn an, um zu öffnen.");
+        if (Sound.enabled) Sound.whoosh(0, 0.4);
       });
+
+      // Init base
+      ctx.fillStyle = "rgba(0,0,0,1)";
+      ctx.fillRect(0,0,W,H);
+
+      // Wizard initial pos
+      {
+        const r = stage.getBoundingClientRect();
+        wizX = (r.width*0.22)*DPR;
+        wizY = (r.height*0.62)*DPR;
+      }
+
+      function tick(now){
+        if (!running) return;
+        const dt = Math.min(0.032, (now - last)/1000);
+        last = now;
+
+        const r = stage.getBoundingClientRect();
+        const w = r.width, h = r.height;
+
+        const tRaw = Math.min(1, (now - t0) / totalMs);
+        const t = prefersReduce ? tRaw : easeInOut(tRaw);
+
+        // Spotlight cinematic fade-in
+        if (spot){
+          const op = Math.min(0.92, Math.max(0, (tRaw - 0.08) / 0.25));
+          spot.style.opacity = String(op);
+          spot.style.transform = `translate3d(${(Math.sin(t*6.2)*10)}px, ${(Math.cos(t*5.6)*12)}px, 0)`;
+        }
+
+        // Snitch path
+        const sp = snitchPath(t, w, h);
+        const sx = sp.x, sy = sp.y;
+
+        // reveal
+        if (tRaw >= revealAt){
+          snitch.style.opacity = "1";
+          // trailing sparkles + occasional whoosh
+          spawnSpark(sx*DPR, sy*DPR, prefersReduce ? 1 : 5, 0.95);
+          if (Sound.enabled && !prefersReduce && Math.random() < 0.045) Sound.whoosh(0, 0.28);
+        }
+
+        // Position snitch
+        const snLeft = sx - 95;
+        const snTop  = sy - 95;
+        snitch.style.setProperty("--sx", `${snLeft}px`);
+        snitch.style.setProperty("--sy", `${snTop}px`);
+        if (!snitch.classList.contains("found")){
+          snitch.style.transform = `translate3d(${snLeft}px, ${snTop}px, 0) rotate(${sp.rot}deg)`;
+        }
+
+        // Glow follows
+        if (glow){
+          glow.style.transform = `translate3d(${(sx - 210)}px, ${(sy - 210)}px, 0)`;
+        }
+
+        // Wizard chases behind snitch
+        const backX = sx - 140;
+        const backY = sy + 52;
+
+        follow(backX*DPR, backY*DPR, dt);
+
+        const wx = wizX / DPR;
+        const wy = wizY / DPR;
+
+        const ang = Math.atan2((sy - wy), (sx - wx)) * 180 / Math.PI;
+        wizard.style.transform = `translate3d(${wx - 130}px, ${wy - 70}px, 0) rotate(${ang*0.14}deg)`;
+
+        // Wand spark
+        if (!prefersReduce && tRaw >= revealAt){
+          spawnSpark((wx+62)*DPR, (wy-10)*DPR, 1, 0.55);
+          if (Sound.enabled && Math.random() < 0.02) Sound.sparkle(0);
+        }
+
+        // Camera micro-move
+        if (!prefersReduce){
+          const camZ = 1 + 0.008*Math.sin(t*8.2) + 0.012*Math.max(0, tRaw-0.65);
+          const camX = 1.6*Math.sin(t*5.0);
+          const camY = 1.2*Math.cos(t*4.6);
+          stage.style.transform = `translate3d(${camX}px, ${camY}px, 0) scale(${camZ})`;
+        }
+
+        // Found at end
+        if (tRaw >= 1 && !found){
+          setFound(sx, sy);
+        }
+
+        // draw particles
+        draw(dt);
+
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
     })();
+
+    // ===== App State =====
+    const appState = {
+      lang: null,
+      countdownStarted: false,
+      gallery: {
+        de: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
+        tr: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
+      }
+    };
 
     // ===== Navigation =====
     function buildNav(lang){
@@ -947,15 +1391,6 @@
 
       nav.innerHTML = links.map(([href,label]) => `<a href="${href}">${label}</a>`).join("");
     }
-
-    const appState = {
-      lang: null,
-      countdownStarted: false,
-      gallery: {
-        de: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
-        tr: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
-      }
-    };
 
     function chooseLanguage(lang){
       $("startscreen")?.classList.add("hidden");
@@ -1062,18 +1497,6 @@
           const lab = document.createElement("label");
           const field = document.createElement("input");
 
-          lab.style.display = "block";
-          lab.style.marginTop = "10px";
-          lab.style.marginBottom = "6px";
-          lab.style.color = "rgba(244,246,240,.92)";
-
-          field.style.width = "100%";
-          field.style.padding = "12px 12px";
-          field.style.borderRadius = "12px";
-          field.style.border = "1px solid rgba(255,255,255,.14)";
-          field.style.background = "rgba(0,0,0,.36)";
-          field.style.color = "rgba(244,246,240,.95)";
-
           if (lang === "de"){
             lab.textContent = "Name Begleitperson " + i;
             field.placeholder = "Begleitperson " + i;
@@ -1179,17 +1602,12 @@
 
         grid.insertAdjacentHTML("beforeend", html);
 
-        // Hover-Effekt (delegiert)
         grid.querySelectorAll(".photo-card").forEach(btn => {
           if (btn.dataset.hooked) return;
           btn.dataset.hooked = "1";
-          btn.addEventListener("mouseenter", () => { btn.style.transform = "translateY(-2px)"; btn.style.boxShadow="0 16px 30px rgba(0,0,0,.35)"; });
-          btn.addEventListener("mouseleave", () => { btn.style.transform = "translateY(0)"; btn.style.boxShadow="none"; });
           const img = btn.querySelector("img");
-          if (img){
-            btn.addEventListener("mouseenter", () => { img.style.transform = "scale(1.04)"; });
-            btn.addEventListener("mouseleave", () => { img.style.transform = "scale(1)"; });
-          }
+          btn.addEventListener("mouseenter", () => { btn.style.transform = "translateY(-2px)"; btn.style.boxShadow="0 16px 30px rgba(0,0,0,.35)"; if(img) img.style.transform="scale(1.04)"; });
+          btn.addEventListener("mouseleave", () => { btn.style.transform = "translateY(0)"; btn.style.boxShadow="none"; if(img) img.style.transform="scale(1)"; });
         });
 
         const count = grid.querySelectorAll(".photo-card").length;
