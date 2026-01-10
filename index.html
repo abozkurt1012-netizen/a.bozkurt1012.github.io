@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark" />
   <title>Gizem &amp; Aykut</title>
 
-  <!-- Hochzeits-Schrift + gut lesbare Basis -->
+  <!-- Lesbare Hochzeitsschrift + Body-Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Fraunces:opsz,wght@9..144,500,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,20 +15,22 @@
     :root{
       --bg0:#050705;
       --bg1:#0a100a;
-      --card: rgba(14,18,14,.72);
-      --card2: rgba(14,18,14,.56);
+
+      --card: rgba(14,18,14,.70);
+      --border: 1px solid rgba(255,255,255,.10);
+
       --text:#F4F6F0;
       --muted: rgba(244,246,240,.78);
       --soft: rgba(244,246,240,.62);
+
       --olive:#4A5D23;
       --olive2:#6D8540;
       --gold:#F6E7B2;
-      --border: 1px solid rgba(255,255,255,.10);
+
       --radius-xl: 30px;
-      --radius-lg: 22px;
-      --radius-md: 14px;
-      --shadow: 0 26px 90px rgba(0,0,0,.66);
+      --shadow: 0 28px 92px rgba(0,0,0,.66);
       --shadow2: 0 18px 60px rgba(0,0,0,.55);
+
       --max: 1100px;
     }
 
@@ -43,72 +45,79 @@
       text-align:center;
     }
 
-    /* ============ Hintergrund: elegant + „realistischer“ floraler Look (organisch über den ganzen Screen) ============ */
+    /* ======================
+       BASE BACKGROUND
+       ====================== */
     .bg{
-      position:fixed; inset:0; z-index:-6;
+      position:fixed; inset:0; z-index:-10;
       background:
-        radial-gradient(1200px 900px at 18% 10%, rgba(109,133,64,.22), transparent 60%),
-        radial-gradient(1100px 900px at 82% 14%, rgba(246,231,178,.12), transparent 58%),
+        radial-gradient(1200px 900px at 18% 10%, rgba(109,133,64,.20), transparent 60%),
+        radial-gradient(1100px 900px at 82% 14%, rgba(246,231,178,.11), transparent 58%),
         radial-gradient(1200px 1000px at 55% 88%, rgba(255,255,255,.06), transparent 60%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
     .bg::after{
       content:""; position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.26), rgba(0,0,0,.84));
+      background: linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.86));
       pointer-events:none;
     }
 
-    /* 3 Blumen-Layer: weich, großflächig, nicht links/rechts „abgeschnitten“ */
-    .flora, .flora2, .flora3{
-      position:fixed;
-      inset:-12vh -12vw;
-      z-index:-5;
+    /* ======================
+       REALISTIC FLORAL PARALLAX
+       - 4 Layer für Tiefe
+       - organische Maskierung
+       - leichte Unschärfe bei „weiter hinten“
+       ====================== */
+    .parallax{
+      position:fixed; inset:0; z-index:-9;
       pointer-events:none;
+      overflow:hidden;
+    }
+    .fl-layer{
+      position:absolute;
+      inset:-16vh -16vw;
       background-repeat:no-repeat;
-      background-size: cover;
       background-position:center;
-      filter: saturate(1.15) contrast(1.03);
-      mask-image: radial-gradient(circle at center, rgba(0,0,0,.95) 55%, rgba(0,0,0,.55) 80%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,.95) 55%, rgba(0,0,0,.55) 80%, rgba(0,0,0,0) 100%);
+      background-size:cover;
       transform: translate3d(0,0,0);
+      will-change: transform;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,.95) 55%, rgba(0,0,0,.55) 82%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,.95) 55%, rgba(0,0,0,.55) 82%, rgba(0,0,0,0) 100%);
     }
 
-    /* Layer 1: große Blätter + Blüten (soft watercolor feel) */
-    .flora{
-      opacity:.78;
-      mix-blend-mode: screen;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2200' height='1400' viewBox='0 0 2200 1400'%3E%3Cdefs%3E%3CradialGradient id='leaf' cx='40%25' cy='25%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.35'/%3E%3Cstop offset='70%25' stop-color='%234a5d23' stop-opacity='0.10'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='petal' cx='45%25' cy='30%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.22'/%3E%3Cstop offset='65%25' stop-color='%23ffffff' stop-opacity='0.06'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='b' x='-15%25' y='-15%25' width='130%25' height='130%25'%3E%3CfeGaussianBlur stdDeviation='7'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23b)'%3E%3Cpath d='M260 1240 C420 930 350 650 610 420 C820 230 1080 240 1210 390 C1360 560 1300 760 1100 900 C900 1040 760 1060 650 1200 C520 1360 360 1380 260 1240 Z' fill='url(%23leaf)'/%3E%3Cpath d='M1940 1240 C1780 930 1850 650 1590 420 C1380 230 1120 240 990 390 C840 560 900 760 1100 900 C1300 1040 1440 1060 1550 1200 C1680 1360 1840 1380 1940 1240 Z' fill='url(%23leaf)'/%3E%3Cpath d='M520 420 C610 360 720 390 780 480 C850 585 800 700 670 705 C560 710 470 610 470 520 C470 470 490 440 520 420 Z' fill='url(%23petal)'/%3E%3Cpath d='M1680 420 C1590 360 1480 390 1420 480 C1350 585 1400 700 1530 705 C1640 710 1730 610 1730 520 C1730 470 1710 440 1680 420 Z' fill='url(%23petal)'/%3E%3Cpath d='M960 260 C1040 220 1130 245 1180 320 C1240 410 1180 500 1070 505 C980 510 900 440 900 360 C900 310 930 280 960 260 Z' fill='url(%23petal)'/%3E%3C/g%3E%3C/svg%3E");
-      animation: floraMove 22s ease-in-out infinite;
-    }
-    @keyframes floraMove{
-      0%,100%{ transform: translate3d(-1.4%, -1.1%, 0) scale(1.05) rotate(-.2deg); }
-      50%{ transform: translate3d(1.4%, 1.2%, 0) scale(1.10) rotate(.2deg); }
-    }
-
-    /* Layer 2: feine Adern / zusätzliche Blätter */
-    .flora2{
+    /* L0: ganz hinten, weiche Farbfelder (Bokeh/Blüten-Glow) */
+    .fl0{
       opacity:.55;
-      mix-blend-mode: overlay;
-      filter: saturate(1.10) contrast(1.02);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2200' height='1400' viewBox='0 0 2200 1400'%3E%3Cdefs%3E%3ClinearGradient id='v' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23f6e7b2' stop-opacity='0.10'/%3E%3Cstop offset='1' stop-color='%236d8540' stop-opacity='0.10'/%3E%3C/linearGradient%3E%3Cfilter id='b' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='3.2'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23b)'%3E%3Cpath d='M140 1080 C420 840 420 560 680 380 C920 210 1250 250 1380 420 C1540 620 1450 840 1200 920 C980 990 860 1040 720 1160 C520 1320 320 1300 140 1080 Z' fill='url(%23v)'/%3E%3Cpath d='M2060 1080 C1780 840 1780 560 1520 380 C1280 210 950 250 820 420 C660 620 750 840 1000 920 C1220 990 1340 1040 1480 1160 C1680 1320 1880 1300 2060 1080 Z' fill='url(%23v)'/%3E%3C/g%3E%3C/svg%3E");
-      animation: floraMove2 26s ease-in-out infinite;
-    }
-    @keyframes floraMove2{
-      0%,100%{ transform: translate3d(1.2%, -1.0%, 0) scale(1.06); }
-      50%{ transform: translate3d(-1.2%, 1.0%, 0) scale(1.12); }
+      filter: blur(3px) saturate(1.06);
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2200' height='1400' viewBox='0 0 2200 1400'%3E%3Cdefs%3E%3CradialGradient id='b1' cx='30%25' cy='25%25' r='75%25'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.16'/%3E%3Cstop offset='60%25' stop-color='%236d8540' stop-opacity='0.10'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='b2' cx='70%25' cy='30%25' r='78%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.20'/%3E%3Cstop offset='65%25' stop-color='%23f6e7b2' stop-opacity='0.08'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='2200' height='1400' fill='url(%23b1)'/%3E%3Crect width='2200' height='1400' fill='url(%23b2)'/%3E%3C/svg%3E");
     }
 
-    /* Layer 3: ganz zartes „Papier / Aquarell“-Korn */
-    .flora3{
-      opacity:.20;
+    /* L1: große Blätter (mehr „fotografische“ Tiefe) */
+    .fl1{
+      opacity:.70;
+      filter: saturate(1.16) contrast(1.04);
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2400' height='1600' viewBox='0 0 2400 1600'%3E%3Cdefs%3E%3Cfilter id='blur' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='6'/%3E%3C/filter%3E%3CradialGradient id='leaf' cx='45%25' cy='30%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.38'/%3E%3Cstop offset='70%25' stop-color='%234a5d23' stop-opacity='0.12'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='vein' x1='0' x2='1'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0.08'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0.00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg filter='url(%23blur)'%3E%3Cpath d='M260 1400 C520 1040 470 720 760 460 C1050 200 1380 250 1540 430 C1710 630 1620 900 1360 1030 C1120 1140 980 1140 840 1320 C640 1580 360 1600 260 1400 Z' fill='url(%23leaf)'/%3E%3Cpath d='M2140 1400 C1880 1040 1930 720 1640 460 C1350 200 1020 250 860 430 C690 630 780 900 1040 1030 C1280 1140 1420 1140 1560 1320 C1760 1580 2040 1600 2140 1400 Z' fill='url(%23leaf)'/%3E%3Cpath d='M650 560 C840 420 1030 430 1120 560 C980 560 860 640 790 740 C720 850 700 960 720 1040 C590 920 560 720 650 560 Z' fill='url(%23vein)' opacity='0.9'/%3E%3Cpath d='M1750 560 C1560 420 1370 430 1280 560 C1420 560 1540 640 1610 740 C1680 850 1700 960 1680 1040 C1810 920 1840 720 1750 560 Z' fill='url(%23vein)' opacity='0.9'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* L2: Blüten + Details (näher dran) */
+    .fl2{
+      opacity:.50;
+      filter: saturate(1.18) contrast(1.05);
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2400' height='1600' viewBox='0 0 2400 1600'%3E%3Cdefs%3E%3Cfilter id='b' x='-15%25' y='-15%25' width='130%25' height='130%25'%3E%3CfeGaussianBlur stdDeviation='3.5'/%3E%3C/filter%3E%3CradialGradient id='petal' cx='45%25' cy='30%25' r='75%25'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.22'/%3E%3Cstop offset='65%25' stop-color='%23ffffff' stop-opacity='0.06'/%3E%3Cstop offset='100%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='center' cx='40%25' cy='35%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0.10'/%3E%3Cstop offset='80%25' stop-color='%23ffffff' stop-opacity='0.00'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg filter='url(%23b)'%3E%3Cpath d='M520 520 C640 430 760 470 820 580 C900 730 790 880 620 860 C480 845 390 690 420 580 C440 545 480 540 520 520 Z' fill='url(%23petal)'/%3E%3Cpath d='M1880 520 C1760 430 1640 470 1580 580 C1500 730 1610 880 1780 860 C1920 845 2010 690 1980 580 C1960 545 1920 540 1880 520 Z' fill='url(%23petal)'/%3E%3Ccircle cx='620' cy='660' r='120' fill='url(%23center)'/%3E%3Ccircle cx='1780' cy='660' r='120' fill='url(%23center)'/%3E%3Cpath d='M1040 360 C1140 300 1250 330 1300 420 C1370 545 1260 650 1120 620 C1000 595 930 495 960 420 C980 385 1005 380 1040 360 Z' fill='url(%23petal)' opacity='0.95'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* L3: ganz vorne (zarter Aquarell/Filmgrain) */
+    .fl3{
+      inset:0;
+      opacity:.18;
       mix-blend-mode: soft-light;
       filter: contrast(1.0);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='900' viewBox='0 0 1400 900'%3E%3Cdefs%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.80  0 0 0 0.10 0'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='1400' height='900' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
+      mask-image:none; -webkit-mask-image:none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='900' viewBox='0 0 1400 900'%3E%3Cdefs%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.80  0 0 0 0.11 0'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='1400' height='900' filter='url(%23n)' opacity='0.90'/%3E%3C/svg%3E");
       animation: grainShift 10s steps(2) infinite;
-      mask-image: none;
-      -webkit-mask-image: none;
-      inset:0;
-      z-index:-4;
     }
     @keyframes grainShift{
       0%{ transform: translate3d(0,0,0); }
@@ -116,7 +125,9 @@
       100%{ transform: translate3d(1px,-1px,0); }
     }
 
-    /* ============ Layout ============ */
+    /* ======================
+       LAYOUT / TYPO
+       ====================== */
     .wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:0 18px; }
     .section{ padding: 64px 0; }
     .centered{ min-height:100vh; display:flex; align-items:center; justify-content:center; }
@@ -132,11 +143,8 @@
       text-align:left;
     }
     .card-inner{ padding: 40px 22px; }
-    @media (min-width: 720px){
-      .card-inner{ padding: 56px 60px; }
-    }
+    @media (min-width: 720px){ .card-inner{ padding: 56px 60px; } }
 
-    /* ============ Typo (Hochzeits-Look, trotzdem lesbar) ============ */
     .subtitle{
       font-size: .92rem;
       letter-spacing: .22em;
@@ -148,11 +156,11 @@
     .names{
       font-family: "Great Vibes", cursive;
       font-weight: 400;
-      font-size: clamp(3.0rem, 7.2vw, 5.2rem);
+      font-size: clamp(3.0rem, 7.4vw, 5.3rem);
       line-height: 1.0;
       color: var(--text);
       text-align:center;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       text-shadow: 0 18px 60px rgba(0,0,0,.45);
     }
     h2{
@@ -201,7 +209,6 @@
     }
     .date-chip{ margin-top: 14px; display:flex; justify-content:center; }
 
-    /* Buttons */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -235,7 +242,9 @@
 
     .hidden{ display:none !important; }
 
-    /* ============ Topbar ============ */
+    /* ======================
+       TOPBAR
+       ====================== */
     .topbar{
       position: sticky; top: 0; z-index: 60;
       backdrop-filter: blur(12px);
@@ -272,11 +281,13 @@
     .navlinks a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
     .lang-mini{ display:flex; gap:8px; align-items:center; justify-content:flex-end; }
 
-    /* ============ Intro: Click -> Snitch fliegt einmal schön über den Screen -> Welcome ============ */
+    /* ======================
+       INTRO (ruhiger Snitch-Flight + dezente Partikel)
+       ====================== */
     .intro{
       position: fixed; inset: 0; z-index: 200;
       display:grid; place-items:center;
-      background: rgba(0,0,0,.56);
+      background: rgba(0,0,0,.54);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -315,7 +326,7 @@
         radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 60%);
       filter: blur(7px);
       opacity: .86;
-      animation: fogDrift 16s ease-in-out infinite;
+      animation: fogDrift 18s ease-in-out infinite;
       pointer-events:none;
     }
     @keyframes fogDrift{
@@ -327,25 +338,11 @@
       background: radial-gradient(circle at center, transparent 55%, rgba(0,0,0,.55) 100%);
       pointer-events:none;
     }
-    .cineGrain{
-      position:absolute; inset:0;
-      background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 1px, transparent 1px, transparent 3px);
-      opacity:.09;
-      mix-blend-mode: overlay;
-      pointer-events:none;
-      animation: grainJitter .9s steps(2) infinite;
-    }
-    @keyframes grainJitter{
-      0%{ transform: translate3d(0,0,0); }
-      50%{ transform: translate3d(-1px,1px,0); }
-      100%{ transform: translate3d(1px,-1px,0); }
-    }
-
     .sparkCanvas{
       position:absolute; inset:0;
       width:100%; height:100%;
       pointer-events:none;
-      opacity: .98;
+      opacity: .95;
     }
 
     .intro__text{
@@ -375,7 +372,7 @@
       margin-top: 2px;
     }
 
-    /* Snitch (realistischer, mit Flügeln) */
+    /* Snitch (mit Flügeln) */
     .snitch{
       position:absolute;
       width: 220px; height: 220px;
@@ -391,30 +388,20 @@
       touch-action: manipulation;
     }
     .snitch:hover{ transform: translate(-50%,-50%) scale(1.02); }
-    .snitch .wingL{ transform-origin: 120px 110px; animation: flapL .16s infinite ease-in-out; }
-    .snitch .wingR{ transform-origin: 100px 110px; animation: flapR .16s infinite ease-in-out; }
-    @keyframes flapL{ 0%,100%{ transform: rotate(10deg); } 50%{ transform: rotate(-14deg);} }
-    @keyframes flapR{ 0%,100%{ transform: rotate(-10deg);} 50%{ transform: rotate(14deg);} }
+    .snitch .wingL{ transform-origin: 120px 130px; animation: flapL .18s infinite ease-in-out; }
+    .snitch .wingR{ transform-origin: 140px 130px; animation: flapR .18s infinite ease-in-out; }
+    @keyframes flapL{ 0%,100%{ transform: rotate(10deg); } 50%{ transform: rotate(-12deg);} }
+    @keyframes flapR{ 0%,100%{ transform: rotate(-10deg);} 50%{ transform: rotate(12deg);} }
 
-    /* Snitch Flug-Animation: wird per JS gesetzt */
-    .snitch.fly{
-      animation: snitchFly 1.65s cubic-bezier(.2,.9,.1,1) forwards;
-    }
-    @keyframes snitchFly{
-      0%   { transform: translate(-50%,-50%) scale(1.00) rotate(0deg); }
-      20%  { transform: translate(calc(-50% + 34vw), calc(-50% - 8vh)) scale(1.04) rotate(10deg); }
-      55%  { transform: translate(calc(-50% - 18vw), calc(-50% + 14vh)) scale(0.98) rotate(-14deg); }
-      100% { transform: translate(calc(-50% + 60vw), calc(-50% - 22vh)) scale(0.90) rotate(22deg); opacity: 0; }
-    }
+    .snitch.fly{ pointer-events:none; }
 
     .intro.out{ animation: introFadeOut .75s ease forwards; }
     @keyframes introFadeOut{ to{ opacity:0; transform: translateY(10px); pointer-events:none; } }
 
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior:auto; }
-      .flora, .flora2, .flora3, .cineFog, .cineGrain{ animation:none; }
+      .cineFog, .fl3{ animation:none; }
       .snitch .wingL, .snitch .wingR{ animation:none; }
-      .snitch.fly{ animation:none; opacity:0; }
       .intro.out{ animation:none; opacity:0; pointer-events:none; }
     }
 
@@ -440,9 +427,14 @@
 
 <body>
   <div class="bg" aria-hidden="true"></div>
-  <div class="flora" aria-hidden="true"></div>
-  <div class="flora2" aria-hidden="true"></div>
-  <div class="flora3" aria-hidden="true"></div>
+
+  <!-- Floral Parallax Layers -->
+  <div class="parallax" aria-hidden="true">
+    <div class="fl-layer fl0" data-depth="0.10"></div>
+    <div class="fl-layer fl1" data-depth="0.18"></div>
+    <div class="fl-layer fl2" data-depth="0.30"></div>
+    <div class="fl-layer fl3" data-depth="0.55"></div>
+  </div>
 
   <!-- INTRO -->
   <section id="introScreen" class="intro" aria-label="Intro">
@@ -451,12 +443,10 @@
         <canvas id="sparkCanvas" class="sparkCanvas"></canvas>
         <div class="cineFog"></div>
         <div class="cineVignette"></div>
-        <div class="cineGrain"></div>
 
-        <!-- Realistischerer „Schnatz“-Look (eigene SVG-Optik) -->
-        <svg id="snitch" class="snitch" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="button" aria-label="Start" tabindex="0">
+        <!-- Snitch (eigene SVG-Optik) -->
+        <svg id="snitch" class="snitch" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" role="button" aria-label="Start" tabindex="0">
           <defs>
-            <!-- Metallischer Gold-Kern -->
             <radialGradient id="gCore" cx="35%" cy="25%" r="70%">
               <stop offset="0%"  stop-color="#fff6d6" stop-opacity="0.98"/>
               <stop offset="45%" stop-color="#f6e7b2" stop-opacity="0.96"/>
@@ -468,16 +458,13 @@
               <stop offset="55%" stop-color="#caa64a" stop-opacity="0.92"/>
               <stop offset="100%" stop-color="#6e5219" stop-opacity="0.88"/>
             </linearGradient>
-
-            <!-- Flügel (feather-like) -->
             <linearGradient id="gWing" x1="0" x2="1">
-              <stop offset="0%" stop-color="rgba(255,255,255,.80)"/>
-              <stop offset="55%" stop-color="rgba(255,244,207,.42)"/>
-              <stop offset="100%" stop-color="rgba(255,255,255,.10)"/>
+              <stop offset="0%" stop-color="rgba(255,255,255,.78)"/>
+              <stop offset="55%" stop-color="rgba(255,244,207,.40)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,.08)"/>
             </linearGradient>
-
             <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="2.6" result="b"/>
+              <feGaussianBlur stdDeviation="2.4" result="b"/>
               <feColorMatrix in="b" type="matrix"
                 values="1 0 0 0 0.96  0 1 0 0 0.90  0 0 1 0 0.70  0 0 0 .25 0" result="c"/>
               <feMerge>
@@ -489,52 +476,51 @@
 
           <!-- Wings -->
           <g class="wingL" filter="url(#softGlow)">
-            <path d="M78 132
-                     C38 108, 26 78, 44 54
-                     C64 26, 100 28, 122 60
-                     C102 62, 86 74, 78 92
-                     C70 108, 70 122, 78 132 Z"
+            <path d="M76 140
+                     C28 114, 16 78, 40 52
+                     C64 26, 108 34, 130 68
+                     C104 72, 86 92, 80 112
+                     C76 124, 74 132, 76 140 Z"
                   fill="url(#gWing)" stroke="rgba(255,255,255,.22)" stroke-width="2" />
-            <!-- feather lines -->
-            <path d="M62 64 C78 70, 92 84, 98 100" fill="none" stroke="rgba(246,231,178,.22)" stroke-width="2"/>
-            <path d="M52 78 C72 86, 86 100, 92 114" fill="none" stroke="rgba(246,231,178,.18)" stroke-width="2"/>
-            <path d="M48 94 C66 102, 78 114, 82 126" fill="none" stroke="rgba(246,231,178,.14)" stroke-width="2"/>
+            <path d="M54 72 C78 78, 96 96, 106 118" fill="none" stroke="rgba(246,231,178,.20)" stroke-width="2"/>
+            <path d="M44 92 C70 98, 86 114, 94 132" fill="none" stroke="rgba(246,231,178,.14)" stroke-width="2"/>
           </g>
 
           <g class="wingR" filter="url(#softGlow)">
-            <path d="M182 132
-                     C222 108, 234 78, 216 54
-                     C196 26, 160 28, 138 60
-                     C158 62, 174 74, 182 92
-                     C190 108, 190 122, 182 132 Z"
+            <path d="M204 140
+                     C252 114, 264 78, 240 52
+                     C216 26, 172 34, 150 68
+                     C176 72, 194 92, 200 112
+                     C204 124, 206 132, 204 140 Z"
                   fill="url(#gWing)" stroke="rgba(255,255,255,.22)" stroke-width="2" />
-            <path d="M198 64 C182 70, 168 84, 162 100" fill="none" stroke="rgba(246,231,178,.22)" stroke-width="2"/>
-            <path d="M208 78 C188 86, 174 100, 168 114" fill="none" stroke="rgba(246,231,178,.18)" stroke-width="2"/>
-            <path d="M212 94 C194 102, 182 114, 178 126" fill="none" stroke="rgba(246,231,178,.14)" stroke-width="2"/>
+            <path d="M226 72 C202 78, 184 96, 174 118" fill="none" stroke="rgba(246,231,178,.20)" stroke-width="2"/>
+            <path d="M236 92 C210 98, 194 114, 186 132" fill="none" stroke="rgba(246,231,178,.14)" stroke-width="2"/>
           </g>
 
           <!-- Core -->
-          <circle cx="130" cy="132" r="50" fill="url(#gCore)" stroke="url(#gRim)" stroke-width="5" filter="url(#softGlow)"/>
-          <!-- specular highlight -->
-          <path d="M112 114 C128 98, 152 102, 160 118
-                   C142 116, 128 124, 120 134
-                   C114 142, 112 150, 114 158
-                   C100 146, 98 126, 112 114 Z"
-                fill="rgba(255,255,255,.18)"/>
-          <!-- tiny engravings -->
-          <path d="M108 150 C120 166, 140 170, 156 158" fill="none" stroke="rgba(0,0,0,.22)" stroke-width="2" opacity=".35"/>
-          <text x="130" y="140" text-anchor="middle" font-family="Inter, system-ui" font-size="18" font-weight="900" fill="rgba(0,0,0,.78)" letter-spacing="2">
+          <circle cx="140" cy="140" r="52" fill="url(#gCore)" stroke="url(#gRim)" stroke-width="5" filter="url(#softGlow)"/>
+          <path d="M120 122 C138 104, 164 110, 172 128
+                   C152 126, 138 136, 130 148
+                   C124 156, 122 166, 124 174
+                   C108 160, 106 138, 120 122 Z"
+                fill="rgba(255,255,255,.16)"/>
+          <path d="M118 162 C132 178, 154 182, 170 168" fill="none" stroke="rgba(0,0,0,.20)" stroke-width="2" opacity=".32"/>
+          <text x="140" y="148" text-anchor="middle" font-family="Inter, system-ui" font-size="18" font-weight="900" fill="rgba(0,0,0,.78)" letter-spacing="2">
             G+A
           </text>
         </svg>
       </div>
 
       <div class="intro__text">
+        <div class="intro__headline" id="introHeadline">Tippe auf den Schnatz</div>
+        <div class="intro__hint" id="introHint">✨</div>
+        <div class="intro__cta">
+          <button id="skipBtn" class="btn btn--ghost btn--small" type="button">Überspringen</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="intro__hint" id="introHint">
-  Tippe auf den Schnatz, um zu beginnen ✨
-</div>
-        
   <!-- STARTSCREEN -->
   <section id="startscreen" class="centered hidden" aria-label="Willkommen">
     <div class="wrap">
@@ -644,8 +630,8 @@
 
             <form action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
-              <input type="hidden" name="subject" value="Teilnahme Hochzeit (DE) — neue Version" />
-              <input type="hidden" name="from_name" value="Hochzeitsseite — neue Version" />
+              <input type="hidden" name="subject" value="Teilnahme Hochzeit (DE) — updated" />
+              <input type="hidden" name="from_name" value="Hochzeitsseite — updated" />
 
               <label for="name-de">Vor- und Nachname*</label>
               <input id="name-de" type="text" name="name" required placeholder="Name eingeben" />
@@ -775,8 +761,8 @@
 
             <form action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
-              <input type="hidden" name="subject" value="Katılım Düğün (TR) — yeni sürüm" />
-              <input type="hidden" name="from_name" value="Düğün Sitesi — yeni sürüm" />
+              <input type="hidden" name="subject" value="Katılım Düğün (TR) — updated" />
+              <input type="hidden" name="from_name" value="Düğün Sitesi — updated" />
 
               <label for="name-tr">Ad Soyad*</label>
               <input id="name-tr" type="text" name="name" required placeholder="İsim girin" />
@@ -877,106 +863,84 @@
     const $ = (id) => document.getElementById(id);
     const pad = (n) => String(n).padStart(2, "0");
 
-    // ===== SOUND (WebAudio, ohne externe Dateien) =====
-    const Sound = (() => {
-      let ctx = null, master = null, enabled = false;
+    // =========================================================
+    // FLORAL PARALLAX (Tiefe + sehr ruhig)
+    // - reagiert auf Maus/Touch & Scroll
+    // - per rAF geglättet
+    // =========================================================
+    (function floralParallax(){
+      const root = document.querySelector(".parallax");
+      if (!root) return;
+      const layers = Array.from(root.querySelectorAll(".fl-layer"));
+      const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      function ensure(){
-        if (ctx) return;
-        const AC = window.AudioContext || window.webkitAudioContext;
-        ctx = new AC();
-        master = ctx.createGain();
-        master.gain.value = 0.55;
-        master.connect(ctx.destination);
+      let targetX = 0, targetY = 0;   // -1..1
+      let curX = 0, curY = 0;         // smoothed
+      let scrollT = 0;
+
+      function onMove(clientX, clientY){
+        const w = window.innerWidth || 1;
+        const h = window.innerHeight || 1;
+        const nx = (clientX / w) * 2 - 1;
+        const ny = (clientY / h) * 2 - 1;
+        // very calm range
+        targetX = Math.max(-1, Math.min(1, nx));
+        targetY = Math.max(-1, Math.min(1, ny));
       }
 
-      function setEnabled(on){
-        ensure();
-        enabled = on;
-        if (enabled) ctx.resume?.();
-      }
+      window.addEventListener("mousemove", (e) => onMove(e.clientX, e.clientY), { passive:true });
+      window.addEventListener("touchmove", (e) => {
+        const t = e.touches && e.touches[0];
+        if (t) onMove(t.clientX, t.clientY);
+      }, { passive:true });
 
-      function whoosh(strength=1){
-        if (!enabled) return;
-        ensure();
-        const t0 = ctx.currentTime;
+      window.addEventListener("scroll", () => {
+        scrollT = window.scrollY || 0;
+      }, { passive:true });
 
-        const noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 0.30, ctx.sampleRate);
-        const data = noiseBuf.getChannelData(0);
-        for (let i=0;i<data.length;i++) data[i] = (Math.random()*2-1) * (1 - i/data.length);
+      function tick(){
+        // smoothing
+        curX += (targetX - curX) * 0.045;
+        curY += (targetY - curY) * 0.045;
 
-        const src = ctx.createBufferSource();
-        src.buffer = noiseBuf;
+        layers.forEach((el) => {
+          const depth = parseFloat(el.dataset.depth || "0.2");
+          const sx = prefersReduce ? 0 : curX * 18 * depth;
+          const sy = prefersReduce ? 0 : curY * 14 * depth;
 
-        const filter = ctx.createBiquadFilter();
-        filter.type = "bandpass";
-        filter.frequency.setValueAtTime(500, t0);
-        filter.frequency.exponentialRampToValueAtTime(1500, t0 + 0.16);
-        filter.Q.value = 0.85;
+          // slow vertical drift with scroll (very subtle)
+          const sc = prefersReduce ? 0 : (scrollT * 0.012 * depth);
 
-        const g = ctx.createGain();
-        g.gain.setValueAtTime(0.0001, t0);
-        g.gain.exponentialRampToValueAtTime(0.35*strength, t0 + 0.02);
-        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.28);
-
-        src.connect(filter);
-        filter.connect(g);
-        g.connect(master);
-
-        src.start(t0);
-        src.stop(t0 + 0.30);
-      }
-
-      function sparkle(){
-        if (!enabled) return;
-        ensure();
-        const t0 = ctx.currentTime;
-
-        const out = ctx.createGain();
-        out.gain.setValueAtTime(0.0001, t0);
-        out.gain.exponentialRampToValueAtTime(0.35, t0 + 0.02);
-        out.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.55);
-        out.connect(master);
-
-        [988, 1319, 1760].forEach((f, i) => {
-          const o = ctx.createOscillator();
-          const g = ctx.createGain();
-          o.type = "sine";
-          o.frequency.setValueAtTime(f, t0);
-          g.gain.setValueAtTime(0.0001, t0);
-          g.gain.exponentialRampToValueAtTime(0.18/(i+1), t0 + 0.03);
-          g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.45);
-          o.connect(g); g.connect(out);
-          o.start(t0);
-          o.stop(t0 + 0.60);
+          el.style.transform = `translate3d(${sx}px, ${sy + sc}px, 0) scale(${1.04 + depth*0.02})`;
         });
-      }
 
-      return { setEnabled, whoosh, sparkle, get enabled(){ return enabled; } };
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     })();
 
-    // ===== INTRO: click snitch -> short flight + particles + sound -> open welcome =====
-    (function initIntro(){
+    // =========================================================
+    // INTRO: Ruhige Snitch-Flugbahn (Bezier, smooth, langsam)
+    // + dezente Partikelspur
+    // =========================================================
+    (function introSnitch(){
       const intro = $("introScreen");
       const stage = $("stage");
       const snitch = $("snitch");
+      const skipBtn = $("skipBtn");
+
       const start = $("startscreen");
       const topbar = $("topbar");
-      const soundBtn = $("soundBtn");
-      const skipBtn = $("skipBtn");
-      const headline = $("introHeadline");
-      const hint = $("introHint");
 
       const canvas = $("sparkCanvas");
-      const ctx = canvas.getContext("2d");
-      const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
       if (!intro || !stage || !snitch || !canvas) return;
+      const ctx = canvas.getContext("2d");
 
-      // keep topbar hidden until language chosen
       topbar?.classList.add("hidden");
 
-      // canvas sizing
+      const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Canvas sizing
       let W=0, H=0, DPR=1;
       function resize(){
         const r = stage.getBoundingClientRect();
@@ -993,27 +957,27 @@
       const sparks = [];
       const rand = (a,b)=> a + Math.random()*(b-a);
 
-      function spawnSpark(x,y,n=6,power=1){
+      function spawnSpark(x,y,n=3,power=1){
         for(let i=0;i<n;i++){
           const a = rand(0, Math.PI*2);
-          const sp = rand(60, 220) * power;
+          const sp = rand(40, 150) * power;
           sparks.push({
             x,y,
             vx: Math.cos(a)*sp,
             vy: Math.sin(a)*sp,
-            life: rand(0.35, 0.95),
+            life: rand(0.55, 1.15),
             t: 0,
-            size: rand(1.2, 3.2) * DPR,
-            glow: rand(0.35, 0.95),
+            size: rand(1.1, 2.8) * DPR,
+            glow: rand(0.28, 0.78),
           });
         }
       }
+
       function burst(x,y){
-        spawnSpark(x,y, 120, 1.15);
-        for(let k=0;k<5;k++) spawnSpark(x+rand(-14,14)*DPR, y+rand(-14,14)*DPR, 45, 1.0);
+        spawnSpark(x,y, 70, 1.05);
+        for(let k=0;k<4;k++) spawnSpark(x+rand(-10,10)*DPR, y+rand(-10,10)*DPR, 35, 0.95);
       }
 
-      // cinematic trail
       function draw(dt){
         ctx.fillStyle = "rgba(0,0,0,0.16)";
         ctx.fillRect(0,0,W,H);
@@ -1024,13 +988,13 @@
           const k = p.t / p.life;
           if(k>=1){ sparks.splice(i,1); continue; }
 
-          p.vx *= (1 - 0.60*dt);
-          p.vy = p.vy*(1 - 0.60*dt) + 170*dt;
+          p.vx *= (1 - 0.50*dt);
+          p.vy = p.vy*(1 - 0.50*dt) + 120*dt;
           p.x += p.vx*dt;
           p.y += p.vy*dt;
 
           const a = (1-k) * p.glow;
-          const r = p.size * (1 + 0.65*(1-k));
+          const r = p.size * (1 + 0.55*(1-k));
 
           ctx.beginPath();
           ctx.fillStyle = `rgba(246,231,178,${a})`;
@@ -1038,24 +1002,26 @@
           ctx.fill();
 
           ctx.beginPath();
-          ctx.fillStyle = `rgba(255,255,255,${a*0.55})`;
-          ctx.arc(p.x - 0.7*DPR, p.y - 0.9*DPR, r*0.55, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(255,255,255,${a*0.45})`;
+          ctx.arc(p.x - 0.6*DPR, p.y - 0.8*DPR, r*0.52, 0, Math.PI*2);
           ctx.fill();
         }
       }
 
-      // sound UI
-      function updateSoundBtn(){
-        soundBtn.textContent = Sound.enabled ? "Sound: AN" : "Sound: AUS";
+      // Bezier helpers
+      function lerp(a,b,t){ return a + (b-a)*t; }
+      function easeInOutCubic(t){
+        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
       }
-      soundBtn.addEventListener("click", () => {
-        Sound.setEnabled(!Sound.enabled);
-        updateSoundBtn();
-        if (Sound.enabled) Sound.whoosh(0.35);
-      });
-      updateSoundBtn();
+      function bezier(p0,p1,p2,p3,t){
+        const a = lerp(p0, p1, t);
+        const b = lerp(p1, p2, t);
+        const c = lerp(p2, p3, t);
+        const d = lerp(a, b, t);
+        const e = lerp(b, c, t);
+        return lerp(d, e, t);
+      }
 
-      // state
       let clicked = false;
       let animRunning = false;
 
@@ -1068,39 +1034,45 @@
         }, 780);
       }
 
-      function startFlight(){
+      function runFlight(){
         if (clicked) return;
         clicked = true;
 
-        // unlock audio if enabled
-        if (Sound.enabled) Sound.setEnabled(true);
+        if (prefersReduce){
+          openWelcome();
+          return;
+        }
 
-        headline.textContent = "✨";
-        hint.textContent = "Einen Moment …";
+        snitch.classList.add("fly");
+        snitch.style.opacity = "1";
 
-        // start particle animation loop
+        // Stage camera subtle move (cinematic but calm)
+        stage.animate(
+          [
+            { transform: "scale(1) translate3d(0,0,0)" },
+            { transform: "scale(1.01) translate3d(0,-4px,0)" },
+            { transform: "scale(1) translate3d(0,0,0)" }
+          ],
+          { duration: 2600, easing: "cubic-bezier(.2,.8,.2,1)" }
+        );
+
+        // Particle anim loop
         animRunning = true;
         let last = performance.now();
-
-        // burst at center before flight
-        const r = stage.getBoundingClientRect();
-        burst((r.width*0.50)*DPR, (r.height*0.50)*DPR);
-
-        if (Sound.enabled){
-          Sound.sparkle();
-          Sound.whoosh(0.9);
-        }
-
-        // start flight
-        if (!prefersReduce){
-          snitch.classList.add("fly");
-        } else {
-          snitch.style.opacity = "0";
-        }
-
-        // during flight, sprinkle sparkles along a rough curve
-        const flightMs = prefersReduce ? 200 : 1650;
         const t0 = performance.now();
+
+        // Determine control points based on stage size
+        const r = stage.getBoundingClientRect();
+        const p0 = { x: r.width*0.50, y: r.height*0.50 };
+        const p1 = { x: r.width*0.62, y: r.height*0.35 };
+        const p2 = { x: r.width*0.38, y: r.height*0.62 };
+        const p3 = { x: r.width*0.86, y: r.height*0.28 };
+
+        // Start burst at center
+        burst(p0.x*DPR, p0.y*DPR);
+
+        // Animate snitch along bezier (calm, 2.6s)
+        const duration = 2600;
 
         function tick(now){
           if (!animRunning) return;
@@ -1109,36 +1081,43 @@
 
           draw(dt);
 
-          const tt = Math.min(1, (now - t0) / flightMs);
-          // curve points (approx; visually nice)
-          const x = (0.50 + 0.62*tt) * r.width;
-          const y = (0.50 - 0.22*tt + 0.08*Math.sin(tt*6.0)) * r.height;
-          spawnSpark(x*DPR, y*DPR, 3, 0.85);
+          const raw = Math.min(1, (now - t0) / duration);
+          const t = easeInOutCubic(raw);
+
+          const x = bezier(p0.x, p1.x, p2.x, p3.x, t);
+          const y = bezier(p0.y, p1.y, p2.y, p3.y, t);
+
+          // subtle rotation based on progress
+          const rot = (t - 0.5) * 18;
+
+          // move snitch (absolute positioning)
+          snitch.style.left = x + "px";
+          snitch.style.top = y + "px";
+          snitch.style.transform = `translate(-50%,-50%) rotate(${rot}deg) scale(${1.00 - 0.06*t})`;
+
+          // trailing sparkles (very subtle)
+          spawnSpark(x*DPR, y*DPR, 2, 0.85);
+
+          if (raw >= 1){
+            animRunning = false;
+            snitch.style.opacity = "0";
+            burst(p3.x*DPR, p3.y*DPR);
+            setTimeout(openWelcome, 520);
+            return;
+          }
 
           requestAnimationFrame(tick);
         }
-        requestAnimationFrame(tick);
 
-        // finish
-        setTimeout(() => {
-          animRunning = false;
-          // final burst near top-right
-          burst((r.width*0.88)*DPR, (r.height*0.26)*DPR);
-          if (Sound.enabled){ Sound.sparkle(); Sound.whoosh(0.65); }
-          setTimeout(openWelcome, prefersReduce ? 150 : 520);
-        }, flightMs);
+        requestAnimationFrame(tick);
       }
 
-      snitch.addEventListener("click", startFlight);
+      snitch.addEventListener("click", runFlight);
       snitch.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); startFlight(); }
+        if (e.key === "Enter" || e.key === " "){ e.preventDefault(); runFlight(); }
       });
 
-      skipBtn.addEventListener("click", () => {
-        // no animation
-        if (Sound.enabled){ Sound.sparkle(); }
-        openWelcome();
-      });
+      skipBtn.addEventListener("click", openWelcome);
 
       // initial clear
       ctx.fillStyle = "rgba(0,0,0,1)";
