@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="dark light" />
-  <title>Hochzeit Gizem &amp; Aykut</title>
+  <meta name="color-scheme" content="dark" />
+  <title>Gizem &amp; Aykut – Hochzeit</title>
 
-  <!-- Optional: Fonts (wenn du sie nicht willst: die 3 Zeilen entfernen) -->
+  <!-- Optional: Fonts (wenn du sie nicht willst: diese 3 Zeilen entfernen) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,6 +14,10 @@
   <style>
     :root{
       --bg0:#070A07;
+      --bg1:#0B100B;
+      --card: rgba(14,18,14,.70);
+      --card2: rgba(14,18,14,.55);
+
       --text:#F4F6F0;
       --muted: rgba(244,246,240,.78);
       --soft: rgba(244,246,240,.62);
@@ -23,14 +27,14 @@
       --gold:#F6E7B2;
 
       --border: 1px solid rgba(255,255,255,.10);
-      --radius-xl: 22px;
-      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --radius-lg: 20px;
       --radius-md: 14px;
 
-      --shadow: 0 22px 60px rgba(0,0,0,.55);
-      --shadow2: 0 14px 34px rgba(0,0,0,.45);
+      --shadow: 0 26px 70px rgba(0,0,0,.62);
+      --shadow2: 0 16px 40px rgba(0,0,0,.48);
 
-      --max: 1060px;
+      --max: 1100px;
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
@@ -44,100 +48,175 @@
       text-align:center;
     }
 
-    /* ===== Background ===== */
+    /* =========================================================
+       Background: elegant, ohne eure Fotos + florale Seiten
+       ========================================================= */
     .bg{
-      position:fixed;
-      inset:0;
-      z-index:-3;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      filter: brightness(42%);
-      animation: slideshow 36s infinite ease-in-out;
-      transform: scale(1.03);
-    }
-    @keyframes slideshow{
-      0%{ background-image:url("img/IMG_0798.jpeg"); }
-      33%{ background-image:url("img/IMG_1906.jpeg"); }
-      66%{ background-image:url("img/IMG_2306.jpeg"); }
-      100%{ background-image:url("img/IMG_0798.jpeg"); }
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(900px 700px at 15% 10%, rgba(109,133,64,.22), transparent 60%),
+        radial-gradient(900px 700px at 85% 15%, rgba(246,231,178,.12), transparent 58%),
+        radial-gradient(900px 900px at 50% 85%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, #070A07, #0B100B);
     }
     .bg::after{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(1000px 700px at 20% 5%, rgba(109,133,64,.22), transparent 60%),
-        radial-gradient(900px 650px at 80% 20%, rgba(246,231,178,.10), transparent 55%),
-        linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.86));
+        linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.80));
+      pointer-events:none;
     }
 
-    /* ===== Layout ===== */
+    /* Florale Seiten (SVG als Data-URI, kein externes Bild nötig) */
+    .flowers{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: .92;
+      filter: saturate(1.08);
+      background-repeat: no-repeat;
+      background-size: 320px 100vh, 320px 100vh;
+      background-position: left center, right center;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='1200' viewBox='0 0 320 1200'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='20%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.35'/%3E%3Cstop offset='60%25' stop-color='%234a5d23' stop-opacity='0.16'/%3E%3Cstop offset='100%25' stop-color='%23070a07' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='p' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.22'/%3E%3Cstop offset='100%25' stop-color='%23f6e7b2' stop-opacity='0.02'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='1200' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23f6e7b2' stroke-opacity='0.22' stroke-width='2'%3E%3Cpath d='M210 80 C120 220, 240 310, 120 420 C20 520, 200 640, 110 760 C40 860, 140 970, 80 1120'/%3E%3Cpath d='M260 190 C170 280, 290 360, 180 470 C90 560, 260 680, 150 800 C90 900, 200 1010, 130 1180'/%3E%3C/g%3E%3Cg%3E%3Cg fill='%236d8540' fill-opacity='0.22'%3E%3Cellipse cx='180' cy='220' rx='32' ry='16'/%3E%3Cellipse cx='140' cy='360' rx='28' ry='14'/%3E%3Cellipse cx='200' cy='520' rx='36' ry='18'/%3E%3Cellipse cx='150' cy='740' rx='32' ry='16'/%3E%3Cellipse cx='210' cy='920' rx='34' ry='17'/%3E%3C/g%3E%3Cg fill='%23f6e7b2' fill-opacity='0.12'%3E%3Ccircle cx='190' cy='250' r='18'/%3E%3Ccircle cx='160' cy='390' r='14'/%3E%3Ccircle cx='210' cy='550' r='16'/%3E%3Ccircle cx='160' cy='770' r='15'/%3E%3Ccircle cx='220' cy='950' r='16'/%3E%3C/g%3E%3C/g%3E%3Crect x='0' y='0' width='320' height='1200' fill='url(%23p)'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='1200' viewBox='0 0 320 1200'%3E%3Cdefs%3E%3CradialGradient id='g' cx='60%25' cy='20%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='%236d8540' stop-opacity='0.35'/%3E%3Cstop offset='60%25' stop-color='%234a5d23' stop-opacity='0.16'/%3E%3Cstop offset='100%25' stop-color='%23070a07' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='p' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23f6e7b2' stop-opacity='0.22'/%3E%3Cstop offset='100%25' stop-color='%23f6e7b2' stop-opacity='0.02'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='1200' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23f6e7b2' stroke-opacity='0.22' stroke-width='2'%3E%3Cpath d='M110 80 C200 220, 80 310, 200 420 C300 520, 120 640, 210 760 C280 860, 180 970, 240 1120'/%3E%3Cpath d='M60 190 C150 280, 30 360, 140 470 C230 560, 60 680, 170 800 C230 900, 120 1010, 190 1180'/%3E%3C/g%3E%3Cg%3E%3Cg fill='%236d8540' fill-opacity='0.22'%3E%3Cellipse cx='140' cy='220' rx='32' ry='16'/%3E%3Cellipse cx='180' cy='360' rx='28' ry='14'/%3E%3Cellipse cx='120' cy='520' rx='36' ry='18'/%3E%3Cellipse cx='170' cy='740' rx='32' ry='16'/%3E%3Cellipse cx='110' cy='920' rx='34' ry='17'/%3E%3C/g%3E%3Cg fill='%23f6e7b2' fill-opacity='0.12'%3E%3Ccircle cx='130' cy='250' r='18'/%3E%3Ccircle cx='170' cy='390' r='14'/%3E%3Ccircle cx='120' cy='550' r='16'/%3E%3Ccircle cx='170' cy='770' r='15'/%3E%3Ccircle cx='110' cy='950' r='16'/%3E%3C/g%3E%3C/g%3E%3Crect x='0' y='0' width='320' height='1200' fill='url(%23p)'/%3E%3C/svg%3E");
+    }
+
+    /* =========================================================
+       Layout / Cards / Typo
+       ========================================================= */
     .wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:0 18px; }
     .section{ padding: 64px 0; }
     .centered{ min-height:100vh; display:flex; align-items:center; justify-content:center; }
 
     .card{
-      background: rgba(14,18,14,.72);
+      background: var(--card);
       border: var(--border);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       overflow:hidden;
       text-align:left;
     }
-    .card-inner{ padding: 34px 22px; }
+    .card-inner{ padding: 36px 22px; }
     @media (min-width: 720px){
-      .card-inner{ padding: 44px 42px; }
+      .card-inner{ padding: 50px 56px; }
     }
 
-    /* ===== Typography ===== */
+    .subtitle{
+      font-size: .92rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(246,231,178,.90);
+      text-align:center;
+      margin-bottom: 10px;
+    }
     .title{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight: 650;
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-size: clamp(2.25rem, 5.4vw, 3.6rem);
       letter-spacing: .02em;
-      line-height: 1.08;
-      margin-top: 14px;
-      margin-bottom: 10px;
+      line-height: 1.06;
       color: var(--text);
       text-align:center;
-    }
-    .subtitle{
-      font-size: .98rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(246,231,178,.88);
-      margin-bottom: 8px;
-      text-align:center;
+      margin-bottom: 10px;
     }
     h2{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight: 650;
-      font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+      font-size: clamp(1.75rem, 3.2vw, 2.35rem);
       margin-bottom: 14px;
       text-align:center;
     }
     h3{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight: 650;
-      font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
       margin-bottom: 12px;
-      text-align:left;
     }
     p{
       color: var(--muted);
       line-height: 1.7;
       font-size: 1.02rem;
       margin-top: 10px;
+      text-align:center;
+    }
+    .muted{ color: var(--soft); }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor:pointer;
+      user-select:none;
+      text-decoration:none;
+      font-weight: 600;
+      font-size: .98rem;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+      color: white;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .btn--primary{
+      background: linear-gradient(135deg, var(--olive), var(--olive2));
+      box-shadow: var(--shadow2);
+    }
+    .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 20px 52px rgba(0,0,0,.60); }
+    .btn--ghost{
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--text);
+    }
+    .btn--ghost:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
+    .btn--small{ padding: 10px 14px; font-size:.92rem; font-weight:600; }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top: 18px;
     }
 
-    /* ===== Sticky Nav ===== */
+    .date-chip{
+      margin-top: 14px;
+      display:flex;
+      justify-content:center;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(246,231,178,.28);
+      color: rgba(246,231,178,.92);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .86rem;
+      user-select:none;
+    }
+
+    .hidden{ display:none !important; }
+
+    /* =========================================================
+       TOPBAR
+       ========================================================= */
     .topbar{
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 60;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       background: rgba(7,10,7,.55);
@@ -182,266 +261,12 @@
       transition: transform .15s ease, background .15s ease;
     }
     .navlinks a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
-    .lang-mini{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      justify-content:flex-end;
-    }
-
-    /* ===== Buttons ===== */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 13px 18px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      cursor:pointer;
-      user-select:none;
-      text-decoration:none;
-      font-weight: 600;
-      font-size: .98rem;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-      color: white;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .btn--primary{
-      background: linear-gradient(135deg, var(--olive), var(--olive2));
-      box-shadow: var(--shadow2);
-    }
-    .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 44px rgba(0,0,0,.60); }
-    .btn--ghost{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.14);
-      color: var(--text);
-    }
-    .btn--ghost:hover{ background: rgba(255,255,255,.11); transform: translateY(-1px); }
-    .btn--small{ padding: 10px 14px; font-size:.92rem; font-weight:600; }
-
-    .grid2{
-      display:grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
-      margin-top: 18px;
-    }
-    @media (min-width: 880px){
-      .grid2{ grid-template-columns: 1fr 1fr; }
-    }
-
-    .info-card{
-      background: rgba(14,18,14,.55);
-      border: var(--border);
-      border-radius: var(--radius-lg);
-      padding: 16px 16px;
-      text-align:left;
-    }
-    .info-card strong{ color: var(--text); }
-
-    /* ===== Hero ===== */
-    .hero{
-      padding: 26px 0 12px;
-    }
-    .hero-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top: 18px;
-    }
-    .date-chip{
-      margin-top: 14px;
-      display:flex;
-      justify-content:center;
-    }
-    .date-chip .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.20);
-      border: 1px solid rgba(246,231,178,.28);
-      color: rgba(246,231,178,.92);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      font-size: .88rem;
-      user-select:none;
-    }
-
-    /* ===== Countdown ===== */
-    .count-row{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px;
-    }
-    @media (min-width: 560px){
-      .count-row{ grid-template-columns: repeat(4, minmax(0,1fr)); }
-    }
-    .count-box{
-      background: rgba(0,0,0,.25);
-      border: var(--border);
-      border-radius: var(--radius-md);
-      padding: 14px 10px;
-      text-align:center;
-    }
-    .count-number{
-      font-size: 2.05rem;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: .02em;
-    }
-    .count-label{
-      margin-top: 2px;
-      font-size: .80rem;
-      text-transform: uppercase;
-      letter-spacing: .10em;
-      color: var(--soft);
-    }
-    .note{
-      margin-top: 12px;
-      font-size: .92rem;
-      color: var(--soft);
-      text-align:center;
-    }
-
-    /* ===== Form ===== */
-    form{ margin-top: 14px; text-align:left; }
-    label{
-      display:block;
-      margin-top: 12px;
-      margin-bottom: 6px;
-      font-size: .95rem;
-      color: var(--text);
-    }
-    input, select, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.36);
-      color: var(--text);
-      font-size: .98rem;
-    }
-    input:focus, select:focus, textarea:focus{
-      outline:none;
-      border-color: rgba(109,133,64,.95);
-      box-shadow: 0 0 0 2px rgba(109,133,64,.30);
-    }
-    textarea{ min-height: 110px; resize: vertical; }
-
-    .inline2{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 720px){
-      .inline2{ grid-template-columns: 1fr 1fr; }
-    }
-
-    .form-footer{
-      margin-top: 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap:wrap;
-    }
-    .small{
-      font-size:.9rem;
-      color: var(--soft);
-      margin-top: 10px;
-    }
-
-    /* ===== Gallery ===== */
-    .photo-toolbar{
-      margin-top: 10px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-start;
-      align-items:center;
-    }
-    .photo-grid{
-      margin-top: 16px;
-      display:grid;
-      gap: 10px;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    }
-    .photo-card{
-      appearance:none; -webkit-appearance:none;
-      border: var(--border);
-      border-radius: 16px;
-      overflow:hidden;
-      background: rgba(255,255,255,.06);
-      aspect-ratio: 1/1;
-      cursor:pointer;
-      padding:0;
-      position:relative;
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .photo-card:hover{ transform: translateY(-2px); box-shadow: 0 16px 30px rgba(0,0,0,.35); }
-    .photo-card img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-      transition: transform .18s ease;
-    }
-    .photo-card:hover img{ transform: scale(1.04); }
-    .photo-meta{
-      margin-top: 12px;
-      font-size: .92rem;
-      color: var(--soft);
-    }
-    .photo-hint{
-      margin-top: 14px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      color: var(--soft);
-      font-size: .95rem;
-    }
-
-    /* ===== Lightbox ===== */
-    dialog.lightbox{ border:none; padding:0; background:transparent; }
-    dialog.lightbox::backdrop{ background: rgba(0,0,0,.75); }
-    .lightbox-inner{ position:relative; padding: 16px; }
-    .lightbox img{
-      max-width: min(92vw, 1200px);
-      max-height: 86vh;
-      border-radius: 18px;
-      display:block;
-      margin: 0 auto;
-      background:#111;
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .lb-close{
-      position: fixed;
-      top: 14px; right: 14px;
-      width: 46px; height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.35);
-      background: rgba(0,0,0,.32);
-      color:#fff;
-      font-size: 28px;
-      line-height: 44px;
-      cursor:pointer;
-    }
-    .lb-actions{
-      margin-top: 12px;
-      display:flex;
-      justify-content:center;
-      gap: 10px;
-      flex-wrap:wrap;
-    }
-
-    /* ===== Helpers ===== */
-    .hidden{ display:none !important; }
+    .lang-mini{ display:flex; gap:8px; align-items:center; justify-content:flex-end; }
 
     /* =========================================================
-       INTRO: großer "Schnatz" fliegt 1x um den Screen, dann Start
+       INTRO (Original-Design): Zauber-Sucher + wunderschöner Schnatz
+       - Wichtig: keine echten HP-Grafiken/Marken, nur eigene Silhouette.
+       - Öffnet erst, wenn Schnatz "gefunden" UND geklickt wurde.
        ========================================================= */
     .intro{
       position: fixed;
@@ -449,150 +274,164 @@
       z-index: 200;
       display: grid;
       place-items: center;
-      background: rgba(0,0,0,.52);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0,0,0,.56);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .intro__frame{
+      width: min(980px, 94vw);
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(12,16,12,.56);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      padding: 26px 22px 22px;
+    }
+    @media (min-width: 720px){
+      .intro__frame{ padding: 34px 30px 26px; }
     }
 
     .intro__stage{
-      width: min(1000px, 94vw);
-      height: min(560px, 62vh);
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(12,16,12,.58);
-      box-shadow: 0 22px 60px rgba(0,0,0,.55);
       position: relative;
+      width: 100%;
+      height: min(520px, 56vh);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(900px 600px at 40% 20%, rgba(246,231,178,.10), transparent 55%),
+        radial-gradient(900px 600px at 70% 40%, rgba(109,133,64,.14), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.16));
       overflow: hidden;
     }
 
-    .intro__spot{
+    /* "Sucher" (neutrale Figur, keine Marke) */
+    .seeker{
       position:absolute;
-      inset:-40%;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(246,231,178,.14), transparent 55%),
-        radial-gradient(circle at 80% 30%, rgba(109,133,64,.16), transparent 60%),
-        radial-gradient(circle at 55% 75%, rgba(255,255,255,.07), transparent 60%);
+      left: 12%;
+      bottom: 14%;
+      width: 220px;
+      height: 280px;
+      opacity: .92;
+      transform: translateX(0);
+      animation: seekerScan 3.2s infinite ease-in-out;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,.45));
+    }
+    @keyframes seekerScan{
+      0%,100%{ transform: translateX(0) rotate(-1deg); }
+      50%{ transform: translateX(22px) rotate(1deg); }
     }
 
-    /* Neutrale Sucher-Silhouette (kein Originalcharakter) */
-    .intro__seeker{
+    /* Spotlight, der "sucht" */
+    .spot{
       position:absolute;
-      bottom: 10%;
-      left: 8%;
-      width: 170px;
-      height: 260px;
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 55% 20%, rgba(255,255,255,.18), transparent 45%),
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.10);
-      opacity: .86;
-      transform: rotate(-2deg);
-      animation: introSeek 2.4s infinite ease-in-out;
+      width: 520px;
+      height: 520px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(246,231,178,.16), rgba(246,231,178,0) 62%);
+      filter: blur(0px);
+      opacity: .85;
+      left: 6%;
+      top: 10%;
+      animation: spotMove 8.5s linear 1 forwards;
     }
-    @keyframes introSeek{
-      0%,100%{ transform: translateX(0) rotate(-2deg); opacity:.82; }
-      50%{ transform: translateX(24px) rotate(2deg); opacity:.92; }
-    }
-
-    /* Großer Schnatz */
-    .intro__snitch{
-      position:absolute;
-      left: 8%;
-      top: 18%;
-      width: 140px;   /* groß */
-      height: 92px;   /* groß */
-      transform: translate3d(0,0,0);
-      animation: snitchLap 5.8s linear 1 forwards;
-      will-change: transform;
-      cursor: default;
-      user-select: none;
+    @keyframes spotMove{
+      0%{ transform: translate(0,0); opacity:.70; }
+      25%{ transform: translate(34vw, 2vh); opacity:.88; }
+      55%{ transform: translate(48vw, 18vh); opacity:.92; }
+      80%{ transform: translate(16vw, 26vh); opacity:.90; }
+      100%{ transform: translate(28vw, 10vh); opacity:.94; }
     }
 
-    .intro__ball{
+    /* Schnatz (SVG) – erst versteckt, dann "found" + klickbar */
+    .snitch{
       position:absolute;
-      left:50%;
-      top:50%;
-      width: 72px;
-      height: 72px;
+      width: 140px;
+      height: 140px;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%,-50%) scale(.86);
+      opacity: 0;
+      pointer-events: none;
+      filter:
+        drop-shadow(0 16px 40px rgba(0,0,0,.55))
+        drop-shadow(0 0 28px rgba(246,231,178,.16));
+    }
+
+    .snitch.found{
+      opacity: 1;
+      pointer-events: auto;
+      animation: snitchHover 2.2s infinite ease-in-out;
+      cursor: pointer;
+    }
+    @keyframes snitchHover{
+      0%,100%{ transform: translate(-50%,-50%) scale(1) rotate(-2deg); }
+      50%{ transform: translate(-50%,-55%) scale(1.04) rotate(2deg); }
+    }
+
+    .snitch .wing{
+      transform-origin: center;
+      animation: wingFlap .16s infinite ease-in-out;
+    }
+    @keyframes wingFlap{
+      0%,100%{ transform: rotate(12deg); }
+      50%{ transform: rotate(-14deg); }
+    }
+
+    .snitchGlow{
+      position:absolute;
+      left: 50%;
+      top: 42%;
+      width: 280px;
+      height: 280px;
       transform: translate(-50%,-50%);
       border-radius: 999px;
-      display:grid;
-      place-items:center;
-      font-weight: 900;
-      font-size: 1.05rem;
-      letter-spacing: .06em;
-      color: rgba(0,0,0,.78);
-      background:
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,.68), rgba(255,255,255,0) 42%),
-        linear-gradient(135deg, rgba(246,231,178,1), rgba(186,155,66,1));
-      box-shadow: 0 20px 54px rgba(0,0,0,.50);
-      border: 1px solid rgba(255,255,255,.24);
+      background: radial-gradient(circle, rgba(246,231,178,.14), transparent 60%);
+      opacity: 0;
+      transition: opacity .5s ease;
+      pointer-events:none;
     }
+    .snitchGlow.on{ opacity: 1; }
 
-    .intro__wing{
-      position:absolute;
-      top:50%;
-      width: 46px;
-      height: 28px;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(255,255,255,.28);
-      box-shadow: 0 14px 30px rgba(0,0,0,.24);
-    }
-    .intro__wing--l{
-      left: 0px;
-      border-radius: 24px 8px 24px 8px;
-      transform-origin: 100% 50%;
-      animation: wingL .18s infinite ease-in-out;
-    }
-    .intro__wing--r{
-      right: 0px;
-      border-radius: 8px 24px 8px 24px;
-      transform-origin: 0% 50%;
-      animation: wingR .18s infinite ease-in-out;
-    }
-    @keyframes wingL { 0%,100%{ transform: translateY(-50%) rotate(18deg);} 50%{ transform: translateY(-50%) rotate(-22deg);} }
-    @keyframes wingR { 0%,100%{ transform: translateY(-50%) rotate(-18deg);} 50%{ transform: translateY(-50%) rotate(22deg);} }
-
-    /* 1 Runde um den Screen (innerhalb der Stage) */
-    @keyframes snitchLap{
-      0%   { transform: translate(0%, 0%) rotate(0deg); }
-      18%  { transform: translate(560px, 0px) rotate(10deg); }
-      40%  { transform: translate(560px, 320px) rotate(-12deg); }
-      62%  { transform: translate(0px, 320px) rotate(12deg); }
-      82%  { transform: translate(0px, 40px) rotate(-10deg); }
-      100% { transform: translate(0%, 0%) rotate(0deg); }
-    }
-
+    /* Text unter der Stage */
     .intro__text{
-      margin-top: 14px;
+      margin-top: 18px;
       text-align:center;
-      color: var(--text);
+      display:grid;
+      gap: 10px;
+      justify-items:center;
     }
-    .intro__line{
+    .intro__headline{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight: 650;
-      font-size: 1.35rem;
+      font-size: clamp(1.35rem, 2.6vw, 1.75rem);
       letter-spacing: .02em;
     }
-    .intro__sub{
-      margin-top: 6px;
+    .intro__hint{
       color: var(--soft);
-      font-size: .98rem;
+      font-size: 1rem;
+      max-width: 52ch;
+      line-height: 1.6;
+    }
+    .intro__cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top: 2px;
     }
 
     .intro.out{
-      animation: introFadeOut .55s ease forwards;
+      animation: introFadeOut .7s ease forwards;
     }
     @keyframes introFadeOut{
-      to{ opacity:0; transform: translateY(6px); pointer-events:none; }
+      to{ opacity:0; transform: translateY(8px); pointer-events:none; }
     }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
-      .intro__snitch{ animation: none; }
-      .intro__seeker{ animation: none; }
+      html{ scroll-behavior:auto; }
+      .seeker, .spot, .snitch.found, .snitch .wing{ animation: none; }
       .intro.out{ animation:none; opacity:0; pointer-events:none; }
     }
   </style>
@@ -600,34 +439,101 @@
 
 <body>
   <div class="bg" aria-hidden="true"></div>
+  <div class="flowers" aria-hidden="true"></div>
 
-  <!-- INTRO: erst Schnatz-Loop, dann Welcome -->
-  <section id="introScreen" class="intro">
-    <div>
+  <!-- =========================================================
+       INTRO: läuft länger, zentral, Schnatz erscheint, Seite öffnet erst nach Klick
+       ========================================================= -->
+  <section id="introScreen" class="intro" aria-label="Intro">
+    <div class="intro__frame">
       <div class="intro__stage" aria-hidden="true">
-        <div class="intro__spot"></div>
+        <div class="spot" id="spot"></div>
 
-        <div class="intro__snitch" id="introSnitch">
-          <span class="intro__ball">G+A</span>
-          <span class="intro__wing intro__wing--l"></span>
-          <span class="intro__wing intro__wing--r"></span>
-        </div>
+        <!-- Neutrale Sucher-Figur (keine echte Marke/Charakter) -->
+        <svg class="seeker" viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sucher">
+          <defs>
+            <linearGradient id="coat" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,.18)"/>
+              <stop offset="1" stop-color="rgba(255,255,255,.04)"/>
+            </linearGradient>
+          </defs>
+          <g opacity=".95">
+            <path d="M80 70 C78 44, 98 26, 110 26 C124 26, 144 44, 142 70 C160 80, 170 105, 165 130 C155 185, 150 240, 140 260 C120 276, 100 276, 80 260 C70 240, 65 185, 55 130 C50 105, 60 80, 80 70 Z"
+                  fill="url(#coat)" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+            <circle cx="110" cy="55" r="18" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.10)"/>
+            <!-- "Brille" (neutral) -->
+            <g stroke="rgba(246,231,178,.55)" stroke-width="3" fill="none" opacity=".9">
+              <circle cx="100" cy="54" r="10"/>
+              <circle cx="120" cy="54" r="10"/>
+              <path d="M110 54 L110 54" />
+            </g>
+            <!-- "Zauberstab" -->
+            <path d="M150 120 L200 90" stroke="rgba(246,231,178,.55)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="200" cy="90" r="3" fill="rgba(246,231,178,.9)"/>
+          </g>
+        </svg>
 
-        <div class="intro__seeker" id="introSeeker"></div>
+        <div class="snitchGlow" id="snitchGlow"></div>
+
+        <!-- Schnatz (eigene SVG-Optik, „professioneller“) -->
+        <svg id="snitch" class="snitch" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="button" aria-label="Schnatz öffnen" tabindex="0">
+          <defs>
+            <radialGradient id="goldCore" cx="35%" cy="25%" r="70%">
+              <stop offset="0" stop-color="#fff6d6" stop-opacity="0.95"/>
+              <stop offset="45%" stop-color="#f6e7b2" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#b99a3e" stop-opacity="0.95"/>
+            </radialGradient>
+            <linearGradient id="goldEdge" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#ffe9a8" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="#d7b55a" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#8c6a22" stop-opacity="0.85"/>
+            </linearGradient>
+            <linearGradient id="wingGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#fff4cf" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.15"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Wings -->
+          <g class="wing" transform="translate(38,110)">
+            <path d="M0 0 C-28 -20,-34 -60, -10 -80 C20 -104, 44 -86, 54 -60 C40 -58, 22 -48, 10 -34 C0 -22, -4 -10, 0 0 Z"
+                  fill="url(#wingGrad)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+            <path d="M8 -10 C-8 -28,-4 -52, 20 -64" fill="none" stroke="rgba(246,231,178,.35)" stroke-width="2"/>
+          </g>
+          <g class="wing" transform="translate(182,110) scale(-1,1)">
+            <path d="M0 0 C-28 -20,-34 -60, -10 -80 C20 -104, 44 -86, 54 -60 C40 -58, 22 -48, 10 -34 C0 -22, -4 -10, 0 0 Z"
+                  fill="url(#wingGrad)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+            <path d="M8 -10 C-8 -28,-4 -52, 20 -64" fill="none" stroke="rgba(246,231,178,.35)" stroke-width="2"/>
+          </g>
+
+          <!-- Core ball -->
+          <circle cx="110" cy="110" r="44" fill="url(#goldCore)" stroke="url(#goldEdge)" stroke-width="4"/>
+          <path d="M92 90 C105 82, 122 82, 130 96 C120 94, 108 98, 100 106 C94 112, 92 120, 94 128 C86 118, 84 100, 92 90 Z"
+                fill="rgba(255,255,255,.22)"/>
+          <text x="110" y="118" text-anchor="middle" font-family="Inter, system-ui" font-size="18" font-weight="900" fill="rgba(0,0,0,.78)" letter-spacing="2">
+            G+A
+          </text>
+        </svg>
       </div>
 
       <div class="intro__text">
-        <div class="intro__line">Der Schnatz ist unterwegs …</div>
-        <div class="intro__sub">gleich erscheint die Seite</div>
+        <div class="intro__headline" id="introHeadline">Er sucht den Schnatz …</div>
+        <div class="intro__hint" id="introHint">
+          Sobald er ihn gefunden hat, erscheint der Schnatz in der Mitte. <br>
+          <span class="muted">Klicke dann auf den Schnatz, um die Seite zu öffnen.</span>
+        </div>
+        <div class="intro__cta">
+          <button id="skipBtn" class="btn btn--ghost btn--small" type="button" aria-label="Intro überspringen (Schnatz sofort zeigen)">Intro überspringen</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- START / LANGUAGE (erscheint nach Intro) -->
-  <section id="startscreen" class="centered hidden">
+  <!-- START / LANGUAGE -->
+  <section id="startscreen" class="centered hidden" aria-label="Willkommen">
     <div class="wrap">
       <div class="card">
-        <div class="card-inner hero">
+        <div class="card-inner">
           <div class="subtitle">WELCOME TO OUR FOREVER</div>
           <div class="title">Gizem &amp; Aykut</div>
           <p>Bitte wähle eine Sprache / Lütfen bir dil seçiniz</p>
@@ -673,28 +579,12 @@
             <h2>Willkommen</h2>
             <p>Wir freuen uns sehr, diesen Tag mit euch zu teilen. Hier findet ihr alle Infos – und später auch eure Fotos. ♥</p>
 
-            <div class="date-chip">
-              <div class="pill">11. April 2026 • 17:00 Uhr</div>
-            </div>
-
             <div class="hero-actions">
               <a href="#de-ort" class="btn btn--ghost">Ort</a>
               <a href="#de-countdown" class="btn btn--ghost">Countdown</a>
               <a href="#de-teilnahme" class="btn btn--primary">Zusagen</a>
               <a href="#de-fotos" class="btn btn--ghost">Fotos</a>
             </div>
-
-            <div class="grid2">
-              <div class="info-card">
-                <h3>Adresse</h3>
-                <p><strong>Vernouilletallee 1</strong><br><strong>34587 Felsberg</strong></p>
-              </div>
-              <div class="info-card">
-                <h3>Hinweis</h3>
-                <p>Bitte kommt ein paar Minuten früher, damit wir entspannt starten können.</p>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -705,17 +595,17 @@
         <div class="card">
           <div class="card-inner">
             <h3>Ort &amp; Anfahrt</h3>
-            <p>Unsere Hochzeit findet hier statt:</p>
-            <p><strong>Vernouilletallee 1</strong><br><strong>34587 Felsberg</strong></p>
+            <p style="text-align:center;">Vernouilletallee 1<br>34587 Felsberg</p>
 
-            <div class="hero-actions" style="justify-content:flex-start;">
+            <div class="hero-actions">
               <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
                  href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
                 Google Maps öffnen
               </a>
               <button class="btn btn--ghost" type="button" onclick="copyAddress('Vernouilletallee 1, 34587 Felsberg')">Adresse kopieren</button>
             </div>
-            <div class="small" id="copy-msg-de" aria-live="polite"></div>
+
+            <p id="copy-msg-de" class="muted" aria-live="polite"></p>
           </div>
         </div>
       </div>
@@ -728,14 +618,14 @@
             <h3>Countdown</h3>
             <p>Wir starten am <strong>11. April 2026</strong> um <strong>17:00 Uhr</strong>.</p>
 
-            <div class="count-row" id="countdown-de">
-              <div class="count-box"><div id="de-months" class="count-number">--</div><div class="count-label">Monate</div></div>
-              <div class="count-box"><div id="de-days" class="count-number">--</div><div class="count-label">Tage</div></div>
-              <div class="count-box"><div id="de-hours" class="count-number">--</div><div class="count-label">Stunden</div></div>
-              <div class="count-box"><div id="de-minutes" class="count-number">--</div><div class="count-label">Minuten</div></div>
+            <div class="hero-actions" style="gap:10px; margin-top:16px;">
+              <span class="pill"><span id="de-months">--</span>&nbsp;Monate</span>
+              <span class="pill"><span id="de-days">--</span>&nbsp;Tage</span>
+              <span class="pill"><span id="de-hours">--</span>&nbsp;Stunden</span>
+              <span class="pill"><span id="de-minutes">--</span>&nbsp;Minuten</span>
             </div>
 
-            <p class="note">Monate sind näherungsweise berechnet.</p>
+            <p class="muted">Monate sind näherungsweise berechnet.</p>
           </div>
         </div>
       </div>
@@ -748,51 +638,40 @@
             <h3>Teilnahme</h3>
             <p>Bitte gib uns kurz Bescheid, ob du dabei bist – und wenn du magst, auch direkt einen Musikwunsch. ♥</p>
 
-            <form action="https://api.web3forms.com/submit" method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST" style="margin-top:18px; text-align:left;">
               <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
               <input type="hidden" name="subject" value="Teilnahme Hochzeit (DE) — neue Version" />
               <input type="hidden" name="from_name" value="Hochzeitsseite — neue Version" />
 
-              <div class="inline2">
-                <div>
-                  <label for="name-de">Vor- und Nachname*</label>
-                  <input id="name-de" type="text" name="name" required placeholder="Name eingeben" />
-                </div>
-                <div>
-                  <label for="phone-de">Telefon (optional)</label>
-                  <input id="phone-de" type="tel" name="phone" placeholder="Telefonnummer" />
-                </div>
-              </div>
+              <label for="name-de">Vor- und Nachname*</label>
+              <input id="name-de" type="text" name="name" required placeholder="Name eingeben" />
 
-              <div class="inline2">
-                <div>
-                  <label for="status-de">Bist du dabei?*</label>
-                  <select id="status-de" name="teilnahme" required>
-                    <option value="">Bitte auswählen</option>
-                    <option value="Ja">Ja</option>
-                    <option value="Unsicher">Unsicher</option>
-                    <option value="Nein">Nein</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="begleitung-de">Anzahl Begleitpersonen*</label>
-                  <input id="begleitung-de" type="number" min="0" max="10" name="begleitpersonen" required value="0" />
-                  <div id="begleitung-namen-de" style="margin-top:10px;"></div>
-                </div>
-              </div>
+              <label for="phone-de">Telefon (optional)</label>
+              <input id="phone-de" type="tel" name="phone" placeholder="Telefonnummer" />
+
+              <label for="status-de">Bist du dabei?*</label>
+              <select id="status-de" name="teilnahme" required>
+                <option value="">Bitte auswählen</option>
+                <option value="Ja">Ja</option>
+                <option value="Unsicher">Unsicher</option>
+                <option value="Nein">Nein</option>
+              </select>
+
+              <label for="begleitung-de">Anzahl Begleitpersonen*</label>
+              <input id="begleitung-de" type="number" min="0" max="10" name="begleitpersonen" required value="0" />
+              <div id="begleitung-namen-de" style="margin-top:10px;"></div>
 
               <label for="musik-de">Musikwunsch (optional)</label>
               <input id="musik-de" type="text" name="musikwunsch" placeholder="Song / Künstler" />
 
               <label for="message-de">Nachricht (optional)</label>
-              <textarea id="message-de" name="nachricht" placeholder="Allergien, Hinweise oder Grüße"></textarea>
+              <textarea id="message-de" name="nachricht" placeholder="Allergien, Hinweise oder Grüße" style="min-height:110px; resize:vertical;"></textarea>
 
-              <div class="form-footer">
+              <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
                 <button class="btn btn--primary" type="submit">Senden</button>
-                <span class="small">Deine Angaben werden nur zur Planung genutzt.</span>
+                <span class="muted" style="font-size:.95rem;">Nur für die Hochzeitsplanung.</span>
               </div>
             </form>
-
           </div>
         </div>
       </div>
@@ -805,16 +684,17 @@
             <h3>Fotos</h3>
             <p>Hier siehst du alle Fotos. (Tippen/Klicken zum Öffnen)</p>
 
-            <div class="photo-toolbar">
+            <div class="hero-actions" style="margin-top:14px;">
               <button class="btn btn--ghost btn--small" type="button" onclick="reloadGallery('de')">Aktualisieren</button>
-              <span class="btn btn--ghost btn--small" style="cursor:default;">Galerie</span>
             </div>
 
-            <div id="gallery-de" class="photo-grid" aria-label="Fotogalerie Deutsch"></div>
-            <div id="gallery-de-meta" class="photo-meta"></div>
-            <div id="gallery-de-loader" class="photo-meta"></div>
+            <div id="gallery-de" style="margin-top:16px; display:grid; gap:10px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));"></div>
+            <div id="gallery-de-meta" class="muted" style="margin-top:12px;"></div>
+            <div id="gallery-de-loader" class="muted" style="margin-top:6px;"></div>
 
-            <div class="photo-hint">Upload ist über den QR-Code (Passwort erforderlich).</div>
+            <p class="muted" style="margin-top:14px; border-top:1px solid rgba(255,255,255,.08); padding-top:12px;">
+              Upload ist über den QR-Code (Passwort erforderlich).
+            </p>
           </div>
         </div>
       </div>
@@ -830,28 +710,12 @@
             <h2>Hoş Geldiniz</h2>
             <p>Bu özel günü sizinle paylaşmak bizi çok mutlu ediyor. Burada bilgileri ve fotoğrafları bulabilirsiniz. ♥</p>
 
-            <div class="date-chip">
-              <div class="pill">11 Nisan 2026 • 17:00</div>
-            </div>
-
             <div class="hero-actions">
               <a href="#tr-ort" class="btn btn--ghost">Adres</a>
               <a href="#tr-countdown" class="btn btn--ghost">Geri Sayım</a>
               <a href="#tr-teilnahme" class="btn btn--primary">Katılım</a>
               <a href="#tr-fotos" class="btn btn--ghost">Fotoğraflar</a>
             </div>
-
-            <div class="grid2">
-              <div class="info-card">
-                <h3>Adres</h3>
-                <p><strong>Vernouilletallee 1</strong><br><strong>34587 Felsberg</strong></p>
-              </div>
-              <div class="info-card">
-                <h3>Not</h3>
-                <p>Rahat başlamak için lütfen birkaç dakika erken gelin.</p>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -862,17 +726,17 @@
         <div class="card">
           <div class="card-inner">
             <h3>Adres &amp; Ulaşım</h3>
-            <p>Düğün adresi:</p>
-            <p><strong>Vernouilletallee 1</strong><br><strong>34587 Felsberg</strong></p>
+            <p style="text-align:center;">Vernouilletallee 1<br>34587 Felsberg</p>
 
-            <div class="hero-actions" style="justify-content:flex-start;">
+            <div class="hero-actions">
               <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
                  href="https://www.google.com/maps/place/Stadt+Felsberg/@51.1318033,9.429615,17z/data=!3m1!4b1!4m6!3m5!1s0x47bb5caa7dc2636f:0xa6a6c1a8eb1b1d8f!8m2!3d51.1318!4d9.4321899!16s%2Fg%2F1vq73z9l?entry=ttu">
                 Google Haritalar
               </a>
               <button class="btn btn--ghost" type="button" onclick="copyAddress('Vernouilletallee 1, 34587 Felsberg')">Adresi kopyala</button>
             </div>
-            <div class="small" id="copy-msg-tr" aria-live="polite"></div>
+
+            <p id="copy-msg-tr" class="muted" aria-live="polite"></p>
           </div>
         </div>
       </div>
@@ -885,14 +749,14 @@
             <h3>Geri Sayım</h3>
             <p><strong>11 Nisan 2026</strong> saat <strong>17:00</strong>.</p>
 
-            <div class="count-row" id="countdown-tr">
-              <div class="count-box"><div id="tr-months" class="count-number">--</div><div class="count-label">Ay</div></div>
-              <div class="count-box"><div id="tr-days" class="count-number">--</div><div class="count-label">Gün</div></div>
-              <div class="count-box"><div id="tr-hours" class="count-number">--</div><div class="count-label">Saat</div></div>
-              <div class="count-box"><div id="tr-minutes" class="count-number">--</div><div class="count-label">Dakika</div></div>
+            <div class="hero-actions" style="gap:10px; margin-top:16px;">
+              <span class="pill"><span id="tr-months">--</span>&nbsp;Ay</span>
+              <span class="pill"><span id="tr-days">--</span>&nbsp;Gün</span>
+              <span class="pill"><span id="tr-hours">--</span>&nbsp;Saat</span>
+              <span class="pill"><span id="tr-minutes">--</span>&nbsp;Dakika</span>
             </div>
 
-            <p class="note">Ay bilgisi yaklaşık hesaplanır.</p>
+            <p class="muted">Ay bilgisi yaklaşık hesaplanır.</p>
           </div>
         </div>
       </div>
@@ -905,51 +769,40 @@
             <h3>Katılım</h3>
             <p>Katılım durumunu ve istersen müzik isteğini yazabilirsin. ♥</p>
 
-            <form action="https://api.web3forms.com/submit" method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST" style="margin-top:18px; text-align:left;">
               <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
               <input type="hidden" name="subject" value="Katılım Düğün (TR) — yeni sürüm" />
               <input type="hidden" name="from_name" value="Düğün Sitesi — yeni sürüm" />
 
-              <div class="inline2">
-                <div>
-                  <label for="name-tr">Ad Soyad*</label>
-                  <input id="name-tr" type="text" name="name" required placeholder="İsim girin" />
-                </div>
-                <div>
-                  <label for="phone-tr">Telefon (opsiyonel)</label>
-                  <input id="phone-tr" type="tel" name="phone" placeholder="Telefon" />
-                </div>
-              </div>
+              <label for="name-tr">Ad Soyad*</label>
+              <input id="name-tr" type="text" name="name" required placeholder="İsim girin" />
 
-              <div class="inline2">
-                <div>
-                  <label for="status-tr">Gelecek misin?*</label>
-                  <select id="status-tr" name="katilim" required>
-                    <option value="">Seç</option>
-                    <option value="Evet">Evet</option>
-                    <option value="Emin değilim">Emin değilim</option>
-                    <option value="Hayır">Hayır</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="begleitung-tr">Eşlik eden kişi sayısı*</label>
-                  <input id="begleitung-tr" type="number" min="0" max="10" name="eslik_eden_sayisi" required value="0" />
-                  <div id="begleitung-namen-tr" style="margin-top:10px;"></div>
-                </div>
-              </div>
+              <label for="phone-tr">Telefon (opsiyonel)</label>
+              <input id="phone-tr" type="tel" name="phone" placeholder="Telefon" />
+
+              <label for="status-tr">Gelecek misin?*</label>
+              <select id="status-tr" name="katilim" required>
+                <option value="">Seç</option>
+                <option value="Evet">Evet</option>
+                <option value="Emin değilim">Emin değilim</option>
+                <option value="Hayır">Hayır</option>
+              </select>
+
+              <label for="begleitung-tr">Eşlik eden kişi sayısı*</label>
+              <input id="begleitung-tr" type="number" min="0" max="10" name="eslik_eden_sayisi" required value="0" />
+              <div id="begleitung-namen-tr" style="margin-top:10px;"></div>
 
               <label for="musik-tr">Müzik isteği (opsiyonel)</label>
               <input id="musik-tr" type="text" name="muzik_istegi" placeholder="Şarkı / Sanatçı" />
 
               <label for="message-tr">Mesaj (opsiyonel)</label>
-              <textarea id="message-tr" name="mesaj" placeholder="Notlar, selam"></textarea>
+              <textarea id="message-tr" name="mesaj" placeholder="Notlar, selam" style="min-height:110px; resize:vertical;"></textarea>
 
-              <div class="form-footer">
+              <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
                 <button class="btn btn--primary" type="submit">Gönder</button>
-                <span class="small">Bilgiler sadece planlama için kullanılır.</span>
+                <span class="muted" style="font-size:.95rem;">Sadece planlama için.</span>
               </div>
             </form>
-
           </div>
         </div>
       </div>
@@ -962,14 +815,13 @@
             <h3>Fotoğraflar</h3>
             <p>Tüm fotoğraflar burada. (Açmak için tıkla)</p>
 
-            <div class="photo-toolbar">
+            <div class="hero-actions" style="margin-top:14px;">
               <button class="btn btn--ghost btn--small" type="button" onclick="reloadGallery('tr')">Yenile</button>
-              <span class="btn btn--ghost btn--small" style="cursor:default;">Galeri</span>
             </div>
 
-            <div id="gallery-tr" class="photo-grid" aria-label="Fotogalerie Türkçe"></div>
-            <div id="gallery-tr-meta" class="photo-meta"></div>
-            <div id="gallery-tr-loader" class="photo-meta"></div>
+            <div id="gallery-tr" style="margin-top:16px; display:grid; gap:10px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));"></div>
+            <div id="gallery-tr-meta" class="muted" style="margin-top:12px;"></div>
+            <div id="gallery-tr-loader" class="muted" style="margin-top:6px;"></div>
           </div>
         </div>
       </div>
@@ -977,11 +829,36 @@
   </main>
 
   <!-- Lightbox -->
-  <dialog id="lightbox" class="lightbox" aria-label="Fotoanzeige">
-    <button class="lb-close" type="button" aria-label="Schließen">×</button>
-    <div class="lightbox-inner">
-      <img id="lbImg" alt="Foto" />
-      <div class="lb-actions">
+  <dialog id="lightbox" style="border:none; padding:0; background:transparent;">
+    <style>
+      dialog::backdrop{ background: rgba(0,0,0,.75); }
+      .lbWrap{ padding:16px; position:relative; }
+      .lbImg{
+        max-width: min(92vw, 1200px);
+        max-height: 86vh;
+        border-radius: 18px;
+        display:block;
+        margin: 0 auto;
+        background:#111;
+        border: 1px solid rgba(255,255,255,.10);
+      }
+      .lbClose{
+        position: fixed; top: 14px; right: 14px;
+        width: 46px; height: 46px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.35);
+        background: rgba(0,0,0,.32);
+        color:#fff;
+        font-size: 28px;
+        line-height: 44px;
+        cursor:pointer;
+      }
+      .lbActions{ margin-top: 12px; display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+    </style>
+    <button class="lbClose" type="button" aria-label="Schließen">×</button>
+    <div class="lbWrap">
+      <img id="lbImg" class="lbImg" alt="Foto" />
+      <div class="lbActions">
         <a id="lbOpenOriginal" class="btn btn--ghost" target="_blank" rel="noopener">Original öffnen</a>
         <a id="lbDownload" class="btn btn--primary" download>Download</a>
       </div>
@@ -993,53 +870,70 @@
     const PHOTO_API_BASE = "https://vyspdptamoxxbwrcvjqa.supabase.co/functions/v1/wedding";
     const weddingDate = new Date("2026-04-11T17:00:00");
 
-    // ===== State =====
-    const state = {
-      lang: null,
-      countdownStarted: false,
-      gallery: {
-        de: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
-        tr: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
-      }
-    };
-
+    // ===== Helpers =====
     const $ = (id) => document.getElementById(id);
+    const pad = (n) => String(n).padStart(2, "0");
 
-    // ===== Intro: nach 1 Runde anzeigen =====
-    function showWelcomeAfterIntro(){
+    // ===== Intro Flow =====
+    // Ablauf:
+    // 1) Spotlight + Sucher laufen (länger)
+    // 2) Nach X Sekunden erscheint Schnatz mittig (found)
+    // 3) Seite öffnet erst bei Klick (oder Enter/Space) auf Schnatz
+    (function initIntro(){
       const intro = $("introScreen");
-      const start = $("startscreen");
-      const topbar = $("topbar");
+      const snitch = $("snitch");
+      const glow = $("snitchGlow");
+      const headline = $("introHeadline");
+      const hint = $("introHint");
+      const skipBtn = $("skipBtn");
 
-      if (topbar) topbar.classList.add("hidden");
+      if (!intro || !snitch) return;
 
-      if (intro){
+      const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const foundDelayMs = prefersReduce ? 400 : 9500;      // länger
+      const minRuntimeMs = prefersReduce ? 400 : 12000;     // insgesamt länger, wirkt „cinematic“
+
+      let found = false;
+      let allowClick = false;
+
+      function setFound(){
+        if (found) return;
+        found = true;
+        snitch.classList.add("found");
+        glow && glow.classList.add("on");
+        headline && (headline.textContent = "Gefunden!");
+        hint && (hint.innerHTML = "Klicke auf den Schnatz, um die Seite zu öffnen.");
+        // Noch 1–2 Sekunden „dramatischer Moment“, dann Klick freigeben
+        setTimeout(() => { allowClick = true; }, prefersReduce ? 0 : 900);
+      }
+
+      function openSite(){
+        if (!allowClick) return;
         intro.classList.add("out");
         setTimeout(() => {
           intro.classList.add("hidden");
-          if (start) start.classList.remove("hidden");
-        }, 560);
-      } else {
-        if (start) start.classList.remove("hidden");
-      }
-    }
-
-    // Intro endet exakt nach der Animation (Fallback Timer)
-    (function initIntro(){
-      const snitch = $("introSnitch");
-      const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      if (prefersReduce){
-        setTimeout(showWelcomeAfterIntro, 350);
-        return;
+          $("startscreen")?.classList.remove("hidden");
+          $("topbar")?.classList.add("hidden"); // erst nach Sprache
+        }, 720);
       }
 
-      if (snitch){
-        snitch.addEventListener("animationend", showWelcomeAfterIntro, { once: true });
-        setTimeout(showWelcomeAfterIntro, 6500);
-      } else {
-        setTimeout(showWelcomeAfterIntro, 600);
-      }
+      // Found nach Delay
+      setTimeout(setFound, foundDelayMs);
+
+      // Hard-Limit, falls Browser zickt: spätestens nach minRuntime wird found + click enabled
+      setTimeout(() => { setFound(); allowClick = true; }, minRuntimeMs);
+
+      // Schnatz Click + Keyboard
+      snitch.addEventListener("click", openSite);
+      snitch.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSite(); }
+      });
+
+      // Skip: zeigt Schnatz sofort, Klick schnell möglich
+      skipBtn?.addEventListener("click", () => {
+        setFound();
+        allowClick = true;
+      });
     })();
 
     // ===== Navigation =====
@@ -1054,19 +948,28 @@
       nav.innerHTML = links.map(([href,label]) => `<a href="${href}">${label}</a>`).join("");
     }
 
+    const appState = {
+      lang: null,
+      countdownStarted: false,
+      gallery: {
+        de: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
+        tr: { loading:false, nextCursor:null, done:false, observer:null, lastUpdated:null },
+      }
+    };
+
     function chooseLanguage(lang){
-      $("startscreen").classList.add("hidden");
-      $("topbar").classList.remove("hidden");
+      $("startscreen")?.classList.add("hidden");
+      $("topbar")?.classList.remove("hidden");
 
-      $("content-de").classList.toggle("hidden", lang !== "de");
-      $("content-tr").classList.toggle("hidden", lang !== "tr");
+      $("content-de")?.classList.toggle("hidden", lang !== "de");
+      $("content-tr")?.classList.toggle("hidden", lang !== "tr");
 
-      state.lang = lang;
+      appState.lang = lang;
       buildNav(lang);
 
-      if (!state.countdownStarted){
+      if (!appState.countdownStarted){
         startCountdown();
-        state.countdownStarted = true;
+        appState.countdownStarted = true;
       }
 
       setupGuestFields();
@@ -1075,10 +978,10 @@
     }
 
     function switchLanguage(lang){
-      if (!state.lang) return chooseLanguage(lang);
-      $("content-de").classList.toggle("hidden", lang !== "de");
-      $("content-tr").classList.toggle("hidden", lang !== "tr");
-      state.lang = lang;
+      if (!appState.lang) return chooseLanguage(lang);
+      $("content-de")?.classList.toggle("hidden", lang !== "de");
+      $("content-tr")?.classList.toggle("hidden", lang !== "tr");
+      appState.lang = lang;
       buildNav(lang);
       reloadGallery(lang);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1091,10 +994,10 @@
 
     // ===== Clipboard =====
     async function copyAddress(text){
-      const msgId = (state.lang === "tr") ? "copy-msg-tr" : "copy-msg-de";
+      const msgId = (appState.lang === "tr") ? "copy-msg-tr" : "copy-msg-de";
       const msgEl = $(msgId);
-      const okText = (state.lang === "tr") ? "Kopyalandı." : "Kopiert.";
-      const errText = (state.lang === "tr") ? "Kopyalanamadı." : "Kopieren fehlgeschlagen.";
+      const okText = (appState.lang === "tr") ? "Kopyalandı." : "Kopiert.";
+      const errText = (appState.lang === "tr") ? "Kopyalanamadı." : "Kopieren fehlgeschlagen.";
 
       try{
         await navigator.clipboard.writeText(text);
@@ -1106,8 +1009,6 @@
     }
 
     // ===== Countdown =====
-    const pad = (n) => String(n).padStart(2, "0");
-
     function updateCountdown(prefix){
       const now = new Date();
       let diff = weddingDate - now;
@@ -1124,12 +1025,11 @@
       const d = $(prefix + "-days");
       const h = $(prefix + "-hours");
       const mi = $(prefix + "-minutes");
-      if (!m || !d || !h || !mi) return;
 
-      m.textContent = pad(months);
-      d.textContent = pad(days);
-      h.textContent = pad(hours);
-      mi.textContent = pad(minutes);
+      if (m) m.textContent = pad(months);
+      if (d) d.textContent = pad(days);
+      if (h) h.textContent = pad(hours);
+      if (mi) mi.textContent = pad(minutes);
     }
 
     function startCountdown(){
@@ -1162,6 +1062,18 @@
           const lab = document.createElement("label");
           const field = document.createElement("input");
 
+          lab.style.display = "block";
+          lab.style.marginTop = "10px";
+          lab.style.marginBottom = "6px";
+          lab.style.color = "rgba(244,246,240,.92)";
+
+          field.style.width = "100%";
+          field.style.padding = "12px 12px";
+          field.style.borderRadius = "12px";
+          field.style.border = "1px solid rgba(255,255,255,.14)";
+          field.style.background = "rgba(0,0,0,.36)";
+          field.style.color = "rgba(244,246,240,.95)";
+
           if (lang === "de"){
             lab.textContent = "Name Begleitperson " + i;
             field.placeholder = "Begleitperson " + i;
@@ -1193,7 +1105,7 @@
     const lbImg = $("lbImg");
     const lbOpenOriginal = $("lbOpenOriginal");
     const lbDownload = $("lbDownload");
-    const lbClose = lightbox?.querySelector(".lb-close");
+    const lbClose = lightbox?.querySelector(".lbClose");
 
     lbClose?.addEventListener("click", () => lightbox.close());
     lightbox?.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
@@ -1201,7 +1113,7 @@
 
     // ===== Gallery =====
     async function loadGallery(lang, { reset=false } = {}){
-      const g = state.gallery[lang];
+      const g = appState.gallery[lang];
       const grid = $(lang === "de" ? "gallery-de" : "gallery-tr");
       const meta = $(lang === "de" ? "gallery-de-meta" : "gallery-tr-meta");
       const loader = $(lang === "de" ? "gallery-de-loader" : "gallery-tr-loader");
@@ -1255,15 +1167,30 @@
           const thumb = p.thumbUrl || full || orig || "";
           return `
             <button class="photo-card" type="button"
+              style="appearance:none;border:var(--border);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.06);aspect-ratio:1/1;cursor:pointer;padding:0;transition:transform .15s ease, box-shadow .15s ease;"
               data-full="${escapeAttr(full)}"
               data-original="${escapeAttr(orig)}"
               aria-label="Foto öffnen">
-              <img loading="lazy" src="${escapeAttr(thumb)}" alt="Foto">
+              <img loading="lazy" src="${escapeAttr(thumb)}" alt="Foto"
+                   style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .18s ease;">
             </button>
           `;
         }).join("");
 
         grid.insertAdjacentHTML("beforeend", html);
+
+        // Hover-Effekt (delegiert)
+        grid.querySelectorAll(".photo-card").forEach(btn => {
+          if (btn.dataset.hooked) return;
+          btn.dataset.hooked = "1";
+          btn.addEventListener("mouseenter", () => { btn.style.transform = "translateY(-2px)"; btn.style.boxShadow="0 16px 30px rgba(0,0,0,.35)"; });
+          btn.addEventListener("mouseleave", () => { btn.style.transform = "translateY(0)"; btn.style.boxShadow="none"; });
+          const img = btn.querySelector("img");
+          if (img){
+            btn.addEventListener("mouseenter", () => { img.style.transform = "scale(1.04)"; });
+            btn.addEventListener("mouseleave", () => { img.style.transform = "scale(1)"; });
+          }
+        });
 
         const count = grid.querySelectorAll(".photo-card").length;
         const ts = g.lastUpdated ? g.lastUpdated : new Date();
@@ -1297,10 +1224,10 @@
           const fullUrl = btn.getAttribute("data-full");
           const originalUrl = btn.getAttribute("data-original");
 
-          lbImg.src = fullUrl || originalUrl;
-          lbOpenOriginal.href = originalUrl || fullUrl;
-          lbDownload.href = originalUrl || fullUrl;
-          lightbox.showModal();
+          if (lbImg) lbImg.src = fullUrl || originalUrl;
+          if (lbOpenOriginal) lbOpenOriginal.href = originalUrl || fullUrl;
+          if (lbDownload) lbDownload.href = originalUrl || fullUrl;
+          lightbox?.showModal();
         });
         grid.dataset.clickBound = "1";
       }
