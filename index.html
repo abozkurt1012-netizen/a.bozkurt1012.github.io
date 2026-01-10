@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -43,33 +43,6 @@
       min-height:100vh;
       overflow-x:hidden;
       text-align:center;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* ===== Kleine Optik-Upgrades (ohne Strukturänderung) ===== */
-    ::selection{ background: rgba(246,231,178,.22); }
-    a, button{ -webkit-tap-highlight-color: transparent; }
-    .card{
-      transform: translateZ(0);
-      background: linear-gradient(180deg, rgba(18,24,18,.72), rgba(10,14,10,.62));
-      border: 1px solid rgba(255,255,255,.11);
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:0;
-      pointer-events:none;
-      background: radial-gradient(900px 480px at 30% 0%, rgba(246,231,178,.06), transparent 55%),
-                  radial-gradient(800px 520px at 80% 10%, rgba(109,133,64,.08), transparent 55%);
-      opacity:.9;
-    }
-    .card{ position:relative; }
-
-    .btn:focus-visible,
-    .navlinks a:focus-visible,
-    input:focus-visible, select:focus-visible, textarea:focus-visible{
-      outline:none;
-      box-shadow: 0 0 0 3px rgba(109,133,64,.30);
     }
 
     /* =========================
@@ -91,6 +64,8 @@
 
     /* =========================
        Realistischere Blumen (organisch über den ganzen Screen)
+       - 3 Ebenen: weit hinten, mittel, vorn
+       - leichtes Driften, weiche Maskenränder, kein „abgetrenntes“ Links/Rechts
        ========================= */
     .flora{
       position:fixed; inset:-8vh -8vw; z-index:-4;
@@ -139,6 +114,8 @@
     .centered{ min-height:100vh; display:flex; align-items:center; justify-content:center; }
 
     .card{
+      background: var(--card);
+      border: var(--border);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
@@ -146,7 +123,7 @@
       overflow:hidden;
       text-align:left;
     }
-    .card-inner{ padding: 38px 22px; position:relative; z-index:1; }
+    .card-inner{ padding: 38px 22px; }
     @media (min-width: 720px){
       .card-inner{ padding: 54px 58px; }
     }
@@ -212,7 +189,6 @@
       text-transform: uppercase;
       font-size: .86rem;
       user-select:none;
-      box-shadow: 0 16px 44px rgba(0,0,0,.25);
     }
     .date-chip{ margin-top: 14px; display:flex; justify-content:center; }
 
@@ -230,7 +206,7 @@
       text-decoration:none;
       font-weight: 600;
       font-size: .98rem;
-      transition: transform .16s ease, box-shadow .16s ease, background .16s ease, filter .16s ease;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
       color: white;
       line-height: 1;
       white-space: nowrap;
@@ -239,7 +215,7 @@
       background: linear-gradient(135deg, var(--olive), var(--olive2));
       box-shadow: var(--shadow2);
     }
-    .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 22px 60px rgba(0,0,0,.62); filter: brightness(1.03); }
+    .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 22px 60px rgba(0,0,0,.62); }
     .btn--ghost{
       background: rgba(255,255,255,.07);
       border: 1px solid rgba(255,255,255,.14);
@@ -378,7 +354,7 @@
       filter: blur(0px);
     }
 
-    /* Wizard on broom */
+    /* Wizard on broom (neutral silhouette) */
     .wizard{
       position:absolute;
       width: 280px;
@@ -428,7 +404,7 @@
     }
     .snitchGlow.on{ opacity: 1; }
 
-    /* Cinematic camera moves */
+    /* Cinematic camera moves (applied to stage via JS) */
     .camera{
       will-change: transform, filter;
     }
@@ -497,6 +473,8 @@
 
   <!-- =========================
        CINEMATIC INTRO
+       Öffnet Seite erst nach „Found“ + Klick auf Schnatz
+       Sound: startet erst nach User-Interaktion (Browserregel)
        ========================= -->
   <section id="introScreen" class="intro" aria-label="Intro">
     <div class="intro__frame">
@@ -508,7 +486,7 @@
 
         <div class="spot" id="spot"></div>
 
-        <!-- Wizard on broom -->
+        <!-- Wizard on broom (eigene Silhouette, kein Originalcharakter) -->
         <svg id="wizard" class="wizard" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <linearGradient id="wGlow" x1="0" x2="1">
@@ -695,8 +673,7 @@
             <p>Bitte gib uns kurz Bescheid, ob du dabei bist – und wenn du magst, auch direkt einen Musikwunsch. ♥</p>
 
             <form action="https://api.web3forms.com/submit" method="POST">
-              <!-- ✅ NUR HIER: deinen echten Key einsetzen -->
-              <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HIER_EINSETZEN" />
+              <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
               <input type="hidden" name="subject" value="Teilnahme Hochzeit (DE) — neue Version" />
               <input type="hidden" name="from_name" value="Hochzeitsseite — neue Version" />
 
@@ -734,6 +711,7 @@
       </div>
     </section>
 
+    <!-- Galerie bleibt (Supabase Edge Function) -->
     <section id="de-fotos" class="section">
       <div class="wrap">
         <div class="card">
@@ -827,8 +805,7 @@
             <p>Katılım durumunu ve istersen müzik isteğini yazabilirsin. ♥</p>
 
             <form action="https://api.web3forms.com/submit" method="POST">
-              <!-- ✅ NUR HIER: deinen echten Key einsetzen -->
-              <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HIER_EINSETZEN" />
+              <input type="hidden" name="access_key" value="90e5c0c6-2afb-4b21-9f61-09eeb3efc6ea" />
               <input type="hidden" name="subject" value="Katılım Düğün (TR) — yeni sürüm" />
               <input type="hidden" name="from_name" value="Düğün Sitesi — yeni sürüm" />
 
@@ -925,15 +902,15 @@
 
   <script>
     // ===== CONFIG =====
-    // ✅ NUR HIER: deine Supabase Edge-URL einsetzen (wie vorher)
-    const PHOTO_API_BASE = "PHOTO_API_BASE_HIER_EINSETZEN";
+    const PHOTO_API_BASE = "https://vyspdptamoxxbwrcvjqa.supabase.co/functions/v1/wedding";
     const weddingDate = new Date("2026-04-11T17:00:00");
 
     const $ = (id) => document.getElementById(id);
     const pad = (n) => String(n).padStart(2, "0");
 
     // =========================================================
-    // SOUND (WebAudio)
+    // SOUND (WebAudio, keine externen Dateien nötig)
+    // - Browser erlaubt Audio erst nach User-Interaktion
     // =========================================================
     const Sound = (() => {
       let ctx = null;
@@ -1077,7 +1054,7 @@
     })();
 
     // =========================================================
-    // CINEMATIC INTRO (REAL steering flight + smooth chase)
+    // CINEMATIC INTRO ANIMATION (chase + particles + camera)
     // =========================================================
     (function initIntro(){
       const intro = $("introScreen");
@@ -1102,21 +1079,18 @@
       function resize(){
         const r = stage.getBoundingClientRect();
         DPR = Math.min(2, window.devicePixelRatio || 1);
-        W = Math.max(1, Math.floor(r.width * DPR));
-        H = Math.max(1, Math.floor(r.height * DPR));
+        W = Math.floor(r.width * DPR);
+        H = Math.floor(r.height * DPR);
         canvas.width = W;
         canvas.height = H;
       }
       resize();
       window.addEventListener("resize", resize);
 
-      const clamp = (v,a,b)=>Math.max(a,Math.min(b,v));
-      const lerp = (a,b,t)=>a+(b-a)*t;
-      const rand = (a,b)=>a+Math.random()*(b-a);
-      const hypot = Math.hypot;
-
       // Particles
       const sparks = [];
+      const rand = (a,b) => a + Math.random()*(b-a);
+
       function spawnSpark(x,y, n=5, power=1){
         for (let i=0;i<n;i++){
           const a = rand(0, Math.PI*2);
@@ -1136,7 +1110,9 @@
         spawnSpark(x,y, 120, 1.25);
         for (let k=0;k<6;k++) spawnSpark(x + rand(-14,14)*DPR, y + rand(-14,14)*DPR, 50, 1.0);
       }
+
       function draw(dt){
+        // Cinematic trail
         ctx.fillStyle = "rgba(0,0,0,0.16)";
         ctx.fillRect(0,0,W,H);
 
@@ -1167,9 +1143,8 @@
       }
 
       // Timeline
-      const totalMs = prefersReduce ? 1200 : 24000;
-      const revealAt = prefersReduce ? 0.10 : 0.18;
-
+      const totalMs = prefersReduce ? 1200 : 21000; // länger & cinematic
+      const revealAt = prefersReduce ? 0.12 : 0.34; // Spannung
       let t0 = performance.now();
       let last = t0;
 
@@ -1177,121 +1152,52 @@
       let allowClick = false;
       let running = true;
 
-      // Snitch steering (real flight)
-      const sn = {
-        x:0,y:0, vx:0, vy:0,
-        tx:0,ty:0, nextWptAt:0,
-        seed: rand(0,1000),
-        lastX:0,lastY:0,
-        rot:0
-      };
-
-      function pickWaypoint(now){
-        const r = stage.getBoundingClientRect();
-        const pad = Math.min(r.width, r.height) * 0.12;
-        sn.tx = rand(pad, r.width - pad);
-        sn.ty = rand(pad, r.height - pad);
-        sn.nextWptAt = now + rand(650, 1400);
+      // Wizard follow physics
+      let wizX=0, wizY=0, wizVX=0, wizVY=0;
+      function follow(targetX, targetY, dt){
+        const spring = 13.5;
+        const damp = 7.2;
+        const dx = targetX - wizX;
+        const dy = targetY - wizY;
+        wizVX += dx*spring*dt;
+        wizVY += dy*spring*dt;
+        wizVX *= Math.exp(-damp*dt);
+        wizVY *= Math.exp(-damp*dt);
+        wizX += wizVX;
+        wizY += wizVY;
       }
 
-      {
-        const r = stage.getBoundingClientRect();
-        sn.x = r.width*0.70;
-        sn.y = r.height*0.36;
-        sn.lastX = sn.x; sn.lastY = sn.y;
-        pickWaypoint(performance.now());
+      function easeInOut(t){
+        return t<0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+      }
+      function easeOut(t){ return 1 - Math.pow(1-t, 3); }
+
+      function snitchPath(t, w, h){
+        // Großer cinematischer Loop + Spiral zur Mitte
+        const cx = w*0.50, cy = h*0.46;
+
+        if (t <= 0.76){
+          const u = t/0.76;
+          const a = u * Math.PI*2.2;      // etwas mehr als 1 Runde
+          const rx = w*0.38;
+          const ry = h*0.29;
+          const x = cx + Math.cos(a)*rx;
+          const y = cy + Math.sin(a)*ry;
+          return { x, y, rot: Math.sin(a)*14 };
+        }else{
+          const u = (t-0.76)/0.24;
+          const e = easeOut(u);
+          const a = (1-u) * Math.PI*3.5;
+          const r0x = w*0.26, r0y = h*0.20;
+          const rx = r0x*(1-e);
+          const ry = r0y*(1-e);
+          const x = cx + Math.cos(a)*rx;
+          const y = cy + Math.sin(a)*ry;
+          return { x, y, rot: (1-u)*10 };
+        }
       }
 
-      function updateSnitch(now, dt, phase){
-        const r = stage.getBoundingClientRect();
-
-        const dToTarget = hypot(sn.tx-sn.x, sn.ty-sn.y);
-        if (now > sn.nextWptAt || dToTarget < 70) pickWaypoint(now);
-
-        const t = now*0.001 + sn.seed;
-        const windX = (Math.sin(t*1.2)+Math.sin(t*2.1)*0.6) * (10 + 18*phase);
-        const windY = (Math.cos(t*1.05)+Math.sin(t*1.7)*0.5) * (8 + 16*phase);
-
-        const desireX = (sn.tx + windX) - sn.x;
-        const desireY = (sn.ty + windY) - sn.y;
-        const dist = Math.max(1, hypot(desireX, desireY));
-
-        const maxSpeed = lerp(260, 520, phase);
-        const dvx = (desireX/dist) * maxSpeed;
-        const dvy = (desireY/dist) * maxSpeed;
-
-        const accel = lerp(7.0, 10.5, phase);
-        sn.vx = lerp(sn.vx, dvx, clamp(accel*dt, 0, 1));
-        sn.vy = lerp(sn.vy, dvy, clamp(accel*dt, 0, 1));
-
-        // edge avoidance
-        const edge = Math.min(r.width, r.height) * 0.12;
-        const push = 900 * dt;
-        if (sn.x < edge) sn.vx += (edge - sn.x) * (push/edge);
-        if (sn.x > r.width-edge) sn.vx -= (sn.x - (r.width-edge)) * (push/edge);
-        if (sn.y < edge) sn.vy += (edge - sn.y) * (push/edge);
-        if (sn.y > r.height-edge) sn.vy -= (sn.y - (r.height-edge)) * (push/edge);
-
-        sn.x += sn.vx*dt;
-        sn.y += sn.vy*dt;
-
-        sn.x = clamp(sn.x, 20, r.width-20);
-        sn.y = clamp(sn.y, 20, r.height-20);
-
-        const mvx = sn.x - sn.lastX;
-        const mvy = sn.y - sn.lastY;
-        const a = Math.atan2(mvy, mvx);
-        sn.rot = lerp(sn.rot, (a*180/Math.PI)*0.25 + Math.sin(t*3.0)*6, clamp(10*dt, 0, 1));
-        sn.lastX = sn.x; sn.lastY = sn.y;
-      }
-
-      // Wizard chase (smooth + correct broom side)
-      const wiz = { x:0,y:0, vx:0, vy:0, facing:1 };
-      { 
-        const r = stage.getBoundingClientRect();
-        wiz.x = r.width*0.18;
-        wiz.y = r.height*0.72;
-      }
-
-      function updateWizard(dt, phase){
-        const vLen = Math.max(1, hypot(sn.vx, sn.vy));
-        const dirX = sn.vx / vLen;
-        const dirY = sn.vy / vLen;
-
-        const behind = lerp(170, 230, phase);
-        const side   = lerp(40,  60,  phase);
-
-        const tx = sn.x - dirX*behind - dirY*side;
-        const ty = sn.y - dirY*behind + dirX*side;
-
-        const dx = tx - wiz.x;
-        const dy = ty - wiz.y;
-        const dist = Math.max(1, hypot(dx, dy));
-
-        const maxSpeed = lerp(340, 640, phase);
-        const desiredVx = (dx/dist) * maxSpeed;
-        const desiredVy = (dy/dist) * maxSpeed;
-
-        const accel = lerp(6.5, 9.0, phase);
-        wiz.vx = lerp(wiz.vx, desiredVx, clamp(accel*dt, 0, 1));
-        wiz.vy = lerp(wiz.vy, desiredVy, clamp(accel*dt, 0, 1));
-
-        wiz.vx *= Math.exp(-2.0*dt);
-        wiz.vy *= Math.exp(-2.0*dt);
-
-        wiz.x += wiz.vx*dt;
-        wiz.y += wiz.vy*dt;
-
-        if (Math.abs(wiz.vx) > 8) wiz.facing = wiz.vx >= 0 ? 1 : -1;
-
-        const ang = Math.atan2((sn.y - wiz.y), (sn.x - wiz.x)) * 180/Math.PI;
-        const tilt = clamp(ang*0.16, -12, 12);
-
-        wizard.style.transform =
-          `translate3d(${(wiz.x - 130)}px, ${(wiz.y - 70)}px, 0) rotate(${tilt}deg) scaleX(${wiz.facing})`;
-      }
-
-      function setFound(){
+      function setFound(sx, sy){
         if (found) return;
         found = true;
         snitch.classList.add("found");
@@ -1299,6 +1205,7 @@
         headline && (headline.textContent = "Gefunden!");
         hint && (hint.textContent = "Klicke auf den Schnatz, um die Seite zu öffnen.");
 
+        // Cinematic moment
         if (!prefersReduce){
           stage.style.filter = "brightness(1.05) contrast(1.05)";
           stage.animate(
@@ -1312,14 +1219,16 @@
           Sound.whoosh(0.05, 0.7);
         }
 
-        burst(sn.x*DPR, sn.y*DPR);
-        setTimeout(() => { allowClick = true; }, prefersReduce ? 0 : 900);
+        burst(sx*DPR, sy*DPR);
+
+        setTimeout(() => { allowClick = true; }, prefersReduce ? 0 : 1100);
       }
 
       function openSite(){
         if (!allowClick) return;
         running = false;
 
+        // click sparkle
         if (Sound.enabled){
           Sound.sparkle(0);
           Sound.whoosh(0.02, 1.0);
@@ -1333,6 +1242,7 @@
         }, 820);
       }
 
+      // Sound button
       function updateSoundBtn(){
         soundBtn.textContent = Sound.enabled ? "Sound: AN" : "Sound: AUS";
       }
@@ -1343,7 +1253,9 @@
       });
       updateSoundBtn();
 
+      // Snitch click (will be enabled after found)
       snitch.addEventListener("click", () => {
+        // first interaction: unlock audio context if enabled
         if (Sound.enabled) Sound.setEnabled(true);
         openSite();
       });
@@ -1355,73 +1267,103 @@
         }
       });
 
+      // Skip: shorten (still requires clicking snitch to open)
       skipBtn.addEventListener("click", () => {
-        t0 = performance.now() - totalMs*0.90;
+        t0 = performance.now() - totalMs*0.92;
         headline && (headline.textContent = "Fast da …");
         hint && (hint.textContent = "Der Schnatz erscheint gleich. Klicke ihn an, um zu öffnen.");
         if (Sound.enabled) Sound.whoosh(0, 0.4);
       });
 
+      // Init base
       ctx.fillStyle = "rgba(0,0,0,1)";
       ctx.fillRect(0,0,W,H);
 
+      // Wizard initial pos
+      {
+        const r = stage.getBoundingClientRect();
+        wizX = (r.width*0.22)*DPR;
+        wizY = (r.height*0.62)*DPR;
+      }
+
       function tick(now){
         if (!running) return;
-        const dt = Math.min(0.033, (now - last)/1000);
+        const dt = Math.min(0.032, (now - last)/1000);
         last = now;
 
-        const tRaw = clamp((now - t0) / totalMs, 0, 1);
-        const ease = prefersReduce ? tRaw : (tRaw < 0.5 ? 4*tRaw*tRaw*tRaw : 1 - Math.pow(-2*tRaw+2, 3)/2);
+        const r = stage.getBoundingClientRect();
+        const w = r.width, h = r.height;
 
+        const tRaw = Math.min(1, (now - t0) / totalMs);
+        const t = prefersReduce ? tRaw : easeInOut(tRaw);
+
+        // Spotlight cinematic fade-in
         if (spot){
-          const op = Math.min(0.92, Math.max(0, (tRaw - 0.06) / 0.22));
+          const op = Math.min(0.92, Math.max(0, (tRaw - 0.08) / 0.25));
           spot.style.opacity = String(op);
-          spot.style.transform = `translate3d(${(Math.sin(ease*6.2)*10)}px, ${(Math.cos(ease*5.6)*12)}px, 0)`;
+          spot.style.transform = `translate3d(${(Math.sin(t*6.2)*10)}px, ${(Math.cos(t*5.6)*12)}px, 0)`;
         }
 
+        // Snitch path
+        const sp = snitchPath(t, w, h);
+        const sx = sp.x, sy = sp.y;
+
+        // reveal
         if (tRaw >= revealAt){
           snitch.style.opacity = "1";
-          const phase = clamp((tRaw - revealAt) / (1 - revealAt), 0, 1);
-          updateSnitch(now, dt, phase);
-
-          spawnSpark(sn.x*DPR, sn.y*DPR, prefersReduce ? 1 : 6, 0.95);
-          if (Sound.enabled && !prefersReduce && Math.random() < 0.05) Sound.whoosh(0, 0.25);
-        } else {
-          updateSnitch(now, dt, 0.10);
+          // trailing sparkles + occasional whoosh
+          spawnSpark(sx*DPR, sy*DPR, prefersReduce ? 1 : 5, 0.95);
+          if (Sound.enabled && !prefersReduce && Math.random() < 0.045) Sound.whoosh(0, 0.28);
         }
 
-        const snLeft = sn.x - 95;
-        const snTop  = sn.y - 95;
+        // Position snitch
+        const snLeft = sx - 95;
+        const snTop  = sy - 95;
         snitch.style.setProperty("--sx", `${snLeft}px`);
         snitch.style.setProperty("--sy", `${snTop}px`);
         if (!snitch.classList.contains("found")){
-          snitch.style.transform = `translate3d(${snLeft}px, ${snTop}px, 0) rotate(${sn.rot}deg)`;
+          snitch.style.transform = `translate3d(${snLeft}px, ${snTop}px, 0) rotate(${sp.rot}deg)`;
         }
 
+        // Glow follows
         if (glow){
-          glow.style.transform = `translate3d(${(sn.x - 210)}px, ${(sn.y - 210)}px, 0)`;
+          glow.style.transform = `translate3d(${(sx - 210)}px, ${(sy - 210)}px, 0)`;
         }
 
-        const wizPhase = clamp((tRaw - (revealAt*0.6)) / (1 - revealAt*0.6), 0, 1);
-        updateWizard(dt, wizPhase);
+        // Wizard chases behind snitch
+        const backX = sx - 140;
+        const backY = sy + 52;
 
+        follow(backX*DPR, backY*DPR, dt);
+
+        const wx = wizX / DPR;
+        const wy = wizY / DPR;
+
+        const ang = Math.atan2((sy - wy), (sx - wx)) * 180 / Math.PI;
+        wizard.style.transform = `translate3d(${wx - 130}px, ${wy - 70}px, 0) rotate(${ang*0.14}deg)`;
+
+        // Wand spark
         if (!prefersReduce && tRaw >= revealAt){
-          spawnSpark((wiz.x+62)*DPR, (wiz.y-10)*DPR, 1, 0.55);
+          spawnSpark((wx+62)*DPR, (wy-10)*DPR, 1, 0.55);
           if (Sound.enabled && Math.random() < 0.02) Sound.sparkle(0);
         }
 
+        // Camera micro-move
         if (!prefersReduce){
-          const camZ = 1 + 0.009*Math.sin(ease*8.2) + 0.014*Math.max(0, tRaw-0.62);
-          const camX = 1.8*Math.sin(ease*5.0);
-          const camY = 1.3*Math.cos(ease*4.6);
+          const camZ = 1 + 0.008*Math.sin(t*8.2) + 0.012*Math.max(0, tRaw-0.65);
+          const camX = 1.6*Math.sin(t*5.0);
+          const camY = 1.2*Math.cos(t*4.6);
           stage.style.transform = `translate3d(${camX}px, ${camY}px, 0) scale(${camZ})`;
         }
 
+        // Found at end
         if (tRaw >= 1 && !found){
-          setFound();
+          setFound(sx, sy);
         }
 
+        // draw particles
         draw(dt);
+
         requestAnimationFrame(tick);
       }
 
